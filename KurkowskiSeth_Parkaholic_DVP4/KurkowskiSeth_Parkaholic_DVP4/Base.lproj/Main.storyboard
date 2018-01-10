@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,9 +18,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8n-lg-KfH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Park-aholic" id="aAs-gV-Qgt"/>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-KT-5JE">
+                                <rect key="frame" x="5" y="49" width="365" height="233.5"/>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0G-HU-Geg">
+                                <rect key="frame" x="5" y="287.5" width="365" height="374.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkCell1" id="TIT-84-EPp">
+                                        <rect key="frame" x="0.0" y="28" width="365" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TIT-84-EPp" id="hjq-cN-RxG">
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oXy-KT-5JE" secondAttribute="trailing" constant="5" id="5Ae-jV-soJ"/>
+                            <constraint firstItem="f0G-HU-Geg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="8r6-0M-MUc"/>
+                            <constraint firstItem="f0G-HU-Geg" firstAttribute="top" secondItem="oXy-KT-5JE" secondAttribute="bottom" constant="5" id="KzZ-eR-h1X"/>
+                            <constraint firstItem="oXy-KT-5JE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.35" id="PsY-4N-CoT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f0G-HU-Geg" secondAttribute="trailing" constant="5" id="QwK-L2-3vh"/>
+                            <constraint firstItem="oXy-KT-5JE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="RDh-0N-v6S"/>
+                            <constraint firstItem="N8n-lg-KfH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aWt-mr-6kG"/>
+                            <constraint firstItem="N8n-lg-KfH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f9T-s4-6vh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="f0G-HU-Geg" secondAttribute="bottom" constant="5" id="jpF-dD-StT"/>
+                            <constraint firstItem="N8n-lg-KfH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pYp-D8-gvJ"/>
+                            <constraint firstItem="oXy-KT-5JE" firstAttribute="top" secondItem="N8n-lg-KfH" secondAttribute="bottom" constant="5" id="uK1-x2-yHm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="oXy-KT-5JE" id="oUv-ve-ayh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
