@@ -1,32 +1,16 @@
 //
-//  ViewController.swift
+//  LocationManager_EXT.swift
 //  KurkowskiSeth_Parkaholic_DVP4
 //
-//  Created by Seth Kurkowski on 1/9/18.
+//  Created by Seth Kurkowski on 1/10/18.
 //  Copyright © 2018 Seth Kurkowski. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+extension ViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
-    
-    //Core Location Properties
-    let coreLocationManager = CLLocationManager()
-    var recentLocation: CLLocation!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Set locationManager's Delegate
-        coreLocationManager.delegate = self
-        
-        requestAuthorization()
-        
-        
-    }
     
     //Function to check authorization code and request authorization if it hasn't ben requested yet
     func requestAuthorization() {
@@ -50,9 +34,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let newestLocation = locations.last {
-            recentLocation = newestLocation
+        if recentLocation == nil {
+            recentLocation = locations.last
             updateMap(location: recentLocation)
+            findParks()
         }
     }
     
@@ -68,6 +53,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.addAnnotation(annotation)
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
-
+    
+    
 }
-

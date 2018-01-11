@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C026DEF0200720B100D5E57F /* LocationManager_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026DEEF200720B100D5E57F /* LocationManager_EXT.swift */; };
+		C026DEF320072C0D00D5E57F /* ParkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026DEF220072C0D00D5E57F /* ParkDataModel.swift */; };
+		C026DEF92007C13D00D5E57F /* ParkCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */; };
 		C0AA9D552005CE2E0041E279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA9D542005CE2E0041E279 /* AppDelegate.swift */; };
 		C0AA9D572005CE2E0041E279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA9D562005CE2E0041E279 /* ViewController.swift */; };
 		C0AA9D5A2005CE2E0041E279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AA9D582005CE2E0041E279 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C026DEEF200720B100D5E57F /* LocationManager_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager_EXT.swift; sourceTree = "<group>"; };
+		C026DEF220072C0D00D5E57F /* ParkDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
+		C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkCellTableViewCell.swift; sourceTree = "<group>"; };
 		C0AA9D512005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KurkowskiSeth_Parkaholic_DVP4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AA9D542005CE2E0041E279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AA9D562005CE2E0041E279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +46,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C026DEF120072BF100D5E57F /* Park Data */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA9D6A2005CF240041E279 /* apiPull_Ext.swift */,
+				C026DEF220072C0D00D5E57F /* ParkDataModel.swift */,
+			);
+			path = "Park Data";
+			sourceTree = "<group>";
+		};
+		C026DEF42007BD1000D5E57F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA9D562005CE2E0041E279 /* ViewController.swift */,
+				C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C026DEF52007BD2C00D5E57F /* CoreLocation&MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				C026DEEF200720B100D5E57F /* LocationManager_EXT.swift */,
+			);
+			path = "CoreLocation&MapKit";
+			sourceTree = "<group>";
+		};
 		C0AA9D482005CE2E0041E279 = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +92,15 @@
 		C0AA9D532005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4 */ = {
 			isa = PBXGroup;
 			children = (
+				C026DEF42007BD1000D5E57F /* Controllers */,
+				C026DEF120072BF100D5E57F /* Park Data */,
+				C026DEF52007BD2C00D5E57F /* CoreLocation&MapKit */,
 				C0AA9D542005CE2E0041E279 /* AppDelegate.swift */,
-				C0AA9D562005CE2E0041E279 /* ViewController.swift */,
 				C0AA9D582005CE2E0041E279 /* Main.storyboard */,
 				C0AA9D5E2005CE2E0041E279 /* Assets.xcassets */,
 				C0AA9D602005CE2E0041E279 /* LaunchScreen.storyboard */,
 				C0AA9D632005CE2E0041E279 /* Info.plist */,
 				C0AA9D5B2005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.xcdatamodeld */,
-				C0AA9D6A2005CF240041E279 /* apiPull_Ext.swift */,
 			);
 			path = KurkowskiSeth_Parkaholic_DVP4;
 			sourceTree = "<group>";
@@ -153,9 +186,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0AA9D572005CE2E0041E279 /* ViewController.swift in Sources */,
+				C026DEF0200720B100D5E57F /* LocationManager_EXT.swift in Sources */,
 				C0AA9D5D2005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.xcdatamodeld in Sources */,
+				C026DEF92007C13D00D5E57F /* ParkCellTableViewCell.swift in Sources */,
 				C0AA9D552005CE2E0041E279 /* AppDelegate.swift in Sources */,
 				C0AA9D6B2005CF240041E279 /* apiPull_Ext.swift in Sources */,
+				C026DEF320072C0D00D5E57F /* ParkDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZL2U9TNTMV;
 				INFOPLIST_FILE = KurkowskiSeth_Parkaholic_DVP4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.KurkowskiSeth-Parkaholic-DVP4";
@@ -307,6 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZL2U9TNTMV;
 				INFOPLIST_FILE = KurkowskiSeth_Parkaholic_DVP4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.KurkowskiSeth-Parkaholic-DVP4";
