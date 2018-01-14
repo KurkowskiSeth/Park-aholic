@@ -48,6 +48,7 @@ extension ViewController {
         //create annotation on mapView
         let locationPinCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let annotation = MKPointAnnotation()
+        annotation.title = "You Are Here!"
         annotation.coordinate = locationPinCoord
         
         mapView.addAnnotation(annotation)

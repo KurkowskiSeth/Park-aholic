@@ -74,6 +74,7 @@ extension ViewController {
             let pinCoord = CLLocationCoordinate2D(latitude: park.latitude, longitude: park.longitude)
             let annotation = MKPointAnnotation()
             annotation.coordinate = pinCoord
+            annotation.title = park.name
             
             mapView.addAnnotation(annotation)
             mapView.showAnnotations(mapView.annotations, animated: true)

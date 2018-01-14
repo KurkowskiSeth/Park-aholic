@@ -49,8 +49,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return cell!
     }
 
-    
-
 
 }
 
