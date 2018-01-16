@@ -89,6 +89,15 @@
 			path = DataStorageFiles;
 			sourceTree = "<group>";
 		};
+		C06039E7200D88F900FAB50B /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA9D602005CE2E0041E279 /* LaunchScreen.storyboard */,
+				C0AA9D582005CE2E0041E279 /* Main.storyboard */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
 		C0AA9D482005CE2E0041E279 = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +119,13 @@
 		C0AA9D532005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4 */ = {
 			isa = PBXGroup;
 			children = (
+				C06039E7200D88F900FAB50B /* UI Elements */,
 				C026DEF42007BD1000D5E57F /* Controllers */,
 				C026DEF120072BF100D5E57F /* Park Data */,
 				C026DEF52007BD2C00D5E57F /* CoreLocation&MapKit */,
-				C0AA9D542005CE2E0041E279 /* AppDelegate.swift */,
-				C0AA9D582005CE2E0041E279 /* Main.storyboard */,
-				C0AA9D5E2005CE2E0041E279 /* Assets.xcassets */,
-				C0AA9D602005CE2E0041E279 /* LaunchScreen.storyboard */,
 				C026DEFA200AFA0300D5E57F /* DataStorageFiles */,
+				C0AA9D542005CE2E0041E279 /* AppDelegate.swift */,
+				C0AA9D5E2005CE2E0041E279 /* Assets.xcassets */,
 			);
 			path = KurkowskiSeth_Parkaholic_DVP4;
 			sourceTree = "<group>";
@@ -218,9 +226,19 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KurkowskiSeth_Parkaholic_DVP4/Pods-KurkowskiSeth_Parkaholic_DVP4-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -234,12 +252,38 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KurkowskiSeth_Parkaholic_DVP4/Pods-KurkowskiSeth_Parkaholic_DVP4-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZL2U9TNTMV;
-				INFOPLIST_FILE = "$(SRCROOT)/KurkowskiSeth_Parkaholic_DVP4/DataFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/KurkowskiSeth_Parkaholic_DVP4/DataStorageFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.KurkowskiSeth-Parkaholic-DVP4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,7 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZL2U9TNTMV;
-				INFOPLIST_FILE = "$(SRCROOT)/KurkowskiSeth_Parkaholic_DVP4/DataFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/KurkowskiSeth_Parkaholic_DVP4/DataStorageFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.KurkowskiSeth-Parkaholic-DVP4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
