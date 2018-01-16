@@ -12,6 +12,7 @@
 		C026DEF320072C0D00D5E57F /* ParkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026DEF220072C0D00D5E57F /* ParkDataModel.swift */; };
 		C026DEF92007C13D00D5E57F /* ParkCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */; };
 		C026DEFC200AFABC00D5E57F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C026DEFB200AFABC00D5E57F /* GoogleService-Info.plist */; };
+		C06039EC200DC1E900FAB50B /* AccountView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06039EB200DC1E900FAB50B /* AccountView_EXT.swift */; };
 		C0AA9D552005CE2E0041E279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA9D542005CE2E0041E279 /* AppDelegate.swift */; };
 		C0AA9D572005CE2E0041E279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA9D562005CE2E0041E279 /* ViewController.swift */; };
 		C0AA9D5A2005CE2E0041E279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AA9D582005CE2E0041E279 /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 		C026DEF220072C0D00D5E57F /* ParkDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
 		C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkCellTableViewCell.swift; sourceTree = "<group>"; };
 		C026DEFB200AFABC00D5E57F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C06039EB200DC1E900FAB50B /* AccountView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView_EXT.swift; sourceTree = "<group>"; };
+		C06039ED200DCE5500FAB50B /* KurkowskiSeth_Parkaholic_DVP4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KurkowskiSeth_Parkaholic_DVP4.entitlements; sourceTree = "<group>"; };
 		C0AA9D512005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KurkowskiSeth_Parkaholic_DVP4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AA9D542005CE2E0041E279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AA9D562005CE2E0041E279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		C026DEFA200AFA0300D5E57F /* DataStorageFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C06039ED200DCE5500FAB50B /* KurkowskiSeth_Parkaholic_DVP4.entitlements */,
 				C0AA9D632005CE2E0041E279 /* Info.plist */,
 				C0AA9D5B2005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.xcdatamodeld */,
 				C026DEFB200AFABC00D5E57F /* GoogleService-Info.plist */,
@@ -94,6 +98,7 @@
 			children = (
 				C0AA9D602005CE2E0041E279 /* LaunchScreen.storyboard */,
 				C0AA9D582005CE2E0041E279 /* Main.storyboard */,
+				C06039EB200DC1E900FAB50B /* AccountView_EXT.swift */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -184,6 +189,11 @@
 					C0AA9D502005CE2E0041E279 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -316,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06039EC200DC1E900FAB50B /* AccountView_EXT.swift in Sources */,
 				C0AA9D572005CE2E0041E279 /* ViewController.swift in Sources */,
 				C026DEF0200720B100D5E57F /* LocationManager_EXT.swift in Sources */,
 				C0AA9D5D2005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.xcdatamodeld in Sources */,

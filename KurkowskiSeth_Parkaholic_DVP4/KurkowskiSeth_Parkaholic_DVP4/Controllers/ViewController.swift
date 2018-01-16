@@ -19,6 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var accountBBI: UIBarButtonItem!
+    @IBOutlet weak var filterBBI: UIBarButtonItem!
     
     // MARK: - Firebase Auth Properties
     fileprivate(set) var auth: Auth?
@@ -31,6 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //Park Properties
     var parkArray = [ParkDataModel]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         auth = Auth.auth()
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
-        authUI?.providers = [FUITwitterAuth(),]
+        authUI?.providers = [FUIGoogleAuth()]
+        
+        //Check to see if the user is already logged in
+        authStateListenerHandle = auth?.addStateDidChangeListener({ (auth, user) in
+            if user != nil {
+                self.accountBBI.title = "Account"
+                self.accountBBI.tag = 1
+            } else {
+                self.accountBBI.title = "Sign In"
+                self.accountBBI.tag = 0
+            }
+        })
         
         
     }
@@ -62,9 +76,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.present(authViewController!, animated: true, completion: nil)
             //TODO - Chance bar button item to account page
             sender.tag = 1
+            sender.title = "Account"
         case 1:
-            //TODO - Set up account page
-            print("WAT?")
+            accountViewSetUp()
+            
+        case 2:
+            //Remove account view from it's super view
+            for subview in view.subviews {
+                if subview.tag == 67 {
+                    subview.removeFromSuperview()
+                }
+            }
+            
+            accountBBI.title = "Account"
+            accountBBI.tag = 1
+            filterBBI.isEnabled = true
+            mapView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+            
         default:
             print("Error with signIn/Account bar button item")
         }
@@ -97,6 +126,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         default:
             let detailedError = (authError as NSError).userInfo[NSUnderlyingErrorKey] ?? authError
             print("Login error: \((detailedError as! NSError).localizedDescription)")
+        }
+    }
+
+    
+    //MARK: Account view sign out button action
+    @objc func attemptSignOut(sender: UIButton!) {
+        print("Touched")
+        do {
+            try auth?.signOut()
+            let viewToRemove = view.viewWithTag(67)
+            viewToRemove?.removeFromSuperview()
+            filterBBI.isEnabled = true
+            mapView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
 
