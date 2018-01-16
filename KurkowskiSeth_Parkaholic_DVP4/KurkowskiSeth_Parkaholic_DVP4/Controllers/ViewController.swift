@@ -10,9 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 import FirebaseAuthUI
-import FirebaseTwitterAuthUI
 import FirebaseGoogleAuthUI
-import FirebaseFacebookAuthUI
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FUIAuthDelegate {
     
