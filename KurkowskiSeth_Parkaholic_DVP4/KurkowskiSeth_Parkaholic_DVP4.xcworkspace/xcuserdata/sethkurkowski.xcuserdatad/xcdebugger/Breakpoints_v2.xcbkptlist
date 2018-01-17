@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KurkowskiSeth_Parkaholic_DVP4/Controllers/ViewController.swift"
-            timestampString = "537823610.799974"
+            timestampString = "537860423.029631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "signInBtn(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KurkowskiSeth_Parkaholic_DVP4/Controllers/ViewController.swift"
-            timestampString = "537823610.800292"
+            timestampString = "537860423.029699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "signInBtn(sender:)"
             landmarkType = "7">
             <Locations>

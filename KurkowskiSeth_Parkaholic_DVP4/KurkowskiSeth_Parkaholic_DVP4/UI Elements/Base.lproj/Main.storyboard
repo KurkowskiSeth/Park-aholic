@@ -36,10 +36,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-KT-5JE">
-                                <rect key="frame" x="0.0" y="69" width="365" height="233.5"/>
+                                <rect key="frame" x="5" y="69" width="365" height="233.5"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0G-HU-Geg">
-                                <rect key="frame" x="0.0" y="307.5" width="365" height="354.5"/>
+                                <rect key="frame" x="5" y="307.5" width="365" height="354.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkCell1" rowHeight="70" id="TIT-84-EPp" customClass="ParkCellTableViewCell" customModule="KurkowskiSeth_Parkaholic_DVP4" customModuleProvider="target">
@@ -75,6 +75,7 @@
                                         <connections>
                                             <outlet property="lblCityState" destination="PIS-Zd-PpY" id="Gtr-Yy-wpr"/>
                                             <outlet property="lblParkName" destination="My6-dp-H37" id="lGO-n8-WiZ"/>
+                                            <segue destination="JbL-qZ-FVU" kind="presentation" identifier="homeToParkDetails" id="s5G-fm-Ig0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -112,6 +113,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-330" y="17"/>
+        </scene>
+        <!--Park Detail View Controller-->
+        <scene sceneID="XQ6-Bs-1BQ">
+            <objects>
+                <viewController id="JbL-qZ-FVU" customClass="ParkDetail_ViewController" customModule="KurkowskiSeth_Parkaholic_DVP4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q67-st-6Wy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OG6-K6-lDX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Park-aholic" id="gvS-F3-whB">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="I2F-5P-uym">
+                                            <connections>
+                                                <action selector="backToMainPageWithSender:" destination="JbL-qZ-FVU" id="sLn-wa-HNd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ydd-2F-kD3"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OG6-K6-lDX" firstAttribute="leading" secondItem="WRg-r0-Trh" secondAttribute="leading" id="0IS-kA-drp"/>
+                            <constraint firstItem="OG6-K6-lDX" firstAttribute="trailing" secondItem="WRg-r0-Trh" secondAttribute="trailing" id="XIn-vh-R5l"/>
+                            <constraint firstItem="OG6-K6-lDX" firstAttribute="top" secondItem="WRg-r0-Trh" secondAttribute="top" id="i2g-lp-rzx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WRg-r0-Trh"/>
+                    </view>
+                    <connections>
+                        <outlet property="composeReviewBBI" destination="ydd-2F-kD3" id="Zld-lf-QrB"/>
+                        <outlet property="navBar" destination="OG6-K6-lDX" id="OSw-Ti-BZa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ke-v2-uiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="17"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uJQ-01-cqx">
+            <objects>
+                <viewController id="dqM-zu-u6E" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B5d-K4-omR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="3Vi-Qj-rhK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvu-8q-MxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1294" y="17"/>
         </scene>
     </scenes>
 </document>

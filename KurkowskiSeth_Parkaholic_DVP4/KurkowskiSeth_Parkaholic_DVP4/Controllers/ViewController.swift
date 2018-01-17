@@ -29,12 +29,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let coreLocationManager = CLLocationManager()
     var recentLocation: CLLocation!
     
-    //Park Properties
+    //Properties
     var parkArray = [ParkDataModel]()
+    var isLoggedIn: Bool!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //Set delegates for mapKit/Core location
         coreLocationManager.delegate = self
@@ -55,15 +57,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Check to see if the user is already logged in
         authStateListenerHandle = auth?.addStateDidChangeListener({ (auth, user) in
             if user != nil {
+                self.isLoggedIn = true
                 self.accountBBI.title = "Account"
                 self.accountBBI.tag = 1
             } else {
+                self.isLoggedIn = false
                 self.accountBBI.title = "Sign In"
                 self.accountBBI.tag = 0
             }
         })
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Deselect any table view cells that are selected
+        if let selectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedRow, animated: false)
+        }
+    }
+    
+    //MARK: Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ParkDetail_ViewController
+        destination.parkDetails = parkArray[(tableView.indexPathForSelectedRow?.row)!]
+        destination.userLoggedIn = isLoggedIn
     }
     
     @IBAction func signInBtn(sender: UIBarButtonItem) {
@@ -97,7 +115,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    //Set up table view cells and rows
+    //MARK: Set up table view cells and rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parkArray.count
     }
@@ -110,6 +128,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         return cell!
     }
+    
     
     //MARK: Implement the required protocol method for FIRAuthDelegate
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {

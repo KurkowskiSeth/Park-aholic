@@ -7,5 +7,5 @@ target 'KurkowskiSeth_Parkaholic_DVP4' do
 
   # Pods for KurkowskiSeth_Parkaholic_DVP4
 pod ‘Firebase/Core’
-pod ‘FirebaseUI’
+pod 'FirebaseUI'
 end
