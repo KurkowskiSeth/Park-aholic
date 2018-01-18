@@ -82,9 +82,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //MARK: Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! ParkDetail_ViewController
-        destination.parkDetails = parkArray[(tableView.indexPathForSelectedRow?.row)!]
-        destination.userLoggedIn = isLoggedIn
+        if let destination = segue.destination as? ParkDetail_ViewController {
+            destination.parkDetails = parkArray[(tableView.indexPathForSelectedRow?.row)!]
+            destination.userLoggedIn = isLoggedIn
+            destination.ref = ref
+        }
     }
     
     @IBAction func signInBtn(sender: UIBarButtonItem) {
@@ -93,9 +95,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             //Present firebaseUI log in view controller
             let authViewController = authUI?.authViewController()
             self.present(authViewController!, animated: true, completion: nil)
-            //TODO - Chance bar button item to account page
-            sender.tag = 1
-            sender.title = "Account"
+            if isLoggedIn == true {
+                sender.tag = 1
+                sender.title = "Account"
+            }
         case 1:
             accountViewSetUp()
             

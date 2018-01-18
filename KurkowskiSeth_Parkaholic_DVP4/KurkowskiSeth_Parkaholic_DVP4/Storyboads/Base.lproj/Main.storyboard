@@ -36,10 +36,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-KT-5JE">
-                                <rect key="frame" x="0.0" y="69" width="365" height="233.5"/>
+                                <rect key="frame" x="5" y="69" width="365" height="233.5"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0G-HU-Geg">
-                                <rect key="frame" x="0.0" y="307.5" width="365" height="354.5"/>
+                                <rect key="frame" x="5" y="307.5" width="365" height="354.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkCell1" rowHeight="70" id="TIT-84-EPp" customClass="ParkCellTableViewCell" customModule="KurkowskiSeth_Parkaholic_DVP4" customModuleProvider="target">
@@ -133,7 +133,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ydd-2F-kD3">
                                             <connections>
-                                                <segue destination="Wy5-lG-TTw" kind="show" id="6eg-BR-cJ7"/>
+                                                <segue destination="Wy5-lG-TTw" kind="show" identifier="toUserRatingView" id="6eg-BR-cJ7"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -168,9 +168,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GT3-bZ-tek">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="OBR-oe-f53">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ayv-lU-MRh"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="efS-0w-qfK"/>
+                                    <navigationItem title="Park-aholic" id="OBR-oe-f53">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ayv-lU-MRh">
+                                            <connections>
+                                                <action selector="backToParkView:" destination="Wy5-lG-TTw" id="eFa-ZJ-0S3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="efS-0w-qfK"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -213,6 +217,7 @@
                         <outlet property="headerView" destination="xIX-gK-wsA" id="V3I-GL-7V2"/>
                         <outlet property="navBar" destination="GT3-bZ-tek" id="wcj-QT-Oek"/>
                         <outlet property="nextBtn" destination="VTF-jR-tkm" id="MES-G4-pvm"/>
+                        <outlet property="parkNameLbl" destination="fbC-eO-Uob" id="Ist-7t-pUE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDk-2t-fKa" userLabel="First Responder" sceneMemberID="firstResponder"/>

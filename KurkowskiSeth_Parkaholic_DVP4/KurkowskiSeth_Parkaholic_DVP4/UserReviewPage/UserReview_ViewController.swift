@@ -19,9 +19,14 @@ class UserReview_ViewController: UIViewController {
     var overallEjoymentScore = 0
     var likelinessToReturnScore = 0
     
+    //Other Properties
+    var parkName = "Park Name Error"
+    
+    //Outlets
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var parkNameLbl: UILabel!
     
     //Rank Buttons
     let pQBtn1 = UIButton()
@@ -55,6 +60,8 @@ class UserReview_ViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        parkNameLbl.text = parkName
         
         //Load first view
         DispatchQueue.main.async {
@@ -245,7 +252,10 @@ class UserReview_ViewController: UIViewController {
         }
     }
     
-
+    @IBAction func backToParkView(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
