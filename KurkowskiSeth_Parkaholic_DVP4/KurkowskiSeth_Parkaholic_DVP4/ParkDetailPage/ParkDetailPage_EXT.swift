@@ -99,6 +99,12 @@ extension ParkDetail_ViewController {
         parkQualityAvgLbl.leftAnchor.constraint(equalTo: parkQualityAvgView.leftAnchor, constant: 5).isActive = true
         
         //TODO: - Add rating stars here for park quality
+        let pqAvgLbl = UILabel()
+        pqAvgLbl.text = averageParkQualityScore.description
+        pqAvgLbl.translatesAutoresizingMaskIntoConstraints = false
+        parkQualityAvgView.addSubview(pqAvgLbl)
+        pqAvgLbl.rightAnchor.constraint(equalTo: parkQualityAvgView.rightAnchor, constant: -10).isActive = true
+        pqAvgLbl.topAnchor.constraint(equalTo: parkQualityAvgView.topAnchor, constant: 5).isActive = true
         
         //Park equipment
         let parkEquipmentAvgView = UIView()
@@ -122,6 +128,12 @@ extension ParkDetail_ViewController {
         parkEquipmentAvgLbl.leftAnchor.constraint(equalTo: parkEquipmentAvgView.leftAnchor, constant: 5).isActive = true
         
         //TODO: - Add rating stars here for park equipment
+        let peAvgLbl = UILabel()
+        peAvgLbl.text = averageParkEquipmentScore.description
+        peAvgLbl.translatesAutoresizingMaskIntoConstraints = false
+        parkEquipmentAvgView.addSubview(peAvgLbl)
+        peAvgLbl.rightAnchor.constraint(equalTo: parkEquipmentAvgView.rightAnchor, constant: -10).isActive = true
+        peAvgLbl.topAnchor.constraint(equalTo: parkEquipmentAvgView.topAnchor, constant: 5).isActive = true
         
         //Neighborhood
         let neighborhoodAvgView = UIView()
@@ -145,6 +157,12 @@ extension ParkDetail_ViewController {
         neighborhoodAvgLbl.leftAnchor.constraint(equalTo: neighborhoodAvgView.leftAnchor, constant: 5).isActive = true
         
         //TODO: - Add rating stars here for neighborhood
+        let nAvgLbl = UILabel()
+        nAvgLbl.text = averageNeighborhoodScore.description
+        nAvgLbl.translatesAutoresizingMaskIntoConstraints = false
+        neighborhoodAvgView.addSubview(nAvgLbl)
+        nAvgLbl.rightAnchor.constraint(equalTo: neighborhoodAvgView.rightAnchor, constant: -10).isActive = true
+        nAvgLbl.topAnchor.constraint(equalTo: neighborhoodAvgView.topAnchor, constant: 5).isActive = true
         
         //Overall Enjoyment
         let overallEnjoymentAvgView = UIView()
@@ -168,6 +186,12 @@ extension ParkDetail_ViewController {
         overallEnjoymentAvgLbl.leftAnchor.constraint(equalTo: overallEnjoymentAvgView.leftAnchor, constant: 5).isActive = true
         
         //TODO: - Add rating stars here for overall enjoyment
+        let oeAvgLbl = UILabel()
+        oeAvgLbl.text = averageOverallEnjoymentScore.description
+        oeAvgLbl.translatesAutoresizingMaskIntoConstraints = false
+        overallEnjoymentAvgView.addSubview(oeAvgLbl)
+        oeAvgLbl.rightAnchor.constraint(equalTo: overallEnjoymentAvgView.rightAnchor, constant: -10).isActive = true
+        oeAvgLbl.topAnchor.constraint(equalTo: overallEnjoymentAvgView.topAnchor, constant: 5).isActive = true
         
         //Likeliness to Return
         let likelinessToReturnAvgView = UIView()
@@ -191,6 +215,12 @@ extension ParkDetail_ViewController {
         likelinessToReturnAvgLbl.leftAnchor.constraint(equalTo: likelinessToReturnAvgView.leftAnchor, constant: 5).isActive = true
         
         //TODO: - Add rating stars here for likeliness to return
+        let lrAvgLbl = UILabel()
+        lrAvgLbl.text = averageLikelinessToReturnScore.description
+        lrAvgLbl.translatesAutoresizingMaskIntoConstraints = false
+        likelinessToReturnAvgView.addSubview(lrAvgLbl)
+        lrAvgLbl.rightAnchor.constraint(equalTo: likelinessToReturnAvgView.rightAnchor, constant: -10).isActive = true
+        lrAvgLbl.topAnchor.constraint(equalTo: likelinessToReturnAvgView.topAnchor, constant: 5).isActive = true
         
         //Create tags header
         let tagsHeaderView = UIView()

@@ -13,14 +13,29 @@ class UserReview_ViewController: UIViewController {
     
     //Database Properties
     var ref: DatabaseReference!
-    var parkQualityScore = 0
-    var parkEquipmentScore = 0
-    var neighborhoodScore = 0
-    var overallEjoymentScore = 0
-    var likelinessToReturnScore = 0
+    
+    var parkQualityTotalScore = 0
+    var parkQualityTotalReviews = 1
+    
+    var parkEquipmentTotalScore = 0
+    var parkEquipmentTotalReviews = 1
+    
+    var neighborhoodTotalScore = 0
+    var neighborhoodTotalReviews = 1
+    
+    var overallEnjoymentTotalScore = 0
+    var overallEnjoymentTotalReviews = 1
+    
+    var likelinessToReturnTotalScore = 0
+    var likelinessToReturnTotalReviews = 1
     
     //Other Properties
     var parkName = "Park Name Error"
+    var averageParkQualityScore = 0
+    var averageParkEquipmentScore = 0
+    var averageNeighborhoodScore = 0
+    var averageOverallEnjoymentScore = 0
+    var averageLikelinessToReturnScore = 0
     
     //Outlets
     @IBOutlet weak var navBar: UINavigationBar!
@@ -82,18 +97,9 @@ class UserReview_ViewController: UIViewController {
     
     @IBAction func submitUserRating(_ sender: UIBarButtonItem) {
         checkForPark()
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+ 
     //MARK: Rank button function
     @objc func rankBtnTouched(sender: UIButton) {
         switch sender.tag {
@@ -103,175 +109,175 @@ class UserReview_ViewController: UIViewController {
             pQBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pQBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pQBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkQualityScore = 1
+            parkQualityTotalScore = 1
         case 12:
             pQBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pQBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pQBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkQualityScore = 2
+            parkQualityTotalScore = 2
         case 13:
             pQBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pQBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkQualityScore = 3
+            parkQualityTotalScore = 3
         case 14:
             pQBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkQualityScore = 4
+            parkQualityTotalScore = 4
         case 15:
             pQBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pQBtn5.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
-            parkQualityScore = 5
+            parkQualityTotalScore = 5
         case 21:
             pEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn2.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkEquipmentScore = 1
+            parkEquipmentTotalScore = 1
         case 22:
             pEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkEquipmentScore = 2
+            parkEquipmentTotalScore = 2
         case 23:
             pEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkEquipmentScore = 3
+            parkEquipmentTotalScore = 3
         case 24:
             pEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            parkEquipmentScore = 4
+            parkEquipmentTotalScore = 4
         case 25:
             pEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pEBtn5.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
-            parkEquipmentScore = 5
+            parkEquipmentTotalScore = 5
         case 31:
             pNBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn2.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            neighborhoodScore = 1
+            neighborhoodTotalScore = 1
         case 32:
             pNBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            neighborhoodScore = 1
+            neighborhoodTotalScore = 1
         case 33:
             pNBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pNBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            neighborhoodScore = 3
+            neighborhoodTotalScore = 3
         case 34:
             pNBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            neighborhoodScore = 4
+            neighborhoodTotalScore = 4
         case 35:
             pNBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pNBtn5.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
-            neighborhoodScore = 5
+            neighborhoodTotalScore = 5
         case 41:
             pOEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn2.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            overallEjoymentScore = 1
+            overallEnjoymentTotalScore = 1
         case 42:
             pOEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            overallEjoymentScore = 2
+            overallEnjoymentTotalScore = 2
         case 43:
             pOEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pOEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            overallEjoymentScore = 3
+            overallEnjoymentTotalScore = 3
         case 44:
             pOEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            overallEjoymentScore = 4
+            overallEnjoymentTotalScore = 4
         case 45:
             pOEBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pOEBtn5.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
-            overallEjoymentScore = 5
+            overallEnjoymentTotalScore = 5
         case 51:
             pLRBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn2.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            likelinessToReturnScore = 1
+            likelinessToReturnTotalScore = 1
         case 52:
             pLRBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn3.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            likelinessToReturnScore = 2
+            likelinessToReturnTotalScore = 2
         case 53:
             pLRBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn4.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
             pLRBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            likelinessToReturnScore = 3
+            likelinessToReturnTotalScore = 3
         case 54:
             pLRBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn5.setImage(#imageLiteral(resourceName: "star_Empty"), for: .normal)
-            likelinessToReturnScore = 4
+            likelinessToReturnTotalScore = 4
         case 55:
             pLRBtn1.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn2.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn3.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn4.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
             pLRBtn5.setImage(#imageLiteral(resourceName: "star_Filled"), for: .normal)
-            likelinessToReturnScore = 5
+            likelinessToReturnTotalScore = 5
         default:
             print("Error in rankBtnTouch Tas switch")
         }

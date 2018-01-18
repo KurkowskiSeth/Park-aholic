@@ -26,6 +26,8 @@
 		C0B901B3201040FC00B434BD /* UserReviewFirstView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B2201040FC00B434BD /* UserReviewFirstView_EXT.swift */; };
 		C0B901B820104C7500B434BD /* AnimatedViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B720104C7500B434BD /* AnimatedViewClass.swift */; };
 		C0B901BA2010F48600B434BD /* AddNewParkToDatabase_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B92010F48600B434BD /* AddNewParkToDatabase_EXT.swift */; };
+		C0B901BC2011203500B434BD /* ParkDetailPageStarsCreation_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901BB2011203500B434BD /* ParkDetailPageStarsCreation_EXT.swift */; };
+		C0B901BE201120A400B434BD /* Firebase_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901BD201120A400B434BD /* Firebase_EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		C0B901B2201040FC00B434BD /* UserReviewFirstView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewFirstView_EXT.swift; sourceTree = "<group>"; };
 		C0B901B720104C7500B434BD /* AnimatedViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedViewClass.swift; sourceTree = "<group>"; };
 		C0B901B92010F48600B434BD /* AddNewParkToDatabase_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewParkToDatabase_EXT.swift; sourceTree = "<group>"; };
+		C0B901BB2011203500B434BD /* ParkDetailPageStarsCreation_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailPageStarsCreation_EXT.swift; sourceTree = "<group>"; };
+		C0B901BD201120A400B434BD /* Firebase_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_EXT.swift; sourceTree = "<group>"; };
 		C439620D067C3A3B4E7FE948 /* Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig"; path = "Pods/Target Support Files/Pods-KurkowskiSeth_Parkaholic_DVP4/Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +164,7 @@
 				C0AA9D562005CE2E0041E279 /* ViewController.swift */,
 				C06039EB200DC1E900FAB50B /* AccountView_EXT.swift */,
 				C026DEF82007C13D00D5E57F /* ParkCellTableViewCell.swift */,
+				C0B901BD201120A400B434BD /* Firebase_EXT.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			children = (
 				C06039EE200E96B200FAB50B /* ParkDetail_ViewController.swift */,
 				C06039F2200EBCFD00FAB50B /* ParkDetailPage_EXT.swift */,
+				C0B901BB2011203500B434BD /* ParkDetailPageStarsCreation_EXT.swift */,
 			);
 			path = ParkDetailPage;
 			sourceTree = "<group>";
@@ -379,6 +385,8 @@
 				C0AA9D552005CE2E0041E279 /* AppDelegate.swift in Sources */,
 				C0AA9D6B2005CF240041E279 /* apiPull_Ext.swift in Sources */,
 				C026DEF320072C0D00D5E57F /* ParkDataModel.swift in Sources */,
+				C0B901BC2011203500B434BD /* ParkDetailPageStarsCreation_EXT.swift in Sources */,
+				C0B901BE201120A400B434BD /* Firebase_EXT.swift in Sources */,
 				C06039F3200EBCFD00FAB50B /* ParkDetailPage_EXT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,19 +11,26 @@ import Firebase
 
 class ParkDetail_ViewController: UIViewController {
     
+    //Park data
+    var averageParkQualityScore = 0
+    var averageParkEquipmentScore = 0
+    var averageNeighborhoodScore = 0
+    var averageOverallEnjoymentScore = 0
+    var averageLikelinessToReturnScore = 0
+    
     var parkDetails: ParkDataModel? = nil
     var userLoggedIn: Bool? = nil
     let scrollView = UIScrollView()
     var ref: DatabaseReference!
 
     @IBOutlet weak var composeReviewBBI: UIBarButtonItem!
-    
     @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Check to see if user is logged in and has the ability to compose a review
+        
         switch userLoggedIn {
         case true?:
             composeReviewBBI.isEnabled = true
@@ -34,9 +41,12 @@ class ParkDetail_ViewController: UIViewController {
             print("Error with user log in var in ParkDetail_ViewController")
         }
         
-        createScrollView()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Get average data of park
+        pullFirebaseData()
     }
     
     @IBAction func backToMainPage(sender: UIBarButtonItem) {
@@ -53,5 +63,6 @@ class ParkDetail_ViewController: UIViewController {
             destination.ref = ref
         }
     }
-
+    
+    
 }
