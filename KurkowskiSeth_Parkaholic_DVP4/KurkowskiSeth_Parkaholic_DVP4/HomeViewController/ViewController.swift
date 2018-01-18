@@ -25,6 +25,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     fileprivate(set) var authUI: FUIAuth? //only set internally but get externally
     fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
     
+    //Firebase Database Properties
+    var ref: DatabaseReference!
+    
     //Core Location Properties
     let coreLocationManager = CLLocationManager()
     var recentLocation: CLLocation!
@@ -37,7 +40,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //Set delegates for mapKit/Core location
         coreLocationManager.delegate = self
         mapView.delegate = self
@@ -47,7 +49,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Request location servies
         requestAuthorization()
 
-        
         //Set up firebase authorization
         auth = Auth.auth()
         authUI = FUIAuth.defaultAuthUI()
@@ -67,6 +68,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         })
         
+        //Set up database reference
+        ref = Database.database().reference()
         
     }
     

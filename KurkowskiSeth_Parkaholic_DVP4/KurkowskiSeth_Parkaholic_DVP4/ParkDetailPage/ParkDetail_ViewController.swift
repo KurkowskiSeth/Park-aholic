@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ParkDetail_ViewController: UIViewController {
     
     var parkDetails: ParkDataModel? = nil
     var userLoggedIn: Bool? = nil
     let scrollView = UIScrollView()
+    var ref: DatabaseReference!
 
     @IBOutlet weak var composeReviewBBI: UIBarButtonItem!
     
