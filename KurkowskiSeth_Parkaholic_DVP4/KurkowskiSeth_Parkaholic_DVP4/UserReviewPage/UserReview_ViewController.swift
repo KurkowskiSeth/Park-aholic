@@ -27,6 +27,7 @@ class UserReview_ViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var parkNameLbl: UILabel!
+    @IBOutlet weak var submitBBI: UIBarButtonItem!
     
     //Rank Buttons
     let pQBtn1 = UIButton()
@@ -68,6 +69,30 @@ class UserReview_ViewController: UIViewController {
             self.createUI()
         }
     }
+    
+    
+    @IBAction func backToParkView(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func animateToNextView(_ sender: UIButton) {
+        //TODO - Transition over to next view for user to continue rating app.
+        submitBBI.isEnabled = true
+    }
+    
+    @IBAction func submitUserRating(_ sender: UIBarButtonItem) {
+        checkForPark()
+    }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
     
     //MARK: Rank button function
     @objc func rankBtnTouched(sender: UIButton) {
@@ -252,18 +277,4 @@ class UserReview_ViewController: UIViewController {
         }
     }
     
-    @IBAction func backToParkView(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

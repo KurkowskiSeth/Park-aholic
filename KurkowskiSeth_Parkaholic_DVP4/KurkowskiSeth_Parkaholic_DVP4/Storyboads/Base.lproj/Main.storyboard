@@ -36,10 +36,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-KT-5JE">
-                                <rect key="frame" x="5" y="69" width="365" height="233.5"/>
+                                <rect key="frame" x="0.0" y="69" width="365" height="233.5"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0G-HU-Geg">
-                                <rect key="frame" x="5" y="307.5" width="365" height="354.5"/>
+                                <rect key="frame" x="0.0" y="307.5" width="365" height="354.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkCell1" rowHeight="70" id="TIT-84-EPp" customClass="ParkCellTableViewCell" customModule="KurkowskiSeth_Parkaholic_DVP4" customModuleProvider="target">
@@ -174,13 +174,20 @@
                                                 <action selector="backToParkView:" destination="Wy5-lG-TTw" id="eFa-ZJ-0S3"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="efS-0w-qfK"/>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="efS-0w-qfK">
+                                            <connections>
+                                                <action selector="submitUserRating:" destination="Wy5-lG-TTw" id="4dj-s4-wTq"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-jR-tkm">
                                 <rect key="frame" x="171" y="587" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="animateToNextView:" destination="Wy5-lG-TTw" eventType="touchUpInside" id="she-NC-90U"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIX-gK-wsA">
                                 <rect key="frame" x="5" y="89" width="365" height="66.5"/>
@@ -218,6 +225,7 @@
                         <outlet property="navBar" destination="GT3-bZ-tek" id="wcj-QT-Oek"/>
                         <outlet property="nextBtn" destination="VTF-jR-tkm" id="MES-G4-pvm"/>
                         <outlet property="parkNameLbl" destination="fbC-eO-Uob" id="Ist-7t-pUE"/>
+                        <outlet property="submitBBI" destination="efS-0w-qfK" id="Kr8-lu-KgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDk-2t-fKa" userLabel="First Responder" sceneMemberID="firstResponder"/>

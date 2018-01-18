@@ -25,6 +25,7 @@
 		C0B901AF20103D1D00B434BD /* UserReview_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901AE20103D1D00B434BD /* UserReview_ViewController.swift */; };
 		C0B901B3201040FC00B434BD /* UserReviewFirstView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B2201040FC00B434BD /* UserReviewFirstView_EXT.swift */; };
 		C0B901B820104C7500B434BD /* AnimatedViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B720104C7500B434BD /* AnimatedViewClass.swift */; };
+		C0B901BA2010F48600B434BD /* AddNewParkToDatabase_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B901B92010F48600B434BD /* AddNewParkToDatabase_EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C0B901AE20103D1D00B434BD /* UserReview_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview_ViewController.swift; sourceTree = "<group>"; };
 		C0B901B2201040FC00B434BD /* UserReviewFirstView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewFirstView_EXT.swift; sourceTree = "<group>"; };
 		C0B901B720104C7500B434BD /* AnimatedViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedViewClass.swift; sourceTree = "<group>"; };
+		C0B901B92010F48600B434BD /* AddNewParkToDatabase_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewParkToDatabase_EXT.swift; sourceTree = "<group>"; };
 		C439620D067C3A3B4E7FE948 /* Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig"; path = "Pods/Target Support Files/Pods-KurkowskiSeth_Parkaholic_DVP4/Pods-KurkowskiSeth_Parkaholic_DVP4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 				C0B901AE20103D1D00B434BD /* UserReview_ViewController.swift */,
 				C0B901B2201040FC00B434BD /* UserReviewFirstView_EXT.swift */,
 				C0B901B720104C7500B434BD /* AnimatedViewClass.swift */,
+				C0B901B92010F48600B434BD /* AddNewParkToDatabase_EXT.swift */,
 			);
 			path = UserReviewPage;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				C026DEF0200720B100D5E57F /* LocationManager_EXT.swift in Sources */,
 				C0AA9D5D2005CE2E0041E279 /* KurkowskiSeth_Parkaholic_DVP4.xcdatamodeld in Sources */,
 				C0B901B3201040FC00B434BD /* UserReviewFirstView_EXT.swift in Sources */,
+				C0B901BA2010F48600B434BD /* AddNewParkToDatabase_EXT.swift in Sources */,
 				C026DEF92007C13D00D5E57F /* ParkCellTableViewCell.swift in Sources */,
 				C0AA9D552005CE2E0041E279 /* AppDelegate.swift in Sources */,
 				C0AA9D6B2005CF240041E279 /* apiPull_Ext.swift in Sources */,
