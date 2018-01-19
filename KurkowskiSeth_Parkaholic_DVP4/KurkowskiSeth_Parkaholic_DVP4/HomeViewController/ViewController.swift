@@ -135,6 +135,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return cell!
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////        performSegue(withIdentifier: "homeToParkDetails", sender: self)
+//        self.navigationController?.popToViewController((ParkDetail_ViewController as? UIViewController)!, animated: true)
+//    }
+    
     
     //MARK: Implement the required protocol method for FIRAuthDelegate
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {

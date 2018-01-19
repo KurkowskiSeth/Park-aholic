@@ -38,10 +38,35 @@ extension ParkDetail_ViewController {
             self.averageOverallEnjoymentScore = overallEjoymentScore / overallEnjoymentReviews
             self.averageLikelinessToReturnScore = likelinessToReturnScore / likelinessToReturnReviews
             
-            //Update UI
-            self.createScrollView()
+            //Add stars to ui
+            self.createParkQualityStars(pqView: self.parkQualityView)
+            self.createParkEquipmentStars(peView: self.parkEquipmentView)
+            self.createNeighborhoodStars(pnView: self.neighborhoodView)
+            self.createOverallEnjoymentStars(poeView: self.overallEnjoymentView)
+            self.createLikelinessToReturnStars(plrView: self.likelinessToReturnView)
+            self.addAverageRatings()
             
         })
+        
+    }
+    
+    func checkForPark() {
+        ref.child("parks").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild((self.parkDetails?.name)!) {
+                //Get average ratings
+                self.pullFirebaseData()
+            } else {
+                //Add stars to ui
+                self.createParkQualityStars(pqView: self.parkQualityView)
+                self.createParkEquipmentStars(peView: self.parkEquipmentView)
+                self.createNeighborhoodStars(pnView: self.neighborhoodView)
+                self.createOverallEnjoymentStars(poeView: self.overallEnjoymentView)
+                self.createLikelinessToReturnStars(plrView: self.likelinessToReturnView)
+                self.addAverageRatings()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
 }

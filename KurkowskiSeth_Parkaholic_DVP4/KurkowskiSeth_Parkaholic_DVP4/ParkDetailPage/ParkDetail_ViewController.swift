@@ -18,13 +18,45 @@ class ParkDetail_ViewController: UIViewController {
     var averageOverallEnjoymentScore = 0
     var averageLikelinessToReturnScore = 0
     
+    //Park rating images
+    let pQStar1 = UIImageView()
+    let pQStar2 = UIImageView()
+    let pQStar3 = UIImageView()
+    let pQStar4 = UIImageView()
+    let pQStar5 = UIImageView()
+    let pEStar1 = UIImageView()
+    let pEStar2 = UIImageView()
+    let pEStar3 = UIImageView()
+    let pEStar4 = UIImageView()
+    let pEStar5 = UIImageView()
+    let pNStar1 = UIImageView()
+    let pNStar2 = UIImageView()
+    let pNStar3 = UIImageView()
+    let pNStar4 = UIImageView()
+    let pNStar5 = UIImageView()
+    let pOEStar1 = UIImageView()
+    let pOEStar2 = UIImageView()
+    let pOEStar3 = UIImageView()
+    let pOEStar4 = UIImageView()
+    let pOEStar5 = UIImageView()
+    let pLRStar1 = UIImageView()
+    let pLRStar2 = UIImageView()
+    let pLRStar3 = UIImageView()
+    let pLRStar4 = UIImageView()
+    let pLRStar5 = UIImageView()
+    
     var parkDetails: ParkDataModel? = nil
     var userLoggedIn: Bool? = nil
-    let scrollView = UIScrollView()
+    var parkInDatabase = false
     var ref: DatabaseReference!
 
     @IBOutlet weak var composeReviewBBI: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var parkQualityView: UIView!
+    @IBOutlet weak var parkEquipmentView: UIView!
+    @IBOutlet weak var neighborhoodView: UIView!
+    @IBOutlet weak var overallEnjoymentView: UIView!
+    @IBOutlet weak var likelinessToReturnView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +77,12 @@ class ParkDetail_ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //Get average data of park
-        pullFirebaseData()
+        DispatchQueue.main.async {
+            //Check to see if park is in database
+            self.checkForPark()
+            //Update Average Ratings
+            self.addAverageRatings()
+        }
     }
     
     @IBAction func backToMainPage(sender: UIBarButtonItem) {
