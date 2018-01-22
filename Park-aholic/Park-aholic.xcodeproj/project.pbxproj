@@ -13,6 +13,7 @@
 		C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C09D77F22016844200E76FCB /* Park_aholic.xcdatamodeld */; };
 		C09D77F62016844200E76FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09D77F52016844200E76FCB /* Assets.xcassets */; };
 		C09D77F92016844200E76FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77F72016844200E76FCB /* LaunchScreen.storyboard */; };
+		C09D7802201684AF00E76FCB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09D7801201684AF00E76FCB /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C09D77F52016844200E76FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C09D77F82016844200E76FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09D77FA2016844200E76FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C09D7801201684AF00E76FCB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09D7802201684AF00E76FCB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				C09D77EA2016844200E76FCB /* Park-aholic */,
 				C09D77E92016844200E76FCB /* Products */,
+				C09D7800201684AF00E76FCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +60,39 @@
 		C09D77EA2016844200E76FCB /* Park-aholic */ = {
 			isa = PBXGroup;
 			children = (
+				C09D7804201684D400E76FCB /* HomeView */,
+				C09D7803201684BD00E76FCB /* Storyboads */,
 				C09D77EB2016844200E76FCB /* AppDelegate.swift */,
-				C09D77ED2016844200E76FCB /* ViewController.swift */,
-				C09D77EF2016844200E76FCB /* Main.storyboard */,
 				C09D77F52016844200E76FCB /* Assets.xcassets */,
-				C09D77F72016844200E76FCB /* LaunchScreen.storyboard */,
 				C09D77FA2016844200E76FCB /* Info.plist */,
 				C09D77F22016844200E76FCB /* Park_aholic.xcdatamodeld */,
 			);
 			path = "Park-aholic";
+			sourceTree = "<group>";
+		};
+		C09D7800201684AF00E76FCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C09D7801201684AF00E76FCB /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C09D7803201684BD00E76FCB /* Storyboads */ = {
+			isa = PBXGroup;
+			children = (
+				C09D77F72016844200E76FCB /* LaunchScreen.storyboard */,
+				C09D77EF2016844200E76FCB /* Main.storyboard */,
+			);
+			path = Storyboads;
+			sourceTree = "<group>";
+		};
+		C09D7804201684D400E76FCB /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				C09D77ED2016844200E76FCB /* ViewController.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
