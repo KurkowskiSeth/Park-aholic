@@ -1,6 +1,0 @@
-framework module Pods_KurkowskiSeth_Parkaholic_DVP4 {
-  umbrella header "Pods-KurkowskiSeth_Parkaholic_DVP4-umbrella.h"
-
-  export *
-  module * { export * }
-}
