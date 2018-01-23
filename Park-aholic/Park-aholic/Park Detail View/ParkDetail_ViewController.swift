@@ -15,4 +15,8 @@ class ParkDetail_ViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func dismissController(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
