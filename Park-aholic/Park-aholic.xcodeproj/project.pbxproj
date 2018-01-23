@@ -14,6 +14,7 @@
 		C09D77F62016844200E76FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C09D77F52016844200E76FCB /* Assets.xcassets */; };
 		C09D77F92016844200E76FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77F72016844200E76FCB /* LaunchScreen.storyboard */; };
 		C09D7802201684AF00E76FCB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09D7801201684AF00E76FCB /* MapKit.framework */; };
+		C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C09D77F82016844200E76FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C09D77FA2016844200E76FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C09D7801201684AF00E76FCB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager_EXT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C09D77ED2016844200E76FCB /* ViewController.swift */,
+				C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */,
 				C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */,
 				C09D77EE2016844200E76FCB /* ViewController.swift in Sources */,
 				C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */,

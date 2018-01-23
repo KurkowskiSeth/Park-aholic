@@ -7,19 +7,36 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    //IBOutlets
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    //Firebase Properties
+    
+    
+    //Core Location Properties
+    let coreLocationManager = CLLocationManager()
+    var recentLocation: CLLocation!
+    
+    //General Properties
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //Set up delegates
+        coreLocationManager.delegate = self
+        mapView.delegate = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        
+        //Request user's location
+        requestAuthorization()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
