@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */; };
+		C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A02016BFE60000125E /* ParkDataModel.swift */; };
 		C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77EB2016844200E76FCB /* AppDelegate.swift */; };
 		C09D77EE2016844200E76FCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77ED2016844200E76FCB /* ViewController.swift */; };
 		C09D77F12016844200E76FCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77EF2016844200E76FCB /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiPull_Ext.swift; sourceTree = "<group>"; };
+		C07FF2A02016BFE60000125E /* ParkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
 		C09D77E82016844200E76FCB /* Park-aholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park-aholic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09D77EB2016844200E76FCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09D77ED2016844200E76FCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			children = (
 				C09D77ED2016844200E76FCB /* ViewController.swift */,
 				C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */,
+				C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */,
+				C07FF2A02016BFE60000125E /* ParkDataModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -170,10 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */,
 				C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */,
 				C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */,
 				C09D77EE2016844200E76FCB /* ViewController.swift in Sources */,
 				C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */,
+				C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

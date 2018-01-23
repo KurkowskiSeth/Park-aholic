@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var recentLocation: CLLocation!
     
     //General Properties
-    
+    var parkArray = [ParkDataModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

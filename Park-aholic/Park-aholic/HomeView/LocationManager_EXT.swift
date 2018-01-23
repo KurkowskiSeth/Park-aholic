@@ -13,9 +13,7 @@ extension ViewController {
     
     //Function to check authorization code and request authorization if it hasn't ben requested yet
     func requestAuthorization() {
-        
         let authorizationCode = CLLocationManager.authorizationStatus()
-        
         if authorizationCode == CLAuthorizationStatus.notDetermined && coreLocationManager.responds(to: #selector(CLLocationManager.requestWhenInUseAuthorization)) || coreLocationManager.responds(to: #selector(CLLocationManager.requestAlwaysAuthorization)) {
             if Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil {
                 coreLocationManager.requestAlwaysAuthorization()
@@ -36,13 +34,13 @@ extension ViewController {
         if recentLocation == nil {
             recentLocation = locations.last
             updateMap(location: recentLocation)
-//            findParks()
+            findParks()
         }
     }
     
     func updateMap(location: CLLocation) {
         //Region of mapView
-        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), MKCoordinateSpanMake(0.05, 0.05)), animated: true)
+        mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), MKCoordinateSpanMake(0, 0)), animated: true)
         
         //create annotation on mapView
         let locationPinCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
