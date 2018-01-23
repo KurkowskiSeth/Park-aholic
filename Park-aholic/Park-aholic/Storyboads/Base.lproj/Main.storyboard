@@ -603,9 +603,12 @@
                                     <constraint firstItem="5Rz-5Z-dzh" firstAttribute="centerX" secondItem="2M8-V3-w3b" secondAttribute="centerX" id="yAu-Vy-h35"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGt-0q-W4i">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGt-0q-W4i">
                                 <rect key="frame" x="171" y="587" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextView:" destination="hks-bK-dnH" eventType="touchUpInside" id="hxq-b1-Gbe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

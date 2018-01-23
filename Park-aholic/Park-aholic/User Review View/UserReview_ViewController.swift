@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserReview_ViewController: UIViewController {
+class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     //IBOutlets
     @IBOutlet weak var pageHeader: UIView!
@@ -43,6 +43,13 @@ class UserReview_ViewController: UIViewController {
     
     //General Properties
     let userRatingsContentView = AnimatedViewClass()
+    let userCommentContentView = AnimatedViewClass()
+    let commentTF = UITextField()
+    let userTagsContentView = AnimatedViewClass()
+    var tagsCollectionView: UICollectionView!
+    var currentViewTag: Int!
+    var transitionTimer: Timer? = nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +58,207 @@ class UserReview_ViewController: UIViewController {
         createUserRatingsUI()
     }
     
+    @IBAction func nextView(_ sender: UIButton) {
+        //Check sender's tag to see which view to animate off and which to animate on
+        if sender.tag == 1 {
+            createCommentUI()
+            userRatingsContentView.leaveScreen()
+            transitionRatingsToComments()
+            sender.tag = 2
+        } else if sender.tag == 2 {
+            userRatingsContentView.isHidden = true
+            createTagsUI()
+            userCommentContentView.leaveScreen()
+            transitionCommentsToTags()
+            sender.isEnabled = false
+        }
+    }
+    
     @IBAction func dissmissController(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Rank button function
+    @objc func rankBtnTouched(sender: UIButton) {
+        switch sender.tag {
+        case 11:
+            pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkQualityTotalScore = 1
+        case 12:
+            pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkQualityTotalScore = 2
+        case 13:
+            pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkQualityTotalScore = 3
+        case 14:
+            pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkQualityTotalScore = 4
+        case 15:
+            pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+//            parkQualityTotalScore = 5
+        case 21:
+            pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkEquipmentTotalScore = 1
+        case 22:
+            pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkEquipmentTotalScore = 2
+        case 23:
+            pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkEquipmentTotalScore = 3
+        case 24:
+            pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            parkEquipmentTotalScore = 4
+        case 25:
+            pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+//            parkEquipmentTotalScore = 5
+        case 31:
+            pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            neighborhoodTotalScore = 1
+        case 32:
+            pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            neighborhoodTotalScore = 1
+        case 33:
+            pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            neighborhoodTotalScore = 3
+        case 34:
+            pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            neighborhoodTotalScore = 4
+        case 35:
+            pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+//            neighborhoodTotalScore = 5
+        case 41:
+            pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            overallEnjoymentTotalScore = 1
+        case 42:
+            pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            overallEnjoymentTotalScore = 2
+        case 43:
+            pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            overallEnjoymentTotalScore = 3
+        case 44:
+            pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            overallEnjoymentTotalScore = 4
+        case 45:
+            pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+//            overallEnjoymentTotalScore = 5
+        case 51:
+            pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            likelinessToReturnTotalScore = 1
+        case 52:
+            pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            likelinessToReturnTotalScore = 2
+        case 53:
+            pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+            pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            likelinessToReturnTotalScore = 3
+        case 54:
+            pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
+//            likelinessToReturnTotalScore = 4
+        case 55:
+            pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+//            likelinessToReturnTotalScore = 5
+        default:
+            print("Error in rankBtnTouch Tas switch")
+        }
     }
     
 }

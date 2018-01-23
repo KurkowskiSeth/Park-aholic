@@ -15,6 +15,7 @@
 		C07FF2AB2016DEA20000125E /* UserReview_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */; };
 		C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */; };
 		C07FF2B12016DFD00000125E /* UserRatings_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2B02016DFD00000125E /* UserRatings_EXT.swift */; };
+		C07FF2B52016ECE00000125E /* UserComments_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2B42016ECE00000125E /* UserComments_EXT.swift */; };
 		C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77EB2016844200E76FCB /* AppDelegate.swift */; };
 		C09D77EE2016844200E76FCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77ED2016844200E76FCB /* ViewController.swift */; };
 		C09D77F12016844200E76FCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77EF2016844200E76FCB /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		C09D77F92016844200E76FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77F72016844200E76FCB /* LaunchScreen.storyboard */; };
 		C09D7802201684AF00E76FCB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09D7801201684AF00E76FCB /* MapKit.framework */; };
 		C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */; };
+		C0BC26BE2016F97B0031E9F2 /* UserTags_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26BD2016F97B0031E9F2 /* UserTags_EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview_ViewController.swift; sourceTree = "<group>"; };
 		C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedViewClass.swift; sourceTree = "<group>"; };
 		C07FF2B02016DFD00000125E /* UserRatings_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatings_EXT.swift; sourceTree = "<group>"; };
+		C07FF2B42016ECE00000125E /* UserComments_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComments_EXT.swift; sourceTree = "<group>"; };
 		C09D77E82016844200E76FCB /* Park-aholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park-aholic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09D77EB2016844200E76FCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09D77ED2016844200E76FCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		C09D77FA2016844200E76FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C09D7801201684AF00E76FCB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager_EXT.swift; sourceTree = "<group>"; };
+		C0BC26BD2016F97B0031E9F2 /* UserTags_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTags_EXT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 			children = (
 				C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */,
 				C07FF2B02016DFD00000125E /* UserRatings_EXT.swift */,
+				C07FF2B42016ECE00000125E /* UserComments_EXT.swift */,
+				C0BC26BD2016F97B0031E9F2 /* UserTags_EXT.swift */,
 				C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */,
 			);
 			path = "User Review View";
@@ -215,6 +221,7 @@
 				C07FF2A92016DE750000125E /* ParkDetail_ViewController.swift in Sources */,
 				C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */,
 				C07FF2A32016C1670000125E /* ParkTableView_EXT.swift in Sources */,
+				C07FF2B52016ECE00000125E /* UserComments_EXT.swift in Sources */,
 				C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */,
 				C09D77EE2016844200E76FCB /* ViewController.swift in Sources */,
 				C07FF2B12016DFD00000125E /* UserRatings_EXT.swift in Sources */,
@@ -222,6 +229,7 @@
 				C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */,
 				C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */,
 				C07FF2A52016C1EA0000125E /* ParkCellTableViewCell.swift in Sources */,
+				C0BC26BE2016F97B0031E9F2 /* UserTags_EXT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

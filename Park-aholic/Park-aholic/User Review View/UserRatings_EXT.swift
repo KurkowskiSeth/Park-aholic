@@ -13,6 +13,7 @@ extension UserReview_ViewController {
     //Create the ui for letting the user's rate the park's categories.
     func createUserRatingsUI() {
         //Create Content view
+        userRatingsContentView.tag = 111
         userRatingsContentView.translatesAutoresizingMaskIntoConstraints = false
         userRatingsContentView.backgroundColor = UIColor.green
         
@@ -22,6 +23,8 @@ extension UserReview_ViewController {
         userRatingsContentView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -30).isActive = true
         userRatingsContentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
         userRatingsContentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
+        userRatingsContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        userRatingsContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         //Create header for ratings
         let ratingHeader = UIView()
@@ -178,7 +181,7 @@ extension UserReview_ViewController {
         pQBtn5.tag = 15
         pQBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pQBtn5.imageView?.contentMode = .scaleAspectFit
-//        pQBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pQBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pQBtn5.translatesAutoresizingMaskIntoConstraints = false
         
         pqView.addSubview(pQBtn5)
@@ -192,7 +195,7 @@ extension UserReview_ViewController {
         pQBtn4.tag = 14
         pQBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pQBtn4.imageView?.contentMode = .scaleAspectFit
-//        pQBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pQBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pQBtn4.translatesAutoresizingMaskIntoConstraints = false
         
         pqView.addSubview(pQBtn4)
@@ -206,7 +209,7 @@ extension UserReview_ViewController {
         pQBtn3.tag = 13
         pQBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pQBtn3.imageView?.contentMode = .scaleAspectFit
-//        pQBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pQBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pQBtn3.translatesAutoresizingMaskIntoConstraints = false
         
         pqView.addSubview(pQBtn3)
@@ -220,7 +223,7 @@ extension UserReview_ViewController {
         pQBtn2.tag = 12
         pQBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pQBtn2.imageView?.contentMode = .scaleAspectFit
-//        pQBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pQBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pQBtn2.translatesAutoresizingMaskIntoConstraints = false
         
         pqView.addSubview(pQBtn2)
@@ -234,7 +237,7 @@ extension UserReview_ViewController {
         pQBtn1.tag = 11
         pQBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pQBtn1.imageView?.contentMode = .scaleAspectFit
-//        pQBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pQBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pQBtn1.translatesAutoresizingMaskIntoConstraints = false
         
         pqView.addSubview(pQBtn1)
@@ -253,7 +256,7 @@ extension UserReview_ViewController {
         pEBtn5.tag = 25
         pEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pEBtn5.imageView?.contentMode = .scaleAspectFit
-//        pEBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pEBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pEBtn5.translatesAutoresizingMaskIntoConstraints = false
         
         peView.addSubview(pEBtn5)
@@ -267,7 +270,7 @@ extension UserReview_ViewController {
         pEBtn4.tag = 24
         pEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pEBtn4.imageView?.contentMode = .scaleAspectFit
-//        pEBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pEBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pEBtn4.translatesAutoresizingMaskIntoConstraints = false
         
         peView.addSubview(pEBtn4)
@@ -281,7 +284,7 @@ extension UserReview_ViewController {
         pEBtn3.tag = 23
         pEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pEBtn3.imageView?.contentMode = .scaleAspectFit
-//        pEBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pEBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pEBtn3.translatesAutoresizingMaskIntoConstraints = false
         
         peView.addSubview(pEBtn3)
@@ -295,7 +298,7 @@ extension UserReview_ViewController {
         pEBtn2.tag = 22
         pEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pEBtn2.imageView?.contentMode = .scaleAspectFit
-//        pEBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pEBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pEBtn2.translatesAutoresizingMaskIntoConstraints = false
         
         peView.addSubview(pEBtn2)
@@ -309,7 +312,7 @@ extension UserReview_ViewController {
         pEBtn1.tag = 21
         pEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pEBtn1.imageView?.contentMode = .scaleAspectFit
-//        pEBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pEBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pEBtn1.translatesAutoresizingMaskIntoConstraints = false
         
         peView.addSubview(pEBtn1)
@@ -328,7 +331,7 @@ extension UserReview_ViewController {
         pNBtn5.tag = 35
         pNBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pNBtn5.imageView?.contentMode = .scaleAspectFit
-//        pNBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pNBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pNBtn5.translatesAutoresizingMaskIntoConstraints = false
         
         pnView.addSubview(pNBtn5)
@@ -342,7 +345,7 @@ extension UserReview_ViewController {
         pNBtn4.tag = 34
         pNBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pNBtn4.imageView?.contentMode = .scaleAspectFit
-//        pNBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pNBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pNBtn4.translatesAutoresizingMaskIntoConstraints = false
         
         pnView.addSubview(pNBtn4)
@@ -356,7 +359,7 @@ extension UserReview_ViewController {
         pNBtn3.tag = 33
         pNBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pNBtn3.imageView?.contentMode = .scaleAspectFit
-//        pNBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pNBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pNBtn3.translatesAutoresizingMaskIntoConstraints = false
         
         pnView.addSubview(pNBtn3)
@@ -370,7 +373,7 @@ extension UserReview_ViewController {
         pNBtn2.tag = 32
         pNBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pNBtn2.imageView?.contentMode = .scaleAspectFit
-//        pNBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pNBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pNBtn2.translatesAutoresizingMaskIntoConstraints = false
         
         pnView.addSubview(pNBtn2)
@@ -384,7 +387,7 @@ extension UserReview_ViewController {
         pNBtn1.tag = 31
         pNBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pNBtn1.imageView?.contentMode = .scaleAspectFit
-//        pNBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pNBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pNBtn1.translatesAutoresizingMaskIntoConstraints = false
         
         pnView.addSubview(pNBtn1)
@@ -403,7 +406,7 @@ extension UserReview_ViewController {
         pOEBtn5.tag = 45
         pOEBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pOEBtn5.imageView?.contentMode = .scaleAspectFit
-//        pOEBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pOEBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pOEBtn5.translatesAutoresizingMaskIntoConstraints = false
         
         poeView.addSubview(pOEBtn5)
@@ -417,7 +420,7 @@ extension UserReview_ViewController {
         pOEBtn4.tag = 44
         pOEBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pOEBtn4.imageView?.contentMode = .scaleAspectFit
-//        pOEBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pOEBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pOEBtn4.translatesAutoresizingMaskIntoConstraints = false
         
         poeView.addSubview(pOEBtn4)
@@ -431,7 +434,7 @@ extension UserReview_ViewController {
         pOEBtn3.tag = 43
         pOEBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pOEBtn3.imageView?.contentMode = .scaleAspectFit
-//        pOEBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pOEBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pOEBtn3.translatesAutoresizingMaskIntoConstraints = false
         
         poeView.addSubview(pOEBtn3)
@@ -445,7 +448,7 @@ extension UserReview_ViewController {
         pOEBtn2.tag = 42
         pOEBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pOEBtn2.imageView?.contentMode = .scaleAspectFit
-//        pOEBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pOEBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pOEBtn2.translatesAutoresizingMaskIntoConstraints = false
         
         poeView.addSubview(pOEBtn2)
@@ -459,7 +462,7 @@ extension UserReview_ViewController {
         pOEBtn1.tag = 41
         pOEBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pOEBtn1.imageView?.contentMode = .scaleAspectFit
-//        pOEBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pOEBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pOEBtn1.translatesAutoresizingMaskIntoConstraints = false
         
         poeView.addSubview(pOEBtn1)
@@ -478,7 +481,7 @@ extension UserReview_ViewController {
         pLRBtn5.tag = 55
         pLRBtn5.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pLRBtn5.imageView?.contentMode = .scaleAspectFit
-//        pLRBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pLRBtn5.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pLRBtn5.translatesAutoresizingMaskIntoConstraints = false
         
         plrView.addSubview(pLRBtn5)
@@ -492,7 +495,7 @@ extension UserReview_ViewController {
         pLRBtn4.tag = 54
         pLRBtn4.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pLRBtn4.imageView?.contentMode = .scaleAspectFit
-//        pLRBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pLRBtn4.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pLRBtn4.translatesAutoresizingMaskIntoConstraints = false
         
         plrView.addSubview(pLRBtn4)
@@ -506,7 +509,7 @@ extension UserReview_ViewController {
         pLRBtn3.tag = 53
         pLRBtn3.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pLRBtn3.imageView?.contentMode = .scaleAspectFit
-//        pLRBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pLRBtn3.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pLRBtn3.translatesAutoresizingMaskIntoConstraints = false
         
         plrView.addSubview(pLRBtn3)
@@ -520,7 +523,7 @@ extension UserReview_ViewController {
         pLRBtn2.tag = 52
         pLRBtn2.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pLRBtn2.imageView?.contentMode = .scaleAspectFit
-//        pLRBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pLRBtn2.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pLRBtn2.translatesAutoresizingMaskIntoConstraints = false
         
         plrView.addSubview(pLRBtn2)
@@ -534,7 +537,7 @@ extension UserReview_ViewController {
         pLRBtn1.tag = 51
         pLRBtn1.setImage(#imageLiteral(resourceName: "parkaholic_Star_Empty"), for: .normal)
         pLRBtn1.imageView?.contentMode = .scaleAspectFit
-//        pLRBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
+        pLRBtn1.addTarget(self, action: #selector(rankBtnTouched(sender:)), for: .touchUpInside)
         pLRBtn1.translatesAutoresizingMaskIntoConstraints = false
         
         plrView.addSubview(pLRBtn1)
@@ -544,6 +547,13 @@ extension UserReview_ViewController {
         pLRBtn1.bottomAnchor.constraint(equalTo: plrView.bottomAnchor, constant: -5).isActive = true
         pLRBtn1.widthAnchor.constraint(equalToConstant: 45).isActive = true
         
+    }
+    
+    //Animate this view off and the next view on.
+    func transitionRatingsToComments() {
+        AnimatedViewClass.animate(withDuration: 0.5) {
+            self.userCommentContentView.center.x -= self.view.bounds.width
+        }
     }
     
 }
