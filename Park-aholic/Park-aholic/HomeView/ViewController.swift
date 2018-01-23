@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     //IBOutlets
     @IBOutlet weak var mapView: MKMapView!
@@ -31,8 +31,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Set up delegates
         coreLocationManager.delegate = self
         mapView.delegate = self
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         //Request user's location
         requestAuthorization()

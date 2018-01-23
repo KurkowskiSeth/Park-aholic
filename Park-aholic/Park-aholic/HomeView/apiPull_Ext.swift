@@ -54,7 +54,7 @@ extension ViewController {
                 }
                 DispatchQueue.main.async {
                     self.addParksToMap()
-//                    self.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
             })
             task.resume()

@@ -32,14 +32,14 @@
                                 <rect key="frame" x="5" y="307.5" width="365" height="354.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkDataCell" rowHeight="125" id="8Fa-Ai-rxH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkDataCell" rowHeight="125" id="8Fa-Ai-rxH" customClass="ParkCellTableViewCell" customModule="Park_aholic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="365" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Fa-Ai-rxH" id="NFf-S6-4cl">
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-lD-bGT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Park Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-lD-bGT">
                                                     <rect key="frame" x="15" y="10" width="335" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
@@ -51,48 +51,66 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-HD-eVc">
-                                                    <rect key="frame" x="15" y="83" width="62.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-HD-eVc">
+                                                    <rect key="frame" x="15" y="78.5" width="145" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fpX-Lg-wB7">
-                                                    <rect key="frame" x="102.5" y="77" width="247.5" height="32.5"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="gY7-ZM-QTT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="32.5"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-tG-Pau">
-                                                            <rect key="frame" x="51.5" y="0.0" width="41.5" height="32.5"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="EUj-ZZ-XJS">
-                                                            <rect key="frame" x="103" y="0.0" width="41.5" height="32.5"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="mol-7Q-2oh">
-                                                            <rect key="frame" x="154.5" y="0.0" width="41.5" height="32.5"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="9bv-ty-Kdj">
-                                                            <rect key="frame" x="206" y="0.0" width="41.5" height="32.5"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-oQ-aPq">
+                                                    <rect key="frame" x="319" y="72" width="36" height="32.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="v16-UZ-hk3"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-g9-NFw">
+                                                    <rect key="frame" x="283" y="72" width="36" height="32.5"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="9Qd-P6-3WS">
+                                                    <rect key="frame" x="247" y="72" width="36" height="32.5"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="g71-Dw-0F5">
+                                                    <rect key="frame" x="211" y="72" width="36" height="32.5"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="Ghi-jF-9dL">
+                                                    <rect key="frame" x="175" y="72" width="36" height="32.5"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hfy-ee-qDM" firstAttribute="leading" secondItem="NFf-S6-4cl" secondAttribute="leading" constant="15" id="44U-ei-m5I"/>
+                                                <constraint firstItem="bZZ-g9-NFw" firstAttribute="centerY" secondItem="P1v-oQ-aPq" secondAttribute="centerY" id="9iy-Bw-cpg"/>
                                                 <constraint firstAttribute="trailing" secondItem="0kd-lD-bGT" secondAttribute="trailing" constant="15" id="A4Q-dq-Bgv"/>
-                                                <constraint firstItem="fpX-Lg-wB7" firstAttribute="leading" secondItem="EJn-HD-eVc" secondAttribute="trailing" constant="25" id="Bcc-4m-TYX"/>
-                                                <constraint firstItem="fpX-Lg-wB7" firstAttribute="top" secondItem="hfy-ee-qDM" secondAttribute="bottom" constant="15" id="Q4e-sS-ViW"/>
+                                                <constraint firstItem="Ghi-jF-9dL" firstAttribute="leading" secondItem="EJn-HD-eVc" secondAttribute="trailing" constant="15" id="C1b-In-n5E"/>
+                                                <constraint firstItem="9Qd-P6-3WS" firstAttribute="width" secondItem="bZZ-g9-NFw" secondAttribute="width" id="CxB-RC-BEd"/>
+                                                <constraint firstItem="g71-Dw-0F5" firstAttribute="width" secondItem="9Qd-P6-3WS" secondAttribute="width" id="Fp4-6S-Cto"/>
+                                                <constraint firstItem="Ghi-jF-9dL" firstAttribute="height" secondItem="g71-Dw-0F5" secondAttribute="height" id="Jmz-u4-u0l"/>
+                                                <constraint firstItem="Ghi-jF-9dL" firstAttribute="width" secondItem="g71-Dw-0F5" secondAttribute="width" id="JsQ-xm-eFS"/>
+                                                <constraint firstAttribute="bottom" secondItem="P1v-oQ-aPq" secondAttribute="bottom" constant="20" id="OoJ-kL-TS9"/>
                                                 <constraint firstItem="0kd-lD-bGT" firstAttribute="top" secondItem="NFf-S6-4cl" secondAttribute="top" constant="10" id="Tvt-ui-Xxb"/>
-                                                <constraint firstAttribute="bottom" secondItem="fpX-Lg-wB7" secondAttribute="bottom" constant="15" id="UdW-Ds-leM"/>
+                                                <constraint firstItem="9Qd-P6-3WS" firstAttribute="centerY" secondItem="bZZ-g9-NFw" secondAttribute="centerY" id="UHq-Xz-LnW"/>
+                                                <constraint firstItem="g71-Dw-0F5" firstAttribute="leading" secondItem="Ghi-jF-9dL" secondAttribute="trailing" id="UJD-BB-POd"/>
+                                                <constraint firstItem="P1v-oQ-aPq" firstAttribute="top" secondItem="hfy-ee-qDM" secondAttribute="bottom" constant="10" id="UKu-h4-b9e"/>
+                                                <constraint firstItem="9Qd-P6-3WS" firstAttribute="height" secondItem="bZZ-g9-NFw" secondAttribute="height" id="VDr-sO-GCs"/>
                                                 <constraint firstAttribute="trailing" secondItem="hfy-ee-qDM" secondAttribute="trailing" constant="15" id="Zrn-Up-u7Q"/>
                                                 <constraint firstItem="hfy-ee-qDM" firstAttribute="top" secondItem="0kd-lD-bGT" secondAttribute="bottom" constant="5" id="aG8-tS-pvF"/>
+                                                <constraint firstItem="bZZ-g9-NFw" firstAttribute="leading" secondItem="9Qd-P6-3WS" secondAttribute="trailing" id="amE-Mx-LRW"/>
                                                 <constraint firstItem="EJn-HD-eVc" firstAttribute="leading" secondItem="NFf-S6-4cl" secondAttribute="leading" constant="15" id="d7o-KA-heI"/>
+                                                <constraint firstAttribute="trailing" secondItem="P1v-oQ-aPq" secondAttribute="trailing" constant="10" id="dBn-Sg-DNi"/>
                                                 <constraint firstItem="0kd-lD-bGT" firstAttribute="leading" secondItem="NFf-S6-4cl" secondAttribute="leading" constant="15" id="eq1-LG-ebW"/>
-                                                <constraint firstItem="EJn-HD-eVc" firstAttribute="centerY" secondItem="fpX-Lg-wB7" secondAttribute="centerY" id="lYF-F2-Qxk"/>
-                                                <constraint firstAttribute="trailing" secondItem="fpX-Lg-wB7" secondAttribute="trailing" constant="15" id="tqI-fn-QYz"/>
+                                                <constraint firstItem="bZZ-g9-NFw" firstAttribute="width" secondItem="P1v-oQ-aPq" secondAttribute="width" id="eyX-pB-wS8"/>
+                                                <constraint firstItem="g71-Dw-0F5" firstAttribute="centerY" secondItem="9Qd-P6-3WS" secondAttribute="centerY" id="ffJ-MV-581"/>
+                                                <constraint firstItem="bZZ-g9-NFw" firstAttribute="height" secondItem="P1v-oQ-aPq" secondAttribute="height" id="jjU-iB-bGn"/>
+                                                <constraint firstItem="g71-Dw-0F5" firstAttribute="height" secondItem="9Qd-P6-3WS" secondAttribute="height" id="lFA-Gn-tA4"/>
+                                                <constraint firstItem="9Qd-P6-3WS" firstAttribute="leading" secondItem="g71-Dw-0F5" secondAttribute="trailing" id="poe-MS-KF6"/>
+                                                <constraint firstItem="P1v-oQ-aPq" firstAttribute="leading" secondItem="bZZ-g9-NFw" secondAttribute="trailing" id="vwt-ak-w3w"/>
+                                                <constraint firstItem="Ghi-jF-9dL" firstAttribute="centerY" secondItem="g71-Dw-0F5" secondAttribute="centerY" id="yIS-2k-wJq"/>
+                                                <constraint firstItem="EJn-HD-eVc" firstAttribute="centerY" secondItem="Ghi-jF-9dL" secondAttribute="centerY" id="zQ6-dg-MqK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCityState" destination="hfy-ee-qDM" id="X79-eY-Nz8"/>
+                                            <outlet property="lblParkName" destination="0kd-lD-bGT" id="AGF-eM-8Hd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
