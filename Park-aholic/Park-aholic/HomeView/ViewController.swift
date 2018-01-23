@@ -24,6 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     fileprivate(set) var authUI: FUIAuth? //only set internally but get externally
     fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
     var isLoggedIn = false
+    var ref: DatabaseReference!
     
     //Core Location Properties
     let coreLocationManager = CLLocationManager()
@@ -44,11 +45,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Request user's location
         requestAuthorization()
         
-        //Set up firebase authorization
+        //Set up firebase authorization and database
         auth = Auth.auth()
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         authUI?.providers = [FUIGoogleAuth()]
+        ref = Database.database().reference()
         
         //Check to see if the user is already logged in
         authStateListenerHandle = auth?.addStateDidChangeListener({ (auth, user) in

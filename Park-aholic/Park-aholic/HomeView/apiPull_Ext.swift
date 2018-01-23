@@ -44,8 +44,35 @@ extension ViewController {
                             let state = location["state"] as? String
                                 else{print("No data found in first object array."); return}
                             
-                            //Add to data model
-                            self.parkArray.append(ParkDataModel(name: parkName, city: city, state: state, latitude: lat, longitude: lng))
+                            //Check to see if park is in database
+                            self.ref.child("parks").observeSingleEvent(of: .value, with: { (snapshot) in
+                                if snapshot.hasChild(parkName) == false {
+                                    self.addNewParkToDatabase(parkName: parkName)
+                                }
+                            })
+                            
+                            //Pull from the database the park needed to be added
+                            self.ref.child("parks").child(parkName).child("0").child("averages").observeSingleEvent(of: .value, with: { (snapshot) in
+                                guard let value = snapshot.value as? NSDictionary,
+                                    let parkQualityDict = value["parkQuality"] as? NSDictionary,
+                                    let parkQualityScore = parkQualityDict["totalScore"] as? Int,
+                                    let parkQualityReviews = parkQualityDict["totalRatings"] as? Int,
+                                    let parkEquipmentDict = value["parkEquipment"] as? NSDictionary,
+                                    let parkEquipmentScore = parkEquipmentDict["totalScore"] as? Int,
+                                    let parkEquipmentReviews = parkEquipmentDict["totalRatings"] as? Int,
+                                    let neighborhoodDict = value["neighborhood"] as? NSDictionary,
+                                    let neighborhoodScore = neighborhoodDict["totalScore"] as? Int,
+                                    let neighborhoodReviews = neighborhoodDict["totalRatings"] as? Int,
+                                    let overallEnjoymentDict = value["overallEnjoyment"] as? NSDictionary,
+                                    let overallEjoymentScore = overallEnjoymentDict["totalScore"] as? Int,
+                                    let overallEnjoymentReviews = overallEnjoymentDict["totalRatings"] as? Int,
+                                    let likelinessToReturnDict = value["likelinessToReturn"] as? NSDictionary,
+                                    let likelinessToReturnScore = likelinessToReturnDict["totalScore"] as? Int,
+                                    let likelinessToReturnReviews = likelinessToReturnDict["totalRatings"] as? Int
+                                    else {print("Error in addReviewToPark guard statement"); return}
+                                
+                                self.parkArray.append(ParkDataModel(name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalScore: parkQualityScore, parkQualityTotalReviews: parkQualityReviews, parkEquipmentTotalScore: parkEquipmentScore, parkEquipmentTotalReviews: parkEquipmentReviews, neighborhoodTotalScore: neighborhoodScore, neighborhoodTotalReviews: neighborhoodReviews, overallEnjoymentTotalScore: overallEjoymentScore, overallEnjoymentTotalReviews: overallEnjoymentReviews, likelinessToReturnTotalScore: likelinessToReturnScore, likelinessToReturnTotalReviews: likelinessToReturnReviews))
+                            })
                         }
                     }
                 }
@@ -73,6 +100,40 @@ extension ViewController {
             mapView.addAnnotation(annotation)
             mapView.showAnnotations(mapView.annotations, animated: true)
         }
+    }
+    
+    func addNewParkToDatabase(parkName: String) {
+        let newPark: [String : Any?] = [parkName:
+            [
+                ["averages":
+                    ["parkQuality":
+                        ["totalRatings": 0,
+                         "totalScore": 0
+                        ],
+                     "parkEquipment":
+                        ["totalRatings": 0,
+                         "totalScore": 0
+                        ],
+                     "neighborhood":
+                        ["totalRatings": 0,
+                         "totalScore": 0
+                        ],
+                     "overallEnjoyment":
+                        ["totalRatings": 0,
+                         "totalScore": 0
+                        ],
+                     "likelinessToReturn":
+                        ["totalRatings": 0,
+                         "totalScore": 0
+                        ]
+                    ]
+                ],
+                ["comments": "nil"
+                ],
+                ["tags": "nil"]
+            ]
+        ]
+        ref.child("parks").updateChildValues(newPark as Any as! [AnyHashable : Any])
     }
     
     
