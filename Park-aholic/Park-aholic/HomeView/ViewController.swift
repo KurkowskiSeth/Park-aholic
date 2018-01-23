@@ -38,5 +38,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         requestAuthorization()
     }
     
+    //Send park data model forward
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? ParkDetail_ViewController
+        destination?.parkData = parkArray[(tableView.indexPathForSelectedRow?.row)!]
+    }
+    
 }
 

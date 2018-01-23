@@ -12,6 +12,7 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
     
     //IBOutlets
     @IBOutlet weak var pageHeader: UIView!
+    @IBOutlet weak var parkNameLbl: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
     //Rank Buttons
@@ -47,14 +48,14 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
     let commentTF = UITextField()
     let userTagsContentView = AnimatedViewClass()
     var tagsCollectionView: UICollectionView!
-    var currentViewTag: Int!
-    var transitionTimer: Timer? = nil
+    var parkData: ParkDataModel? = nil
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Create ui for ratings
+        parkNameLbl.text = parkData?.name
         createUserRatingsUI()
     }
     

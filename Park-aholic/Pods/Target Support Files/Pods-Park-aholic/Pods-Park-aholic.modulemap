@@ -1,0 +1,6 @@
+framework module Pods_Park_aholic {
+  umbrella header "Pods-Park-aholic-umbrella.h"
+
+  export *
+  module * { export * }
+}

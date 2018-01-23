@@ -10,13 +10,24 @@ import UIKit
 
 class ParkDetail_ViewController: UIViewController {
 
+    //IBOutlets
+    @IBOutlet weak var parkNameLbl: UILabel!
+    
+    //Properties
+    var parkData: ParkDataModel? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        parkNameLbl.text = parkData?.name
     }
     
     @IBAction func dismissController(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? UserReview_ViewController
+        destination?.parkData = self.parkData
     }
 }
