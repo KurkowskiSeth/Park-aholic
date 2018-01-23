@@ -11,6 +11,9 @@
 		C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A02016BFE60000125E /* ParkDataModel.swift */; };
 		C07FF2A32016C1670000125E /* ParkTableView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */; };
 		C07FF2A52016C1EA0000125E /* ParkCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A42016C1EA0000125E /* ParkCellTableViewCell.swift */; };
+		C07FF2A92016DE750000125E /* ParkDetail_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A82016DE750000125E /* ParkDetail_ViewController.swift */; };
+		C07FF2AB2016DEA20000125E /* UserReview_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */; };
+		C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */; };
 		C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77EB2016844200E76FCB /* AppDelegate.swift */; };
 		C09D77EE2016844200E76FCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D77ED2016844200E76FCB /* ViewController.swift */; };
 		C09D77F12016844200E76FCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09D77EF2016844200E76FCB /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 		C07FF2A02016BFE60000125E /* ParkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
 		C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableView_EXT.swift; sourceTree = "<group>"; };
 		C07FF2A42016C1EA0000125E /* ParkCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCellTableViewCell.swift; sourceTree = "<group>"; };
+		C07FF2A82016DE750000125E /* ParkDetail_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetail_ViewController.swift; sourceTree = "<group>"; };
+		C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview_ViewController.swift; sourceTree = "<group>"; };
+		C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedViewClass.swift; sourceTree = "<group>"; };
 		C09D77E82016844200E76FCB /* Park-aholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park-aholic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09D77EB2016844200E76FCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09D77ED2016844200E76FCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +56,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C07FF2A62016DE260000125E /* Park Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				C07FF2A82016DE750000125E /* ParkDetail_ViewController.swift */,
+			);
+			path = "Park Detail View";
+			sourceTree = "<group>";
+		};
+		C07FF2A72016DE3B0000125E /* User Review View */ = {
+			isa = PBXGroup;
+			children = (
+				C07FF2AA2016DEA20000125E /* UserReview_ViewController.swift */,
+				C07FF2AC2016DEFD0000125E /* AnimatedViewClass.swift */,
+			);
+			path = "User Review View";
+			sourceTree = "<group>";
+		};
 		C09D77DF2016844100E76FCB = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				C09D7804201684D400E76FCB /* HomeView */,
+				C07FF2A62016DE260000125E /* Park Detail View */,
+				C07FF2A72016DE3B0000125E /* User Review View */,
 				C09D7803201684BD00E76FCB /* Storyboads */,
 				C09D77EB2016844200E76FCB /* AppDelegate.swift */,
 				C09D77F52016844200E76FCB /* Assets.xcassets */,
@@ -183,11 +208,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */,
+				C07FF2AB2016DEA20000125E /* UserReview_ViewController.swift in Sources */,
+				C07FF2A92016DE750000125E /* ParkDetail_ViewController.swift in Sources */,
 				C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */,
 				C07FF2A32016C1670000125E /* ParkTableView_EXT.swift in Sources */,
 				C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */,
 				C09D77EE2016844200E76FCB /* ViewController.swift in Sources */,
 				C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */,
+				C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */,
 				C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */,
 				C07FF2A52016C1EA0000125E /* ParkCellTableViewCell.swift in Sources */,
 			);
