@@ -606,7 +606,9 @@
                         <viewLayoutGuide key="safeArea" id="5bV-lb-Pub"/>
                     </view>
                     <connections>
+                        <outlet property="composeBtn" destination="g5M-M1-95M" id="FGn-px-uK9"/>
                         <outlet property="parkNameLbl" destination="PcQ-00-bvc" id="sYE-Aw-5LY"/>
+                        <outlet property="tableView" destination="6G4-Mn-asn" id="EmH-0q-s3F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rey-6B-Ffc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,6 +630,11 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fs0-GP-GUp">
                                             <connections>
                                                 <action selector="dissmissController:" destination="hks-bK-dnH" id="fHi-5E-gtF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="Ksy-hQ-Kkj">
+                                            <connections>
+                                                <action selector="pushToDatabase:" destination="hks-bK-dnH" id="mAZ-na-DEF"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -675,6 +682,7 @@
                         <outlet property="nextButton" destination="YGt-0q-W4i" id="ykf-ip-jrb"/>
                         <outlet property="pageHeader" destination="2M8-V3-w3b" id="80Y-9B-aVf"/>
                         <outlet property="parkNameLbl" destination="5Rz-5Z-dzh" id="TGt-JW-cZk"/>
+                        <outlet property="submtBtn" destination="Ksy-hQ-Kkj" id="WhX-5r-yY4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6a-ZP-L3p" userLabel="First Responder" sceneMemberID="firstResponder"/>

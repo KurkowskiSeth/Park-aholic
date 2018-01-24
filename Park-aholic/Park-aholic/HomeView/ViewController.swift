@@ -77,6 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedRow, animated: false)
         }
+        tableView.reloadData()
     }
     
     @IBAction func signInOrOutBtnTouched(_ sender: UIBarButtonItem) {

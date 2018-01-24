@@ -12,6 +12,8 @@ class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableV
 
     //IBOutlets
     @IBOutlet weak var parkNameLbl: UILabel!
+    @IBOutlet weak var composeBtn: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
     //Properties
     var parkData: ParkDataModel? = nil
@@ -21,6 +23,17 @@ class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         parkNameLbl.text = parkData?.name
+        
+        switch isLoggedIn {
+        case true:
+            composeBtn.isEnabled = true
+        default:
+            composeBtn.isEnabled = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     @IBAction func dismissController(_ sender: UIBarButtonItem) {
