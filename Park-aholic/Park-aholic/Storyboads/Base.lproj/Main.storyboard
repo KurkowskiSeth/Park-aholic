@@ -116,6 +116,11 @@
                                         <connections>
                                             <outlet property="lblCityState" destination="hfy-ee-qDM" id="X79-eY-Nz8"/>
                                             <outlet property="lblParkName" destination="0kd-lD-bGT" id="AGF-eM-8Hd"/>
+                                            <outletCollection property="ratingStars" destination="Ghi-jF-9dL" collectionClass="NSMutableArray" id="WFi-sW-pSa"/>
+                                            <outletCollection property="ratingStars" destination="g71-Dw-0F5" collectionClass="NSMutableArray" id="9HB-Vv-4vF"/>
+                                            <outletCollection property="ratingStars" destination="9Qd-P6-3WS" collectionClass="NSMutableArray" id="0Yp-bN-U5m"/>
+                                            <outletCollection property="ratingStars" destination="bZZ-g9-NFw" collectionClass="NSMutableArray" id="3rO-mV-qJU"/>
+                                            <outletCollection property="ratingStars" destination="P1v-oQ-aPq" collectionClass="NSMutableArray" id="a23-kj-pgq"/>
                                             <segue destination="G9w-1b-vRD" kind="show" id="1qi-aq-0fI"/>
                                         </connections>
                                     </tableViewCell>
@@ -177,7 +182,7 @@
                                 <rect key="frame" x="5" y="140.5" width="365" height="521.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="274" id="cyW-wa-BeD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="averageRatingsCell" rowHeight="274" id="cyW-wa-BeD" customClass="averageRatings_TableViewCell" customModule="Park_aholic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="365" height="274"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyW-wa-BeD" id="CA0-9f-qkE">
@@ -533,8 +538,39 @@
                                                 <constraint firstItem="XpC-Xj-Gdj" firstAttribute="leading" secondItem="CA0-9f-qkE" secondAttribute="leading" constant="5" id="zaL-Yw-Y9Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pEStar1" destination="WDm-vD-2LT" id="yvP-eB-Rfg"/>
+                                            <outlet property="pEStar2" destination="X9i-MK-Dyr" id="UTt-6U-Dxe"/>
+                                            <outlet property="pEStar3" destination="y5s-fA-mkG" id="vbD-uR-D4t"/>
+                                            <outlet property="pEStar4" destination="WRV-T5-4xF" id="XIO-2O-xj6"/>
+                                            <outlet property="pEStar5" destination="EF8-aw-IrF" id="qko-HX-7De"/>
+                                            <outlet property="pLRStar1" destination="EUf-1e-sts" id="xBx-NU-DME"/>
+                                            <outlet property="pLRStar2" destination="vUF-TT-fos" id="vic-Ia-Isu"/>
+                                            <outlet property="pLRStar3" destination="zku-he-M6k" id="nQD-UU-G2f"/>
+                                            <outlet property="pLRStar4" destination="Udg-ib-LdT" id="aLa-Ys-iTd"/>
+                                            <outlet property="pLRStar5" destination="pca-tV-Xnd" id="eFC-hQ-iS9"/>
+                                            <outlet property="pNStar1" destination="eK4-qt-YdQ" id="yJc-pO-f4U"/>
+                                            <outlet property="pNStar2" destination="L8w-tj-jsR" id="vnc-zs-cJi"/>
+                                            <outlet property="pNStar3" destination="ehC-gK-QpV" id="Z3N-us-avW"/>
+                                            <outlet property="pNStar4" destination="D58-Lf-hNm" id="J2R-sE-fbl"/>
+                                            <outlet property="pNStar5" destination="8RT-ew-QId" id="uTH-b1-Ewu"/>
+                                            <outlet property="pOEStar1" destination="XmY-ql-yz0" id="diW-E3-wts"/>
+                                            <outlet property="pOEStar2" destination="Zwz-77-53V" id="VBY-f6-5kH"/>
+                                            <outlet property="pOEStar3" destination="ubU-0c-V5a" id="qvy-PE-JlO"/>
+                                            <outlet property="pOEStar4" destination="gxQ-94-DKe" id="b3p-iC-38X"/>
+                                            <outlet property="pOEStar5" destination="RSp-Ui-dVI" id="sTP-tB-Xvp"/>
+                                            <outlet property="pQStar1" destination="M86-Zr-wB9" id="VLw-lu-XCY"/>
+                                            <outlet property="pQStar2" destination="d9d-Ok-R8z" id="I8d-9r-XgK"/>
+                                            <outlet property="pQStar3" destination="izJ-5X-FHV" id="FDm-wn-3mx"/>
+                                            <outlet property="pQStar4" destination="Qu8-8I-A0j" id="rdg-dd-nh1"/>
+                                            <outlet property="pQStar5" destination="aAs-k3-2kU" id="nW4-fk-Ova"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="G9w-1b-vRD" id="f7A-fu-Suh"/>
+                                    <outlet property="delegate" destination="G9w-1b-vRD" id="DyW-Yb-a8e"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnU-p1-IRv">
                                 <rect key="frame" x="5" y="69" width="365" height="66.5"/>

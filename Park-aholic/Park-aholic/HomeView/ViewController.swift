@@ -45,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Request user's location
         requestAuthorization()
         
+        
         //Set up firebase authorization and database
         auth = Auth.auth()
         authUI = FUIAuth.defaultAuthUI()
@@ -64,6 +65,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.signInOrOutBtn.tag = 0
             }
         })
+        
+        DispatchQueue.main.async {
+            self.addParksToMap()
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +122,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? ParkDetail_ViewController
         destination?.parkData = parkArray[(tableView.indexPathForSelectedRow?.row)!]
+        destination?.isLoggedIn = isLoggedIn
     }
     
 }

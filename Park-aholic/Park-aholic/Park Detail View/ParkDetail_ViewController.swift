@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ParkDetail_ViewController: UIViewController {
+class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //IBOutlets
     @IBOutlet weak var parkNameLbl: UILabel!
     
     //Properties
     var parkData: ParkDataModel? = nil
+    var isLoggedIn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -27,6 +27,9 @@
 		C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */; };
 		C0BC26BE2016F97B0031E9F2 /* UserTags_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26BD2016F97B0031E9F2 /* UserTags_EXT.swift */; };
 		C0BC26C02017A9920031E9F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0BC26BF2017A9920031E9F2 /* GoogleService-Info.plist */; };
+		C0BC26C32017BD510031E9F2 /* ParkDetailTableView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */; };
+		C0BC26C52017BF2A0031E9F2 /* averageRatings_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */; };
+		C0BC26C72017EBE00031E9F2 /* HomeViewFirebase_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		C09D78052016AFF400E76FCB /* LocationManager_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager_EXT.swift; sourceTree = "<group>"; };
 		C0BC26BD2016F97B0031E9F2 /* UserTags_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTags_EXT.swift; sourceTree = "<group>"; };
 		C0BC26BF2017A9920031E9F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailTableView_EXT.swift; sourceTree = "<group>"; };
+		C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averageRatings_TableViewCell.swift; sourceTree = "<group>"; };
+		C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFirebase_EXT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				C07FF2A82016DE750000125E /* ParkDetail_ViewController.swift */,
+				C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */,
+				C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */,
 			);
 			path = "Park Detail View";
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 				C07FF2A02016BFE60000125E /* ParkDataModel.swift */,
 				C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */,
 				C07FF2A42016C1EA0000125E /* ParkCellTableViewCell.swift */,
+				C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -337,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */,
+				C0BC26C72017EBE00031E9F2 /* HomeViewFirebase_EXT.swift in Sources */,
 				C07FF2AB2016DEA20000125E /* UserReview_ViewController.swift in Sources */,
 				C07FF2A92016DE750000125E /* ParkDetail_ViewController.swift in Sources */,
 				C09D78062016AFF400E76FCB /* LocationManager_EXT.swift in Sources */,
@@ -345,6 +355,8 @@
 				C09D77F42016844200E76FCB /* Park_aholic.xcdatamodeld in Sources */,
 				C09D77EE2016844200E76FCB /* ViewController.swift in Sources */,
 				C07FF2B12016DFD00000125E /* UserRatings_EXT.swift in Sources */,
+				C0BC26C32017BD510031E9F2 /* ParkDetailTableView_EXT.swift in Sources */,
+				C0BC26C52017BF2A0031E9F2 /* averageRatings_TableViewCell.swift in Sources */,
 				C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */,
 				C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */,
 				C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */,
