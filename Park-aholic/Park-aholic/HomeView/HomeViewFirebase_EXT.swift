@@ -14,34 +14,32 @@ extension ViewController {
     func addNewParkToDatabase(parkID: String, parkName: String) {
         let newPark: [String : Any?] = [parkID:
             [
-                ["parkName": parkName],
-                ["averages":
+                "parkName": parkName,
+                "averages":
                     ["parkQuality":
                         ["totalRatings": 0,
-                         "totalScore": 0
+                         "totalReviews": 0
                         ],
                      "parkEquipment":
                         ["totalRatings": 0,
-                         "totalScore": 0
+                         "totalReviews": 0
                         ],
                      "neighborhood":
                         ["totalRatings": 0,
-                         "totalScore": 0
+                         "totalReviews": 0
                         ],
                      "overallEnjoyment":
                         ["totalRatings": 0,
-                         "totalScore": 0
+                         "totalReviews": 0
                         ],
                      "likelinessToReturn":
                         ["totalRatings": 0,
-                         "totalScore": 0
+                         "totalReviews": 0
                         ]
-                    ]
-                ],
-                ["comments": "nil"
-                ],
-                ["tags": "nil"]
-            ]
+                    ],
+                "comments": "nil",
+                "tags": "nil"
+                ]
         ]
         ref.child("parks").updateChildValues(newPark as Any as! [AnyHashable : Any])
     }

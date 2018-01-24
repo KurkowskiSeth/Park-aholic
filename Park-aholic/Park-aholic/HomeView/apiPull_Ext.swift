@@ -10,8 +10,8 @@ import Foundation
 import MapKit
 import Firebase
 
-private let clientID = "J3UDTOHW2TE3PQXM0RBV1S1V4BTPM3XDHDE41LIO3OBA4ZMP"
-private let clientSecret = "DFFGNDPTQGR2VWTR2DQWSIDFMM1OWWQ2PAGD3ZURR5B4UIL2"
+private let clientID = "ANC3Q4GH3U3RU5F4HBA3MMONZBVEZDWBKTPN10ZD2141NMQZ"
+private let clientSecret = "DHF5B1FLMPUGYU3PIOISW1TZTK0NNA3VIGTNX0JAXCU434J3"
 
 extension ViewController {
     
@@ -19,14 +19,14 @@ extension ViewController {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         if let validURL = URL(string: "https://api.foursquare.com/v2/venues/search/?ll=\(recentLocation.coordinate.latitude),\(recentLocation.coordinate.longitude)&categoryId=4bf58dd8d48988d163941735&client_id=\(clientID)&client_secret=\(clientSecret)&v=20180111") {
-            //            print(validURL)
+//            print(validURL)
             let task = session.dataTask(with: validURL, completionHandler: { (data, urlResponse, error) in
                 if error != nil {return}
                 
                 guard let response = urlResponse as? HTTPURLResponse,
                     response.statusCode == 200,
                     let data = data
-                    else {return}
+                    else {print("error"); return}
                 
                 do {
                     if let jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as Any? {
@@ -52,35 +52,49 @@ extension ViewController {
                                     if self.isLoggedIn == true {
                                         self.addNewParkToDatabase(parkID: parkID, parkName: parkName)
                                     }
+                                    DispatchQueue.main.async {
+                                        self.addParksToMap()
+                                        self.tableView.reloadData()
+                                    }
                                 } else {
-                                    self.ref.child("parks").child(parkID).child("1").child("averages").observeSingleEvent(of: .value, with: { (snapshot) in
+                                    
+                                    self.ref.child("parks").child(parkID).observeSingleEvent(of: .value, with: { (snapshot) in
                                         guard let value = snapshot.value as? NSDictionary,
-                                            let parkQualityDict = value["parkQuality"] as? NSDictionary,
-                                            let parkQualityScore = parkQualityDict["totalScore"] as? Int,
-                                            let parkQualityReviews = parkQualityDict["totalRatings"] as? Int,
-                                            let parkEquipmentDict = value["parkEquipment"] as? NSDictionary,
-                                            let parkEquipmentScore = parkEquipmentDict["totalScore"] as? Int,
-                                            let parkEquipmentReviews = parkEquipmentDict["totalRatings"] as? Int,
-                                            let neighborhoodDict = value["neighborhood"] as? NSDictionary,
-                                            let neighborhoodScore = neighborhoodDict["totalScore"] as? Int,
-                                            let neighborhoodReviews = neighborhoodDict["totalRatings"] as? Int,
-                                            let overallEnjoymentDict = value["overallEnjoyment"] as? NSDictionary,
-                                            let overallEjoymentScore = overallEnjoymentDict["totalScore"] as? Int,
-                                            let overallEnjoymentReviews = overallEnjoymentDict["totalRatings"] as? Int,
-                                            let likelinessToReturnDict = value["likelinessToReturn"] as? NSDictionary,
-                                            let likelinessToReturnScore = likelinessToReturnDict["totalScore"] as? Int,
-                                            let likelinessToReturnReviews = likelinessToReturnDict["totalRatings"] as? Int
-                                            else {print("Error in addReviewToPark guard statement"); return}
+                                        let averages = value["averages"] as? NSDictionary,
+                                        let parkQuality = averages["parkQuality"] as? NSDictionary,
+                                        let parkQualityTotalRatings = parkQuality["totalRatings"] as? Int,
+                                        let parkQualityTotalReviews = parkQuality["totalReviews"] as? Int,
+                                        let parkEquipment = averages["parkEquipment"] as? NSDictionary,
+                                        let parkEquipmentTotalRatings = parkEquipment["totalRatings"] as? Int,
+                                        let parkEquipmentTotalReviews = parkEquipment["totalReviews"] as? Int,
+                                        let neighborhood = averages["neighborhood"] as? NSDictionary,
+                                        let neighborhoodTotalRatings = neighborhood["totalRatings"] as? Int,
+                                        let neighborhoodTotalReviews = neighborhood["totalReviews"] as? Int,
+                                        let overallEnjoyment = averages["overallEnjoyment"] as? NSDictionary,
+                                        let overallEnjoymentTotalRatings = overallEnjoyment["totalRatings"] as? Int,
+                                        let overallEnjoymentTotalReviews = overallEnjoyment["totalReviews"] as? Int,
+                                        let likelinessToReturn = averages["likelinessToReturn"] as? NSDictionary,
+                                        let likelinessToReturnTotalRatings = likelinessToReturn["totalRatings"] as? Int,
+                                        let likelinessToReturnTotalReviews = likelinessToReturn["totalReviews"] as? Int,
+                                        let comments = value["comments"] as? NSArray
+                                            else {print("Error in findParks database pull guard statement"); return}
                                         
-                                        self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalScore: parkQualityScore, parkQualityTotalReviews: parkQualityReviews, parkEquipmentTotalScore: parkEquipmentScore, parkEquipmentTotalReviews: parkEquipmentReviews, neighborhoodTotalScore: neighborhoodScore, neighborhoodTotalReviews: neighborhoodReviews, overallEnjoymentTotalScore: overallEjoymentScore, overallEnjoymentTotalReviews: overallEnjoymentReviews, likelinessToReturnTotalScore: likelinessToReturnScore, likelinessToReturnTotalReviews: likelinessToReturnReviews))
-                                        
-                                        DispatchQueue.main.async {
-                                            self.addParksToMap()
-                                            self.tableView.reloadData()
+                                        var commentsArray = [[String: String]]()
+                                        for comment in comments {
+                                            let comm = comment as? [String: String]
+                                            commentsArray.append(comm!)
                                         }
+                                        
+                                        //add to park data array
+                                        self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalRatings: parkQualityTotalRatings, parkQualityTotalReviews: parkQualityTotalReviews, parkEquipmentTotalRatings: parkEquipmentTotalRatings, parkEquipmentTotalReviews: parkEquipmentTotalReviews, neighborhoodTotalRatings: neighborhoodTotalRatings, neighborhoodTotalReviews: neighborhoodTotalReviews, overallEnjoymentTotalRatings: overallEnjoymentTotalRatings, overallEnjoymentTotalReviews: overallEnjoymentTotalReviews, likelinessToReturnTotalRatings: likelinessToReturnTotalRatings, likelinessToReturnTotalReviews: likelinessToReturnTotalReviews, commentsDict: commentsArray))
+                                        
                                     }, withCancel: { (error) in
                                         print(error.localizedDescription)
                                     })
+                                    DispatchQueue.main.async {
+                                        self.addParksToMap()
+                                        self.tableView.reloadData()
+                                    }
                                 }
                             }, withCancel: { (error) in
                                 print(error.localizedDescription)

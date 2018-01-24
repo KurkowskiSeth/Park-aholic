@@ -182,64 +182,48 @@
                                 <rect key="frame" x="5" y="140.5" width="365" height="521.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="averageRatingsCell" rowHeight="274" id="cyW-wa-BeD" customClass="averageRatings_TableViewCell" customModule="Park_aholic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="365" height="274"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="averageRatingsCell" rowHeight="195" id="cyW-wa-BeD" customClass="averageRatings_TableViewCell" customModule="Park_aholic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="365" height="195"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyW-wa-BeD" id="CA0-9f-qkE">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="273.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="194.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XpC-Xj-Gdj">
-                                                    <rect key="frame" x="5" y="15" width="315" height="30.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="big-Fs-o5d">
-                                                            <rect key="frame" x="10" y="5" width="124" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="big-Fs-o5d" firstAttribute="centerY" secondItem="XpC-Xj-Gdj" secondAttribute="centerY" id="bcQ-K2-ZIB"/>
-                                                        <constraint firstItem="big-Fs-o5d" firstAttribute="leading" secondItem="XpC-Xj-Gdj" secondAttribute="leading" constant="10" id="wvN-Ww-VPJ"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmZ-wk-TTx">
-                                                    <rect key="frame" x="10" y="60.5" width="345" height="30.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmZ-wk-TTx" userLabel="ParkQualityView">
+                                                    <rect key="frame" x="10" y="15" width="345" height="24.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lN4-yY-W3O">
-                                                            <rect key="frame" x="10" y="4" width="92" height="21"/>
+                                                            <rect key="frame" x="10" y="2" width="92" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="aAs-k3-2kU">
-                                                            <rect key="frame" x="310" y="1.5" width="30" height="28.5"/>
+                                                            <rect key="frame" x="310" y="1" width="30" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="QNG-ZP-uqf"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="Qu8-8I-A0j">
-                                                            <rect key="frame" x="275" y="1.5" width="30" height="28.5"/>
+                                                            <rect key="frame" x="275" y="1" width="30" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="jfy-hW-rFO"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="izJ-5X-FHV">
-                                                            <rect key="frame" x="240" y="1.5" width="30" height="28.5"/>
+                                                            <rect key="frame" x="240" y="1" width="30" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="qAQ-d2-tcP"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="d9d-Ok-R8z">
-                                                            <rect key="frame" x="205" y="1.5" width="30" height="28.5"/>
+                                                            <rect key="frame" x="205" y="1" width="30" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Gxe-KA-ZDl"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="M86-Zr-wB9">
-                                                            <rect key="frame" x="170" y="1.5" width="30" height="28.5"/>
+                                                            <rect key="frame" x="170" y="1" width="30" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="TOa-h3-6AY"/>
                                                             </constraints>
@@ -253,6 +237,7 @@
                                                         <constraint firstItem="aAs-k3-2kU" firstAttribute="centerY" secondItem="MmZ-wk-TTx" secondAttribute="centerY" id="9SX-CP-dYa"/>
                                                         <constraint firstItem="d9d-Ok-R8z" firstAttribute="height" secondItem="izJ-5X-FHV" secondAttribute="height" id="9eD-Tv-bAu"/>
                                                         <constraint firstItem="d9d-Ok-R8z" firstAttribute="centerY" secondItem="izJ-5X-FHV" secondAttribute="centerY" id="ISS-O9-Wvd"/>
+                                                        <constraint firstAttribute="height" constant="24.5" id="OU2-IE-a9F"/>
                                                         <constraint firstItem="M86-Zr-wB9" firstAttribute="centerY" secondItem="d9d-Ok-R8z" secondAttribute="centerY" id="OhG-9X-PkD"/>
                                                         <constraint firstItem="izJ-5X-FHV" firstAttribute="centerY" secondItem="Qu8-8I-A0j" secondAttribute="centerY" id="Qur-S1-bec"/>
                                                         <constraint firstItem="lN4-yY-W3O" firstAttribute="leading" secondItem="MmZ-wk-TTx" secondAttribute="leading" constant="10" id="VOu-sm-Jlf"/>
@@ -266,41 +251,41 @@
                                                         <constraint firstItem="izJ-5X-FHV" firstAttribute="leading" secondItem="d9d-Ok-R8z" secondAttribute="trailing" constant="5" id="wM3-By-POP"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXw-Me-6aT">
-                                                    <rect key="frame" x="10" y="101" width="345" height="31"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXw-Me-6aT" userLabel="ParkEquipmentView">
+                                                    <rect key="frame" x="10" y="49.5" width="345" height="25"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Equipment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05u-vh-S8M">
-                                                            <rect key="frame" x="10" y="5" width="121" height="21"/>
+                                                            <rect key="frame" x="10" y="2.5" width="121" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="EF8-aw-IrF">
-                                                            <rect key="frame" x="310" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="310" y="1" width="30" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="gPa-WY-h7c"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="WRV-T5-4xF">
-                                                            <rect key="frame" x="275" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="275" y="1" width="30" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="uER-F8-23h"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="y5s-fA-mkG">
-                                                            <rect key="frame" x="240" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="240" y="1" width="30" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Gor-YK-ddh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="X9i-MK-Dyr">
-                                                            <rect key="frame" x="205" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="205" y="1" width="30" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="zBT-bK-V6R"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="WDm-vD-2LT">
-                                                            <rect key="frame" x="170" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="170" y="1" width="30" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="WDA-fP-CF8"/>
                                                             </constraints>
@@ -327,41 +312,41 @@
                                                         <constraint firstItem="X9i-MK-Dyr" firstAttribute="centerY" secondItem="y5s-fA-mkG" secondAttribute="centerY" id="zkD-M8-BGn"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4j-JB-s1A">
-                                                    <rect key="frame" x="10" y="142" width="345" height="30.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4j-JB-s1A" userLabel="NeighborhoodView">
+                                                    <rect key="frame" x="10" y="84.5" width="345" height="25"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neighborhood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-zK-B3s">
-                                                            <rect key="frame" x="10" y="5" width="110" height="21"/>
+                                                            <rect key="frame" x="10" y="2" width="110" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="8RT-ew-QId">
-                                                            <rect key="frame" x="310" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="310" y="1" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="ehS-20-Dhw"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="D58-Lf-hNm">
-                                                            <rect key="frame" x="275" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="275" y="1" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="X69-xa-mtb"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="ehC-gK-QpV">
-                                                            <rect key="frame" x="240" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="240" y="1" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="q5P-H6-eLs"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="L8w-tj-jsR">
-                                                            <rect key="frame" x="205" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="205" y="1" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="h6o-I8-ijQ"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="eK4-qt-YdQ">
-                                                            <rect key="frame" x="170" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="170" y="1" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="hgC-zR-ZYs"/>
                                                             </constraints>
@@ -388,41 +373,41 @@
                                                         <constraint firstItem="eK4-qt-YdQ" firstAttribute="centerY" secondItem="L8w-tj-jsR" secondAttribute="centerY" id="yOo-hT-wCT"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4G-dg-nIC">
-                                                    <rect key="frame" x="10" y="182.5" width="345" height="30.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4G-dg-nIC" userLabel="OverallEnjoymentView">
+                                                    <rect key="frame" x="10" y="119.5" width="345" height="25"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Enjoyment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YP4-Ld-LMh">
-                                                            <rect key="frame" x="10" y="4" width="139" height="21"/>
+                                                            <rect key="frame" x="10" y="2" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="RSp-Ui-dVI">
-                                                            <rect key="frame" x="310" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="310" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Yny-yR-Hen"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="gxQ-94-DKe">
-                                                            <rect key="frame" x="275" y="2" width="30" height="27"/>
+                                                            <rect key="frame" x="275" y="1.5" width="30" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="FFH-WP-Jjj"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="ubU-0c-V5a">
-                                                            <rect key="frame" x="240" y="2" width="30" height="27"/>
+                                                            <rect key="frame" x="240" y="1.5" width="30" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="cAl-Mm-bfT"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="Zwz-77-53V">
-                                                            <rect key="frame" x="205" y="2" width="30" height="27"/>
+                                                            <rect key="frame" x="205" y="1.5" width="30" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="88k-O7-zht"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="XmY-ql-yz0">
-                                                            <rect key="frame" x="170" y="2" width="30" height="27"/>
+                                                            <rect key="frame" x="170" y="1.5" width="30" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="uNh-jm-vbI"/>
                                                             </constraints>
@@ -449,41 +434,41 @@
                                                         <constraint firstItem="gxQ-94-DKe" firstAttribute="centerY" secondItem="RSp-Ui-dVI" secondAttribute="centerY" id="xbE-RO-SmX"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEZ-iG-Lxh">
-                                                    <rect key="frame" x="10" y="223" width="345" height="30.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEZ-iG-Lxh" userLabel="LikelinessToReturnView">
+                                                    <rect key="frame" x="10" y="154.5" width="345" height="25"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likeliness To Return" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hp-ew-bvB">
-                                                            <rect key="frame" x="10" y="5" width="153" height="21"/>
+                                                            <rect key="frame" x="10" y="1.5" width="153" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="pca-tV-Xnd">
-                                                            <rect key="frame" x="310" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="310" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="yG1-45-8lf"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="Udg-ib-LdT">
-                                                            <rect key="frame" x="275" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="275" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="jQX-GP-Y2z"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="zku-he-M6k">
-                                                            <rect key="frame" x="240" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="240" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="NZb-jN-sE9"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="vUF-TT-fos">
-                                                            <rect key="frame" x="205" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="205" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="3kT-3d-7Dh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parkaholic_Star_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="EUf-1e-sts">
-                                                            <rect key="frame" x="170" y="1" width="30" height="29"/>
+                                                            <rect key="frame" x="170" y="0.0" width="30" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="fEw-8w-1qt"/>
                                                             </constraints>
@@ -513,29 +498,25 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="j4j-JB-s1A" firstAttribute="width" secondItem="eXw-Me-6aT" secondAttribute="width" id="75h-me-K0o"/>
-                                                <constraint firstItem="XpC-Xj-Gdj" firstAttribute="top" secondItem="CA0-9f-qkE" secondAttribute="top" constant="15" id="7Xa-NJ-uK8"/>
                                                 <constraint firstItem="MmZ-wk-TTx" firstAttribute="leading" secondItem="CA0-9f-qkE" secondAttribute="leading" constant="10" id="7tt-S1-RcU"/>
                                                 <constraint firstItem="sEZ-iG-Lxh" firstAttribute="width" secondItem="o4G-dg-nIC" secondAttribute="width" id="9pG-FC-b2d"/>
                                                 <constraint firstItem="eXw-Me-6aT" firstAttribute="centerX" secondItem="MmZ-wk-TTx" secondAttribute="centerX" id="ENg-Kj-kgG"/>
+                                                <constraint firstItem="sEZ-iG-Lxh" firstAttribute="height" secondItem="o4G-dg-nIC" secondAttribute="height" id="GLI-y9-wc7"/>
                                                 <constraint firstItem="o4G-dg-nIC" firstAttribute="width" secondItem="j4j-JB-s1A" secondAttribute="width" id="IiY-aY-SOx"/>
-                                                <constraint firstAttribute="trailing" secondItem="XpC-Xj-Gdj" secondAttribute="trailing" constant="45" id="KYD-tt-aZH"/>
                                                 <constraint firstItem="eXw-Me-6aT" firstAttribute="width" secondItem="MmZ-wk-TTx" secondAttribute="width" id="QRE-5O-bPv"/>
-                                                <constraint firstItem="o4G-dg-nIC" firstAttribute="height" secondItem="j4j-JB-s1A" secondAttribute="height" id="T7F-8p-qPH"/>
+                                                <constraint firstItem="j4j-JB-s1A" firstAttribute="height" secondItem="eXw-Me-6aT" secondAttribute="height" id="SkG-b5-Agk"/>
                                                 <constraint firstItem="j4j-JB-s1A" firstAttribute="top" secondItem="eXw-Me-6aT" secondAttribute="bottom" constant="10" id="TZ6-Ob-pYJ"/>
-                                                <constraint firstItem="eXw-Me-6aT" firstAttribute="height" secondItem="MmZ-wk-TTx" secondAttribute="height" id="XiE-0t-D2j"/>
-                                                <constraint firstItem="j4j-JB-s1A" firstAttribute="height" secondItem="eXw-Me-6aT" secondAttribute="height" id="Xme-4P-XVi"/>
-                                                <constraint firstItem="sEZ-iG-Lxh" firstAttribute="height" secondItem="o4G-dg-nIC" secondAttribute="height" id="Ywh-Qh-Nn4"/>
+                                                <constraint firstItem="MmZ-wk-TTx" firstAttribute="top" secondItem="CA0-9f-qkE" secondAttribute="top" constant="15" id="ZAM-Zx-h0j"/>
                                                 <constraint firstAttribute="trailing" secondItem="MmZ-wk-TTx" secondAttribute="trailing" constant="10" id="Zho-Sd-c2K"/>
-                                                <constraint firstAttribute="bottom" secondItem="sEZ-iG-Lxh" secondAttribute="bottom" constant="20" id="c5t-n0-ZzF"/>
-                                                <constraint firstItem="MmZ-wk-TTx" firstAttribute="top" secondItem="XpC-Xj-Gdj" secondAttribute="bottom" constant="15" id="e4f-gR-i53"/>
-                                                <constraint firstItem="MmZ-wk-TTx" firstAttribute="height" secondItem="XpC-Xj-Gdj" secondAttribute="height" id="nXt-7Y-j8H"/>
+                                                <constraint firstAttribute="bottom" secondItem="sEZ-iG-Lxh" secondAttribute="bottom" constant="15" id="bW1-qh-Izw"/>
+                                                <constraint firstItem="o4G-dg-nIC" firstAttribute="height" secondItem="j4j-JB-s1A" secondAttribute="height" id="nc0-NT-fEN"/>
                                                 <constraint firstItem="eXw-Me-6aT" firstAttribute="top" secondItem="MmZ-wk-TTx" secondAttribute="bottom" constant="10" id="okY-u8-Cc9"/>
                                                 <constraint firstItem="j4j-JB-s1A" firstAttribute="centerX" secondItem="eXw-Me-6aT" secondAttribute="centerX" id="qjA-Mz-Fvd"/>
                                                 <constraint firstItem="sEZ-iG-Lxh" firstAttribute="top" secondItem="o4G-dg-nIC" secondAttribute="bottom" constant="10" id="spY-xq-NgJ"/>
                                                 <constraint firstItem="o4G-dg-nIC" firstAttribute="top" secondItem="j4j-JB-s1A" secondAttribute="bottom" constant="10" id="uqT-hi-k9t"/>
                                                 <constraint firstItem="o4G-dg-nIC" firstAttribute="centerX" secondItem="j4j-JB-s1A" secondAttribute="centerX" id="vzM-f5-6N5"/>
                                                 <constraint firstItem="sEZ-iG-Lxh" firstAttribute="centerX" secondItem="o4G-dg-nIC" secondAttribute="centerX" id="wTV-hr-MUx"/>
-                                                <constraint firstItem="XpC-Xj-Gdj" firstAttribute="leading" secondItem="CA0-9f-qkE" secondAttribute="leading" constant="5" id="zaL-Yw-Y9Q"/>
+                                                <constraint firstItem="eXw-Me-6aT" firstAttribute="height" secondItem="MmZ-wk-TTx" secondAttribute="height" id="yUZ-SU-Cgp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -564,6 +545,56 @@
                                             <outlet property="pQStar3" destination="izJ-5X-FHV" id="FDm-wn-3mx"/>
                                             <outlet property="pQStar4" destination="Qu8-8I-A0j" id="rdg-dd-nh1"/>
                                             <outlet property="pQStar5" destination="aAs-k3-2kU" id="nW4-fk-Ova"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCommentsCell" rowHeight="170" id="aTw-Bb-I7o" customClass="userComments_TableViewCell" customModule="Park_aholic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="223" width="365" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTw-Bb-I7o" id="6Hx-xJ-Hjy">
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="169.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yj-cd-Juc">
+                                                    <rect key="frame" x="10" y="15" width="290" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLe-Sr-I74">
+                                                            <rect key="frame" x="10" y="1.5" width="70.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="uLe-Sr-I74" firstAttribute="leading" secondItem="2yj-cd-Juc" secondAttribute="leading" constant="10" id="Mea-EQ-B2D"/>
+                                                        <constraint firstItem="uLe-Sr-I74" firstAttribute="centerY" secondItem="2yj-cd-Juc" secondAttribute="centerY" id="UnM-1S-wNF"/>
+                                                        <constraint firstAttribute="height" constant="20" id="W8f-Rx-ygU"/>
+                                                    </constraints>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-8U-slU">
+                                                    <rect key="frame" x="10" y="40" width="290" height="124.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="124.5" id="mXb-7R-LQD"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iu5-8U-slU" firstAttribute="centerX" secondItem="2yj-cd-Juc" secondAttribute="centerX" id="K7N-rP-xZW"/>
+                                                <constraint firstAttribute="trailing" secondItem="2yj-cd-Juc" secondAttribute="trailing" constant="65" id="LL5-bG-Jt6"/>
+                                                <constraint firstItem="iu5-8U-slU" firstAttribute="top" secondItem="2yj-cd-Juc" secondAttribute="bottom" constant="5" id="QM7-A6-4tZ"/>
+                                                <constraint firstItem="2yj-cd-Juc" firstAttribute="leading" secondItem="6Hx-xJ-Hjy" secondAttribute="leading" constant="10" id="WxH-X2-sAO"/>
+                                                <constraint firstItem="2yj-cd-Juc" firstAttribute="top" secondItem="6Hx-xJ-Hjy" secondAttribute="top" constant="15" id="bph-yK-mfC"/>
+                                                <constraint firstItem="iu5-8U-slU" firstAttribute="width" secondItem="2yj-cd-Juc" secondAttribute="width" id="gkz-Y2-fgh"/>
+                                                <constraint firstAttribute="bottom" secondItem="iu5-8U-slU" secondAttribute="bottom" constant="5" id="zSP-Gm-8a6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textView" destination="iu5-8U-slU" id="S81-ml-n61"/>
+                                            <outlet property="usernameLbl" destination="uLe-Sr-I74" id="c6i-zg-WbH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

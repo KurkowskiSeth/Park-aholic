@@ -91,28 +91,51 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
     }
     
     @IBAction func pushToDatabase(_ sender: UIBarButtonItem) {
-        parkData?.parkQualityTotalScore = (parkData?.parkQualityTotalScore)! + parkQualityRating
+        
+        //Update park rating averages in database
+        parkData?.parkQualityTotalRatings = (parkData?.parkQualityTotalRatings)! + parkQualityRating
         parkData?.parkQualityTotalReviews = (parkData?.parkQualityTotalReviews)! + 1
-        ref.child("parks").child((parkData?.id)!).child("1").child("averages").child("parkQuality").setValue(["totalRatings": parkData?.parkQualityTotalScore, "totalReviews": parkData?.parkQualityTotalReviews])
+        ref.child("parks").child((parkData?.id)!).child("averages").child("parkQuality").setValue(["totalRatings": parkData?.parkQualityTotalRatings, "totalReviews": parkData?.parkQualityTotalReviews])
         
-        parkData?.parkEquipmentTotalScore = (parkData?.parkEquipmentTotalScore)! + parkEquipmentRating
+        parkData?.parkEquipmentTotalRatings = (parkData?.parkEquipmentTotalRatings)! + parkEquipmentRating
         parkData?.parkEquipmentTotalReviews = (parkData?.parkEquipmentTotalReviews)! + 1
-        ref.child("parks").child((parkData?.id)!).child("1").child("averages").child("parkEquipment").setValue(["totalRatings": parkData?.parkEquipmentTotalScore, "totalReviews": parkData?.parkEquipmentTotalReviews])
+        ref.child("parks").child((parkData?.id)!).child("averages").child("parkEquipment").setValue(["totalRatings": parkData?.parkEquipmentTotalRatings, "totalReviews": parkData?.parkEquipmentTotalReviews])
         
-        parkData?.neighborhoodTotalScore = (parkData?.neighborhoodTotalScore)! + neighborhoodRating
+        parkData?.neighborhoodTotalRatings = (parkData?.neighborhoodTotalRatings)! + neighborhoodRating
         parkData?.neighborhoodTotalReviews = (parkData?.neighborhoodTotalReviews)! + 1
-        ref.child("parks").child((parkData?.id)!).child("1").child("averages").child("neighborhood").setValue(["totalRatings": parkData?.neighborhoodTotalScore, "totalReviews": parkData?.neighborhoodTotalReviews])
+        ref.child("parks").child((parkData?.id)!).child("averages").child("neighborhood").setValue(["totalRatings": parkData?.neighborhoodTotalRatings, "totalReviews": parkData?.neighborhoodTotalReviews])
         
-        parkData?.overallEnjoymentTotalScore = (parkData?.overallEnjoymentTotalScore)! + overallEnjoymentRating
+        parkData?.overallEnjoymentTotalRatings = (parkData?.overallEnjoymentTotalRatings)! + overallEnjoymentRating
         parkData?.overallEnjoymentTotalReviews = (parkData?.overallEnjoymentTotalReviews)! + 1
-    ref.child("parks").child((parkData?.id)!).child("1").child("averages").child("overallEnjoyment").setValue(["totalRatings": parkData?.overallEnjoymentTotalScore, "totalReviews": parkData?.overallEnjoymentTotalReviews])
+    ref.child("parks").child((parkData?.id)!).child("averages").child("overallEnjoyment").setValue(["totalRatings": parkData?.overallEnjoymentTotalRatings, "totalReviews": parkData?.overallEnjoymentTotalReviews])
         
-        parkData?.likelinessToReturnTotalScore = (parkData?.likelinessToReturnTotalScore)! + likelinessToReturnRating
+        parkData?.likelinessToReturnTotalRatings = (parkData?.likelinessToReturnTotalRatings)! + likelinessToReturnRating
         parkData?.likelinessToReturnTotalReviews = (parkData?.likelinessToReturnTotalReviews)! + 1
-    ref.child("parks").child((parkData?.id)!).child("1").child("averages").child("likelinessToReturn").setValue(["totalRatings": parkData?.likelinessToReturnTotalScore, "totalReviews": parkData?.likelinessToReturnTotalReviews])
-
-        //Go back to detail view
-        self.dismiss(animated: true, completion: nil)
+    ref.child("parks").child((parkData?.id)!).child("averages").child("likelinessToReturn").setValue(["totalRatings": parkData?.likelinessToReturnTotalRatings, "totalReviews": parkData?.likelinessToReturnTotalReviews])
+        
+        //Check to see if comment is empty if it isn't then ask for a user name then add that to the database
+        if commentTF.text != "" {
+            let alert = UIAlertController(title: "Please enter a name to display", message: nil, preferredStyle: .alert)
+            
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Enter a Display Name"
+                
+                let okayBtn = UIAlertAction(title: "Done", style: .default, handler: { (_) in
+                    //Check textField
+                    if textField.text != "" {
+                        //Save to database
+                        let newCommentDict = ["username": textField.text, "text": self.commentTF.text]
+                        self.parkData?.commentsArray.append(newCommentDict as! [String : String])
+                        self.ref.child("parks").child((self.parkData?.id)!).child("comments").setValue(self.parkData?.commentsArray)
+                    }
+                    alert.dismiss(animated: true, completion: nil)
+                    //Go back to detail view
+                    self.dismiss(animated: true, completion: nil)
+                })
+                alert.addAction(okayBtn)
+            })
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK: Rank button function

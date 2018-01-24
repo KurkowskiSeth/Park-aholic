@@ -30,6 +30,7 @@
 		C0BC26C32017BD510031E9F2 /* ParkDetailTableView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */; };
 		C0BC26C52017BF2A0031E9F2 /* averageRatings_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */; };
 		C0BC26C72017EBE00031E9F2 /* HomeViewFirebase_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */; };
+		C0BC26C920184E9C0031E9F2 /* userComments_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC26C820184E9C0031E9F2 /* userComments_TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkDetailTableView_EXT.swift; sourceTree = "<group>"; };
 		C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averageRatings_TableViewCell.swift; sourceTree = "<group>"; };
 		C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFirebase_EXT.swift; sourceTree = "<group>"; };
+		C0BC26C820184E9C0031E9F2 /* userComments_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userComments_TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				C07FF2A82016DE750000125E /* ParkDetail_ViewController.swift */,
 				C0BC26C22017BD510031E9F2 /* ParkDetailTableView_EXT.swift */,
 				C0BC26C42017BF2A0031E9F2 /* averageRatings_TableViewCell.swift */,
+				C0BC26C820184E9C0031E9F2 /* userComments_TableViewCell.swift */,
 			);
 			path = "Park Detail View";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				C07FF2B12016DFD00000125E /* UserRatings_EXT.swift in Sources */,
 				C0BC26C32017BD510031E9F2 /* ParkDetailTableView_EXT.swift in Sources */,
 				C0BC26C52017BF2A0031E9F2 /* averageRatings_TableViewCell.swift in Sources */,
+				C0BC26C920184E9C0031E9F2 /* userComments_TableViewCell.swift in Sources */,
 				C09D77EC2016844200E76FCB /* AppDelegate.swift in Sources */,
 				C07FF2AD2016DEFD0000125E /* AnimatedViewClass.swift in Sources */,
 				C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */,

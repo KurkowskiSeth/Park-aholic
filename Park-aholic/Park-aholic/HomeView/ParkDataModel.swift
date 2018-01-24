@@ -16,16 +16,17 @@ class ParkDataModel {
     let state: String
     let latitude: Double
     let longitude: Double
-    var parkQualityTotalScore: Int!
+    var parkQualityTotalRatings: Int!
     var parkQualityTotalReviews: Int!
-    var parkEquipmentTotalScore: Int!
+    var parkEquipmentTotalRatings: Int!
     var parkEquipmentTotalReviews: Int!
-    var neighborhoodTotalScore: Int!
+    var neighborhoodTotalRatings: Int!
     var neighborhoodTotalReviews: Int!
-    var overallEnjoymentTotalScore: Int!
+    var overallEnjoymentTotalRatings: Int!
     var overallEnjoymentTotalReviews: Int!
-    var likelinessToReturnTotalScore: Int!
+    var likelinessToReturnTotalRatings: Int!
     var likelinessToReturnTotalReviews: Int!
+    var commentsArray: [[String: String]]!
     
     //Computed Properties
     var cityState: String {
@@ -35,35 +36,35 @@ class ParkDataModel {
         if parkQualityTotalReviews == 0 {
             return 0
         } else {
-            return parkQualityTotalScore/parkQualityTotalReviews
+            return parkQualityTotalRatings/parkQualityTotalReviews
         }
     }
     var averageParkEquipmentRating: Int {
         if parkEquipmentTotalReviews == 0 {
             return 0
         } else {
-            return parkEquipmentTotalScore/parkEquipmentTotalReviews
+            return parkEquipmentTotalRatings/parkEquipmentTotalReviews
         }
     }
     var averageNeighborhoodRating: Int {
         if neighborhoodTotalReviews == 0 {
             return 0
         } else {
-            return neighborhoodTotalScore/neighborhoodTotalReviews
+            return neighborhoodTotalRatings/neighborhoodTotalReviews
         }
     }
     var averageOverallEnjoymentRating: Int {
         if overallEnjoymentTotalReviews == 0 {
             return 0
         } else {
-            return overallEnjoymentTotalScore/overallEnjoymentTotalReviews
+            return overallEnjoymentTotalRatings/overallEnjoymentTotalReviews
         }
     }
     var averageLikelinessToReturnRating: Int {
         if likelinessToReturnTotalReviews == 0 {
             return 0
         } else {
-            return likelinessToReturnTotalScore/likelinessToReturnTotalReviews
+            return likelinessToReturnTotalRatings/likelinessToReturnTotalReviews
         }
     }
     var overallAverageRating: Int {
@@ -71,22 +72,23 @@ class ParkDataModel {
     }
     
     //inits
-    init(parkID: String, name: String, city: String, state: String, latitude: Double, longitude: Double, parkQualityTotalScore: Int = 0, parkQualityTotalReviews: Int = 0, parkEquipmentTotalScore: Int = 0, parkEquipmentTotalReviews: Int = 0, neighborhoodTotalScore: Int = 0, neighborhoodTotalReviews: Int = 0, overallEnjoymentTotalScore: Int = 0, overallEnjoymentTotalReviews: Int = 0, likelinessToReturnTotalScore: Int = 0, likelinessToReturnTotalReviews: Int = 0) {
+    init(parkID: String, name: String, city: String, state: String, latitude: Double, longitude: Double, parkQualityTotalRatings: Int = 0, parkQualityTotalReviews: Int = 0, parkEquipmentTotalRatings: Int = 0, parkEquipmentTotalReviews: Int = 0, neighborhoodTotalRatings: Int = 0, neighborhoodTotalReviews: Int = 0, overallEnjoymentTotalRatings: Int = 0, overallEnjoymentTotalReviews: Int = 0, likelinessToReturnTotalRatings: Int = 0, likelinessToReturnTotalReviews: Int = 0, commentsDict: [[String: String]] = [[:]]) {
         self.id = parkID
         self.name = name
         self.city = city
         self.state = state
         self.latitude = latitude
         self.longitude = longitude
-        self.parkQualityTotalScore = parkQualityTotalScore
+        self.parkQualityTotalRatings = parkQualityTotalRatings
         self.parkQualityTotalReviews = parkQualityTotalReviews
-        self.parkEquipmentTotalScore = parkEquipmentTotalScore
+        self.parkEquipmentTotalRatings = parkEquipmentTotalRatings
         self.parkEquipmentTotalReviews = parkEquipmentTotalReviews
-        self.neighborhoodTotalScore = neighborhoodTotalScore
+        self.neighborhoodTotalRatings = neighborhoodTotalRatings
         self.neighborhoodTotalReviews = neighborhoodTotalReviews
-        self.overallEnjoymentTotalScore = overallEnjoymentTotalScore
+        self.overallEnjoymentTotalRatings = overallEnjoymentTotalRatings
         self.overallEnjoymentTotalReviews = overallEnjoymentTotalReviews
-        self.likelinessToReturnTotalScore = likelinessToReturnTotalScore
+        self.likelinessToReturnTotalRatings = likelinessToReturnTotalRatings
         self.likelinessToReturnTotalReviews = likelinessToReturnTotalReviews
+        self.commentsArray = commentsDict
     }
 }
