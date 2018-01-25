@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -607,31 +606,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnU-p1-IRv">
                                 <rect key="frame" x="5" y="69" width="365" height="66.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-00-bvc">
-                                        <rect key="frame" x="5" y="15.5" width="298.5" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-00-bvc">
+                                        <rect key="frame" x="113" y="15.5" width="139.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8j-xa-SqF">
-                                        <rect key="frame" x="308.5" y="10" width="46.5" height="46.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="x8j-xa-SqF" secondAttribute="height" multiplier="1:1" id="3aZ-nX-tXG"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="parkaholic_Star_Empty"/>
-                                        <connections>
-                                            <action selector="addParkToFavorites:" destination="G9w-1b-vRD" eventType="touchUpInside" id="rSL-NH-w53"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="x8j-xa-SqF" firstAttribute="leading" secondItem="PcQ-00-bvc" secondAttribute="trailing" constant="5" id="Ed8-WV-VCq"/>
-                                    <constraint firstItem="x8j-xa-SqF" firstAttribute="top" secondItem="RnU-p1-IRv" secondAttribute="top" constant="10" id="pLG-Lb-4kJ"/>
-                                    <constraint firstItem="PcQ-00-bvc" firstAttribute="leading" secondItem="RnU-p1-IRv" secondAttribute="leading" constant="5" id="qxx-hq-paP"/>
-                                    <constraint firstAttribute="bottom" secondItem="x8j-xa-SqF" secondAttribute="bottom" constant="10" id="tCJ-oa-inO"/>
+                                    <constraint firstItem="PcQ-00-bvc" firstAttribute="centerX" secondItem="RnU-p1-IRv" secondAttribute="centerX" id="51V-DL-6qB"/>
                                     <constraint firstItem="PcQ-00-bvc" firstAttribute="centerY" secondItem="RnU-p1-IRv" secondAttribute="centerY" id="vH0-Bt-v33"/>
-                                    <constraint firstAttribute="trailing" secondItem="x8j-xa-SqF" secondAttribute="trailing" constant="10" id="vc2-lJ-NTg"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -653,7 +638,6 @@
                     </view>
                     <connections>
                         <outlet property="composeBtn" destination="g5M-M1-95M" id="FGn-px-uK9"/>
-                        <outlet property="favoriteBtn" destination="x8j-xa-SqF" id="1Bn-Tq-UdI"/>
                         <outlet property="parkNameLbl" destination="PcQ-00-bvc" id="sYE-Aw-5LY"/>
                         <outlet property="tableView" destination="6G4-Mn-asn" id="EmH-0q-s3F"/>
                     </connections>
