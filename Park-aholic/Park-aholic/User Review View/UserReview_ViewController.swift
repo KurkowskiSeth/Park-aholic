@@ -57,11 +57,12 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
     let userTagsContentView = AnimatedViewClass()
     var tagsCollectionView: UICollectionView!
     var parkData: ParkDataModel? = nil
+    var timer: Timer? = nil
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         ref = Database.database().reference()
         
         //Create ui for ratings
@@ -71,19 +72,24 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
     
     @IBAction func nextView(_ sender: UIButton) {
         //Check sender's tag to see which view to animate off and which to animate on
-        if sender.tag == 1 {
             createCommentUI()
             userRatingsContentView.leaveScreen()
             transitionRatingsToComments()
-            sender.tag = 2
-        } else if sender.tag == 2 {
-            userRatingsContentView.isHidden = true
-            createTagsUI()
-            userCommentContentView.leaveScreen()
-            transitionCommentsToTags()
-            sender.isEnabled = false
+            timerSetUp()
+            sender.isHidden = true
             submtBtn.isEnabled = true
+    }
+    
+    func timerSetUp() {
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerCallBack), userInfo: nil, repeats: false)
         }
+    }
+    
+    @objc func timerCallBack() {
+        userRatingsContentView.isHidden = true
+        timer?.invalidate()
+        timer = nil
     }
     
     @IBAction func dissmissController(_ sender: UIBarButtonItem) {

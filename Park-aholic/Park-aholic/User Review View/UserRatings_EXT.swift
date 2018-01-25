@@ -15,11 +15,12 @@ extension UserReview_ViewController {
         //Create Content view
         userRatingsContentView.tag = 111
         userRatingsContentView.translatesAutoresizingMaskIntoConstraints = false
-        userRatingsContentView.backgroundColor = UIColor.green
+        userRatingsContentView.backgroundColor = UIColor(displayP3Red: 0, green: 204, blue: 0, alpha: 0.45)
+        userRatingsContentView.layer.cornerRadius = 25
         
         view.addSubview(userRatingsContentView)
         
-        userRatingsContentView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 5).isActive = true
+        userRatingsContentView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 10).isActive = true
         userRatingsContentView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -30).isActive = true
         userRatingsContentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
         userRatingsContentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
@@ -29,7 +30,6 @@ extension UserReview_ViewController {
         //Create header for ratings
         let ratingHeader = UIView()
         ratingHeader.translatesAutoresizingMaskIntoConstraints = false
-        ratingHeader.backgroundColor = UIColor.green
         
         userRatingsContentView.addSubview(ratingHeader)
         
@@ -50,7 +50,6 @@ extension UserReview_ViewController {
         //MARK: Park Quality
         let parkQualityRatingView = UIView()
         parkQualityRatingView.translatesAutoresizingMaskIntoConstraints = false
-        parkQualityRatingView.backgroundColor = UIColor.red
         
         userRatingsContentView.addSubview(parkQualityRatingView)
         
@@ -73,7 +72,6 @@ extension UserReview_ViewController {
         //MARK: Park equipment
         let parkEquipmentRatingView = UIView()
         parkEquipmentRatingView.translatesAutoresizingMaskIntoConstraints = false
-        parkEquipmentRatingView.backgroundColor = UIColor.red
         
         userRatingsContentView.addSubview(parkEquipmentRatingView)
         
@@ -96,7 +94,6 @@ extension UserReview_ViewController {
         //MARK: Neighborhood
         let neighborhoodRatingView = UIView()
         neighborhoodRatingView.translatesAutoresizingMaskIntoConstraints = false
-        neighborhoodRatingView.backgroundColor = UIColor.red
         
         userRatingsContentView.addSubview(neighborhoodRatingView)
         
@@ -119,7 +116,6 @@ extension UserReview_ViewController {
         //MARK: Overall Enjoyment
         let overallEnjoymentRatingView = UIView()
         overallEnjoymentRatingView.translatesAutoresizingMaskIntoConstraints = false
-        overallEnjoymentRatingView.backgroundColor = UIColor.red
         
         userRatingsContentView.addSubview(overallEnjoymentRatingView)
         
@@ -142,7 +138,6 @@ extension UserReview_ViewController {
         //MARK: Likeliness to Return
         let likelinessToReturnRatingView = UIView()
         likelinessToReturnRatingView.translatesAutoresizingMaskIntoConstraints = false
-        likelinessToReturnRatingView.backgroundColor = UIColor.red
         
         userRatingsContentView.addSubview(likelinessToReturnRatingView)
         

@@ -14,11 +14,12 @@ extension UserReview_ViewController {
         //Create animated first view
         userCommentContentView.tag = 2
         userCommentContentView.translatesAutoresizingMaskIntoConstraints = false
-        userCommentContentView.backgroundColor = UIColor.purple
+        userCommentContentView.backgroundColor = UIColor(displayP3Red: 0, green: 204, blue: 0, alpha: 0.45)
+        userCommentContentView.layer.cornerRadius = 25
         
         view.addSubview(userCommentContentView)
         
-        userCommentContentView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 5).isActive = true
+        userCommentContentView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 10).isActive = true
         userCommentContentView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -30).isActive = true
         userCommentContentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
         userCommentContentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
@@ -26,7 +27,6 @@ extension UserReview_ViewController {
         //Create header for comments
         let commentHeader = UIView()
         commentHeader.translatesAutoresizingMaskIntoConstraints = false
-        commentHeader.backgroundColor = UIColor.green
         
         userCommentContentView.addSubview(commentHeader)
         

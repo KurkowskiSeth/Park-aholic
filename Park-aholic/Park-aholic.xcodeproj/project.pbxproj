@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		017C67CD44F9AE6166E5E973 /* Pods_Park_aholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E5479CDC70DE3B51D754C8 /* Pods_Park_aholic.framework */; };
 		C01229862019D1E000C90FC2 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01229852019D1E000C90FC2 /* InternetConnection.swift */; };
+		C0122988201A1E6700C90FC2 /* HamburgerMenu_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0122987201A1E6700C90FC2 /* HamburgerMenu_EXT.swift */; };
 		C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */; };
 		C07FF2A12016BFE60000125E /* ParkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A02016BFE60000125E /* ParkDataModel.swift */; };
 		C07FF2A32016C1670000125E /* ParkTableView_EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */; };
@@ -40,6 +41,7 @@
 		7226C7D839AD2C03A4D78CB2 /* Pods-Park-aholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park-aholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Park-aholic/Pods-Park-aholic.debug.xcconfig"; sourceTree = "<group>"; };
 		C01229802019AC0200C90FC2 /* Park-aholic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Park-aholic.entitlements"; sourceTree = "<group>"; };
 		C01229852019D1E000C90FC2 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
+		C0122987201A1E6700C90FC2 /* HamburgerMenu_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenu_EXT.swift; sourceTree = "<group>"; };
 		C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiPull_Ext.swift; sourceTree = "<group>"; };
 		C07FF2A02016BFE60000125E /* ParkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
 		C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableView_EXT.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				C07FF2A42016C1EA0000125E /* ParkCellTableViewCell.swift */,
 				C0BC26C62017EBE00031E9F2 /* HomeViewFirebase_EXT.swift */,
 				C01229852019D1E000C90FC2 /* InternetConnection.swift */,
+				C0122987201A1E6700C90FC2 /* HamburgerMenu_EXT.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -333,11 +336,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Park-aholic/Pods-Park-aholic-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0122988201A1E6700C90FC2 /* HamburgerMenu_EXT.swift in Sources */,
 				C07FF29F2016BF9F0000125E /* apiPull_Ext.swift in Sources */,
 				C0BC26C72017EBE00031E9F2 /* HomeViewFirebase_EXT.swift in Sources */,
 				C07FF2AB2016DEA20000125E /* UserReview_ViewController.swift in Sources */,
