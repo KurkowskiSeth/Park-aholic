@@ -8,4 +8,5 @@ target 'Park-aholic' do
   # Pods for Park-aholic
 pod ‘Firebase/Core’
 pod ‘FirebaseUI’
+pod ‘Alamofire’, ‘~> 4.5’
 end
