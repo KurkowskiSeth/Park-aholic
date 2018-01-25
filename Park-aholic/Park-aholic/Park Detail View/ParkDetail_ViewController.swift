@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -14,8 +15,15 @@ class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var parkNameLbl: UILabel!
     @IBOutlet weak var composeBtn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
-    //Properties
+    //Core Data Properties
+    internal let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    internal var managedContext: NSManagedObjectContext!
+    internal var entityDescription: NSEntityDescription!
+    internal var favorites: NSManagedObject!
+    
+    //General Properties
     var parkData: ParkDataModel? = nil
     var isLoggedIn = false
     
@@ -30,12 +38,58 @@ class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableV
         default:
             composeBtn.isEnabled = false
         }
+        
+        //Set up core data
+        managedContext = appDelegate.managedObjectContext
+        entityDescription = NSEntityDescription.entity(forEntityName: "Favorites", in: managedContext)
+        
+        //Check to see if park is added to favorites
+        if checkForParkInCD() {
+            favoriteBtn.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+            favoriteBtn.isUserInteractionEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
+    @IBAction func addParkToFavorites(_ sender: UIButton) {
+        //Save this park's average ratings to core data
+        favorites = NSEntityDescription.insertNewObject(forEntityName: "Favorites", into: managedContext)
+        favorites.setValue(parkData?.name, forKey: "parkName")
+        favorites.setValue(parkData?.averageParkQualityRating, forKey: "parkQualityAverage")
+        favorites.setValue(parkData?.averageParkEquipmentRating, forKey: "parkEquipmentAverage")
+        favorites.setValue(parkData?.averageNeighborhoodRating, forKey: "neighborhoodAverage")
+        favorites.setValue(parkData?.averageOverallEnjoymentRating, forKey: "overallEnjoymentAverage")
+        favorites.setValue(parkData?.averageLikelinessToReturnRating, forKey: "likelinessToReturnAverage")
+        appDelegate.saveContext()
+        
+        sender.setImage(#imageLiteral(resourceName: "parkaholic_Star_Filled"), for: .normal)
+        sender.isEnabled = false
+        
+    }
+    
+    func checkForParkInCD() -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorites")
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+                
+                for obj in results {
+                    favorites = obj
+                    
+                    if parkData?.name == obj.value(forKey: "parkName") as? String{
+                        return true
+                    }
+                    
+                }
+        }
+        catch {
+            assertionFailure()
+        }
+        return false
+    }
     
     @IBAction func dismissController(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
