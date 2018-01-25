@@ -37,6 +37,7 @@
 		02E5479CDC70DE3B51D754C8 /* Pods_Park_aholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Park_aholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C90AA26B23B6261035630C3 /* Pods-Park-aholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park-aholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Park-aholic/Pods-Park-aholic.release.xcconfig"; sourceTree = "<group>"; };
 		7226C7D839AD2C03A4D78CB2 /* Pods-Park-aholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park-aholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Park-aholic/Pods-Park-aholic.debug.xcconfig"; sourceTree = "<group>"; };
+		C01229802019AC0200C90FC2 /* Park-aholic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Park-aholic.entitlements"; sourceTree = "<group>"; };
 		C07FF29E2016BF9F0000125E /* apiPull_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiPull_Ext.swift; sourceTree = "<group>"; };
 		C07FF2A02016BFE60000125E /* ParkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkDataModel.swift; sourceTree = "<group>"; };
 		C07FF2A22016C1670000125E /* ParkTableView_EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkTableView_EXT.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		C09D77EA2016844200E76FCB /* Park-aholic */ = {
 			isa = PBXGroup;
 			children = (
+				C01229802019AC0200C90FC2 /* Park-aholic.entitlements */,
 				C09D7804201684D400E76FCB /* HomeView */,
 				C07FF2A62016DE260000125E /* Park Detail View */,
 				C07FF2A72016DE3B0000125E /* User Review View */,
@@ -212,6 +214,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 0;
 							};
@@ -503,6 +508,7 @@
 			baseConfigurationReference = 7226C7D839AD2C03A4D78CB2 /* Pods-Park-aholic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Park-aholic/Park-aholic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZL2U9TNTMV;
 				INFOPLIST_FILE = "Park-aholic/Info.plist";
@@ -519,6 +525,7 @@
 			baseConfigurationReference = 5C90AA26B23B6261035630C3 /* Pods-Park-aholic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Park-aholic/Park-aholic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZL2U9TNTMV;
 				INFOPLIST_FILE = "Park-aholic/Info.plist";

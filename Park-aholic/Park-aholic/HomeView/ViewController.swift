@@ -11,6 +11,8 @@ import MapKit
 import Firebase
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
+import FirebaseFacebookAuthUI
+import FirebaseTwitterAuthUI
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FUIAuthDelegate {
     
@@ -50,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         auth = Auth.auth()
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
-        authUI?.providers = [FUIGoogleAuth()]
+        authUI?.providers = [FUIGoogleAuth(), FUIFacebookAuth(), FUITwitterAuth()]
         ref = Database.database().reference()
         
         //Check to see if the user is already logged in

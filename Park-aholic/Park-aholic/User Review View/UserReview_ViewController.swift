@@ -135,6 +135,8 @@ class UserReview_ViewController: UIViewController, UITextFieldDelegate, UICollec
                 alert.addAction(okayBtn)
             })
             present(alert, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

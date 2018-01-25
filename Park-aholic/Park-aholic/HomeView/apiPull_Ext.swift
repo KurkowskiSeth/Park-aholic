@@ -88,6 +88,11 @@ extension ViewController {
                                         //add to park data array
                                         self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalRatings: parkQualityTotalRatings, parkQualityTotalReviews: parkQualityTotalReviews, parkEquipmentTotalRatings: parkEquipmentTotalRatings, parkEquipmentTotalReviews: parkEquipmentTotalReviews, neighborhoodTotalRatings: neighborhoodTotalRatings, neighborhoodTotalReviews: neighborhoodTotalReviews, overallEnjoymentTotalRatings: overallEnjoymentTotalRatings, overallEnjoymentTotalReviews: overallEnjoymentTotalReviews, likelinessToReturnTotalRatings: likelinessToReturnTotalRatings, likelinessToReturnTotalReviews: likelinessToReturnTotalReviews, commentsDict: commentsArray))
                                         
+                                        DispatchQueue.main.async {
+                                            self.addParksToMap()
+                                            self.tableView.reloadData()
+                                        }
+                                        
                                     }, withCancel: { (error) in
                                         print(error.localizedDescription)
                                     })

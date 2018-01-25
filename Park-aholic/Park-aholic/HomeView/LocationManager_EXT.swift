@@ -41,15 +41,7 @@ extension ViewController {
     func updateMap(location: CLLocation) {
         //Region of mapView
         mapView.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), MKCoordinateSpanMake(0, 0)), animated: true)
-        
-        //create annotation on mapView
-        let locationPinCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let annotation = MKPointAnnotation()
-        annotation.title = "You Are Here!"
-        annotation.coordinate = locationPinCoord
-        
-        mapView.addAnnotation(annotation)
-        mapView.showAnnotations(mapView.annotations, animated: true)
+        mapView.showsUserLocation = true
     }
     
 }
