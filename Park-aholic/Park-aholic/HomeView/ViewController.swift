@@ -13,6 +13,7 @@ import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 import FirebaseFacebookAuthUI
 import FirebaseTwitterAuthUI
+import CoreData
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FUIAuthDelegate {
     
@@ -34,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //General Properties
     var parkArray = [ParkDataModel]()
+    var online = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         //Request user's location
         requestAuthorization()
-        
         
         //Set up firebase authorization and database
         auth = Auth.auth()
@@ -72,6 +73,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.addParksToMap()
             self.tableView.reloadData()
         }
+        
+        //Check user's network connection
+        let conn = Reachability().isConnectedToNetwork()
+        if conn == false {
+            let alert = UIAlertController(title: "No Connection", message: "Check you internet conection.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default, handler: { (_) in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            //Load data from favorites
+            pullFromCD()
+            online = false
+            
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +122,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    //MARK: Core data fetch
+    func pullFromCD() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorites")
+        do {
+            let favParks = try managedContext.fetch(fetchRequest)
+            for park in favParks {
+                guard let name = park.value(forKey: "name") as? String,
+                let city = park.value(forKey: "city") as? String,
+                let state = park.value(forKey: "state") as? String,
+                let pqAvg = park.value(forKey: "pqAverage") as? Int,
+                let peAvg = park.value(forKey: "peAverage") as? Int,
+                let nAvg = park.value(forKey: "nAverage") as? Int,
+                let oeAvg = park.value(forKey: "oeAverage") as? Int,
+                let lrAvg = park.value(forKey: "lrAverage") as? Int
+                    else{print("error loading data from core data"); return}
+                parkArray.append(ParkDataModel(parkID: "0", name: name, city: city, state: state, latitude: 0, longitude: 0, parkQualityTotalRatings: pqAvg, parkQualityTotalReviews: 1, parkEquipmentTotalRatings: peAvg, parkEquipmentTotalReviews: 1, neighborhoodTotalRatings: nAvg, neighborhoodTotalReviews: 1, overallEnjoymentTotalRatings: oeAvg, overallEnjoymentTotalReviews: 1, likelinessToReturnTotalRatings: lrAvg, likelinessToReturnTotalReviews: 1))
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     //MARK: Implement the required protocol method for FIRAuthDelegate
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         guard let authError = error else {return}
@@ -125,7 +167,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? ParkDetail_ViewController
         destination?.parkData = parkArray[(tableView.indexPathForSelectedRow?.row)!]
-        destination?.isLoggedIn = isLoggedIn
+        if online {
+            destination?.isLoggedIn = isLoggedIn
+
+        } else {
+            destination?.isLoggedIn = false
+        }
     }
     
 }

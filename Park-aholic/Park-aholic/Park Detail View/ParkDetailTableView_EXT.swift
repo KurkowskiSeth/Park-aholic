@@ -24,7 +24,7 @@ extension ParkDetail_ViewController {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Average Reviews"
+            return "Average Reviews and Images"
         } else {
             return "Comments"
         }
