@@ -20,7 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var signInOrOutBtn: UIBarButtonItem!
+    @IBOutlet weak var menuBtn: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     //Firebase Properties
     fileprivate(set) var auth: Auth?
@@ -36,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //General Properties
     var parkArray = [ParkDataModel]()
     var online = true
+    let signOutInBtn = UIButton(type: .system)
+    let hamburgerMenuContentView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +63,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         authStateListenerHandle = auth?.addStateDidChangeListener({ (auth, user) in
             if user != nil {
                 self.isLoggedIn = true
-                self.signInOrOutBtn.title = "Sign Out"
-                self.signInOrOutBtn.tag = 1
+                self.signOutInBtn.setTitle("Sign Out", for: .normal)
+                self.signOutInBtn.tag = 1
             } else {
                 self.isLoggedIn = false
-                self.signInOrOutBtn.title = "Sign In"
-                self.signInOrOutBtn.tag = 0
+                self.signOutInBtn.setTitle("Sign In", for: .normal)
+                self.signOutInBtn.tag = 0
             }
         })
         
@@ -88,7 +91,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             online = false
             
         }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,26 +101,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         tableView.reloadData()
     }
     
-    @IBAction func signInOrOutBtnTouched(_ sender: UIBarButtonItem) {
-        switch sender.tag {
+    @IBAction func menuBtnTouched(_ sender: UIBarButtonItem) {
+        if sender.tag == 0 {
+            menuBtn.title = "Done"
+            createHambugerMenu()
+            mapView.isUserInteractionEnabled = false
+            tableView.isUserInteractionEnabled = false
+            sender.tag = 1
+        } else {
+            hamburgerMenuContentView.removeFromSuperview()
+            sender.tag = 0
+            menuBtn.title = "Menu"
+            mapView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+        }
+    }
+    
+    @objc func signInOrSignOut() {
+        switch signOutInBtn.tag {
         case 0:
             //Present firebaseUI log in view controller
             let authViewController = authUI?.authViewController()
             self.present(authViewController!, animated: true, completion: nil)
             if isLoggedIn == true {
-                sender.tag = 1
-                sender.title = "Sign Out"
+                signOutInBtn.tag = 1
+                signOutInBtn.setTitle("Sign Out", for: .normal)
             }
         case 1:
             do {
                 try auth?.signOut()
-                sender.tag = 0
-                sender.title = "Sign In"
+                signOutInBtn.tag = 0
+                signOutInBtn.setTitle("Sign In", for: .normal)
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
         default:
             print("Error in sign in or out switch")
+        }
+    }
+    
+    @objc func popFavoritesView() {
+        if let favController = storyboard?.instantiateViewController(withIdentifier: "favsViewController") {
+            self.present(favController, animated: true, completion: nil)
         }
     }
     

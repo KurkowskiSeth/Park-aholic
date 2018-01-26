@@ -19,14 +19,13 @@ extension ViewController {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         if let validURL = URL(string: "https://api.foursquare.com/v2/venues/search/?ll=\(recentLocation.coordinate.latitude),\(recentLocation.coordinate.longitude)&categoryId=4bf58dd8d48988d163941735&client_id=\(clientID)&client_secret=\(clientSecret)&v=20180111") {
-//            print(validURL)
             let task = session.dataTask(with: validURL, completionHandler: { (data, urlResponse, error) in
                 if error != nil {return}
                 
                 guard let response = urlResponse as? HTTPURLResponse,
                     response.statusCode == 200,
                     let data = data
-                    else {print("error"); return}
+                    else {print("error in urlresponse guard"); return}
                 
                 do {
                     if let jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as Any? {
@@ -75,19 +74,22 @@ extension ViewController {
                                         let overallEnjoymentTotalReviews = overallEnjoyment["totalReviews"] as? Int,
                                         let likelinessToReturn = averages["likelinessToReturn"] as? NSDictionary,
                                         let likelinessToReturnTotalRatings = likelinessToReturn["totalRatings"] as? Int,
-                                        let likelinessToReturnTotalReviews = likelinessToReturn["totalReviews"] as? Int,
-                                        let comments = value["comments"] as? NSArray
+                                        let likelinessToReturnTotalReviews = likelinessToReturn["totalReviews"] as? Int
                                             else {print("Error in findParks database pull guard statement"); return}
                                         
-                                        var commentsArray = [[String: String]]()
-                                        for comment in comments {
-                                            let comm = comment as? [String: String]
-                                            commentsArray.append(comm!)
+                                        if let comments = value["comments"] as? NSArray {
+                                            var commentsArray = [[String: String]]()
+                                            for comment in comments {
+                                                if let comm = comment as? [String: String] {
+                                                    commentsArray.append(comm)
+                                                }
+                                            }
+                                            //add to park data array with comments
+                                            self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalRatings: parkQualityTotalRatings, parkQualityTotalReviews: parkQualityTotalReviews, parkEquipmentTotalRatings: parkEquipmentTotalRatings, parkEquipmentTotalReviews: parkEquipmentTotalReviews, neighborhoodTotalRatings: neighborhoodTotalRatings, neighborhoodTotalReviews: neighborhoodTotalReviews, overallEnjoymentTotalRatings: overallEnjoymentTotalRatings, overallEnjoymentTotalReviews: overallEnjoymentTotalReviews, likelinessToReturnTotalRatings: likelinessToReturnTotalRatings, likelinessToReturnTotalReviews: likelinessToReturnTotalReviews, commentsDict: commentsArray))
+                                        } else {
+                                        //add to park data array without comments
+                                        self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalRatings: parkQualityTotalRatings, parkQualityTotalReviews: parkQualityTotalReviews, parkEquipmentTotalRatings: parkEquipmentTotalRatings, parkEquipmentTotalReviews: parkEquipmentTotalReviews, neighborhoodTotalRatings: neighborhoodTotalRatings, neighborhoodTotalReviews: neighborhoodTotalReviews, overallEnjoymentTotalRatings: overallEnjoymentTotalRatings, overallEnjoymentTotalReviews: overallEnjoymentTotalReviews, likelinessToReturnTotalRatings: likelinessToReturnTotalRatings, likelinessToReturnTotalReviews: likelinessToReturnTotalReviews))
                                         }
-                                        
-                                        //add to park data array
-                                        self.parkArray.append(ParkDataModel(parkID: parkID, name: parkName, city: city, state: state, latitude: lat, longitude: lng, parkQualityTotalRatings: parkQualityTotalRatings, parkQualityTotalReviews: parkQualityTotalReviews, parkEquipmentTotalRatings: parkEquipmentTotalRatings, parkEquipmentTotalReviews: parkEquipmentTotalReviews, neighborhoodTotalRatings: neighborhoodTotalRatings, neighborhoodTotalReviews: neighborhoodTotalReviews, overallEnjoymentTotalRatings: overallEnjoymentTotalRatings, overallEnjoymentTotalReviews: overallEnjoymentTotalReviews, likelinessToReturnTotalRatings: likelinessToReturnTotalRatings, likelinessToReturnTotalReviews: likelinessToReturnTotalReviews, commentsDict: commentsArray))
-                                        
                                         DispatchQueue.main.async {
                                             self.addParksToMap()
                                             self.tableView.reloadData()
@@ -118,14 +120,16 @@ extension ViewController {
     
     //Place parks onto map
     func addParksToMap() {
-        for park in parkArray {
-            let pinCoord = CLLocationCoordinate2D(latitude: park.latitude, longitude: park.longitude)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = pinCoord
-            annotation.title = park.name
-            
-            mapView.addAnnotation(annotation)
-            mapView.showAnnotations(mapView.annotations, animated: true)
+        DispatchQueue.main.async {
+            for park in self.parkArray {
+                let pinCoord = CLLocationCoordinate2D(latitude: park.latitude, longitude: park.longitude)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = pinCoord
+                annotation.title = park.name
+                
+                self.mapView.addAnnotation(annotation)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+            }
         }
     }
 }

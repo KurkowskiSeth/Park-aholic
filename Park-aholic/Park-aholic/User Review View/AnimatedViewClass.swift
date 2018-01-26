@@ -17,5 +17,4 @@ class AnimatedViewClass: UIView {
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x - 500, y: self.center.y))
         self.layer.add(animation, forKey: "position")
     }
-    
 }
