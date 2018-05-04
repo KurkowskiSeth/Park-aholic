@@ -12,9 +12,15 @@ You can use the email test@email.com with the password usertest to login and be 
 
 If you wish to see real local parks, make sure you are running the application on a iOS device.
 
-## Known Bugs
+## GitHub Link
+https://github.com/KurkowskiSeth/Park-aholic
 
-* "About" button in pull down menu does not go anywhere.
-* Parks with no comments will have a blank textView under comments section in park detail page.
-* Some parks after adding to favorites will not keep yellow favorite star next to name when returning to that page.
-* There is no way to remove a park from favorites once they have been added.
+## Feature List
+*Login through email, Google, Facebook, and Twitter
+*Gather locations of nearby parks
+*Parks show on map and table view
+*Users can submit reviews of parks.
+*Users can view average ratings of parks and user comments.
+*Users can save parks to device for viewing offline.
+
+
