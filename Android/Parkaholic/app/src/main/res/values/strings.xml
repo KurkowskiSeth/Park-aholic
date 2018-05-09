@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Parkaholic_2.0</string>
+
+    <string name="client_id">ANC3Q4GH3U3RU5F4HBA3MMONZBVEZDWBKTPN10ZD2141NMQZ</string>
+    <string name="client_secret">DHF5B1FLMPUGYU3PIOISW1TZTK0NNA3VIGTNX0JAXCU434J3</string>
+
 </resources>
