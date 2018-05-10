@@ -13,4 +13,5 @@
     <!-- Twitter consumer key and secret -->
     <string name="twitter_consumer_key" translatable="false">y5bqKrkiGnGiFSUEYFJ3CFuxm</string>
     <string name="twitter_consumer_secret" translatable="false">94PaQdVSTOjHIUVOe6qEBigwHOxx1hVliS1Z5Y8ASrQPhYAyGR</string>
+    <string name="search">search</string>
 </resources>

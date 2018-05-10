@@ -18,7 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     private static final int REQUEST_LOCATION_PERMISSIONS = 0x01001;
     private static final int RC_SIGN_IN = 123;
+    private static final int RC_GOOGLE_SEARCH = 321;
 
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -54,10 +59,17 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     private LocationManager mLocationManager;
     private Location mLastKnownLocation;
+
     private Double mLatitude;
     private Double mLongitude;
+    private Double mUserLatitude;
+    private Double mUserLongitude;
 
-    ArrayList<Venue> mVenues;
+    private boolean isSearching = false;
+
+    ArrayList<Venue> mVenuesLocal;
+    ArrayList<Venue> mVenuesSearch;
+    ArrayList<Venue> mVenuesCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +83,11 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
             mLastKnownLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if (mLastKnownLocation != null) {
-                mLatitude = mLastKnownLocation.getLatitude();
-                Log.i(tag, "Lat: " + Double.toString(mLatitude));
-                mLongitude = mLastKnownLocation.getLongitude();
-                Log.i(tag, "Long: " + Double.toString(mLongitude));
+                mUserLatitude = mLastKnownLocation.getLatitude();
+                mLatitude = mUserLatitude;
+
+                mUserLongitude = mLastKnownLocation.getLongitude();
+                mLongitude = mUserLongitude;
             }
         }
 
@@ -87,9 +100,17 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (mUser != null) {
-            getMenuInflater().inflate(R.menu.activity_home_signed_in, menu);
+            if (isSearching) {
+                getMenuInflater().inflate(R.menu.activity_home_signed_in_search, menu);
+            } else {
+                getMenuInflater().inflate(R.menu.activity_home_signed_in, menu);
+            }
         } else {
-            getMenuInflater().inflate(R.menu.activity_home_signed_out, menu);
+            if (isSearching) {
+                getMenuInflater().inflate(R.menu.activity_home_signed_out_search, menu);
+            }else {
+                getMenuInflater().inflate(R.menu.activity_home_signed_out, menu);
+            }
         }
         return super.onCreateOptionsMenu(menu);
     }
@@ -116,6 +137,28 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
                             invalidateOptionsMenu();
                         }
                     });
+        } else if (item.getItemId() == R.id.search_parks) {
+            // Launch Search fragment.
+            try {
+                AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder()
+                        .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).build();
+
+                Intent searchIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                        .setFilter(autocompleteFilter).build(this);
+
+                startActivityForResult(searchIntent, RC_GOOGLE_SEARCH);
+            } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                Log.i(tag, e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+        } else if (item.getItemId() == R.id.cancel_search_parks) {
+            mVenuesCurrent = mVenuesLocal;
+            mLatitude = mUserLatitude;
+            mLongitude = mUserLongitude;
+            loadMap();
+
+            isSearching = false;
+            invalidateOptionsMenu();
         }
 
         return super.onOptionsItemSelected(item);
@@ -169,21 +212,23 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     // VenueTaskCallbacks
     @Override
     public void taskStart() {
-        Log.i(tag, "taskStart");
     }
 
     @Override
     public void taskFinish(ArrayList<Venue> venues) {
-        Log.i(tag, "taskFinish");
-        mVenues = venues;
+        if (isSearching) {
+            mVenuesSearch = venues;
+        } else {
+            mVenuesLocal = venues;
+        }
+        mVenuesCurrent = venues;
 
         for (Venue v : venues) {
             Log.i(tag, v.toString());
         }
 
         //Load map fragment
-        ParkMapFragment fragment = ParkMapFragment.newInstance(mLatitude, mLongitude, mVenues);
-        getFragmentManager().beginTransaction().replace(R.id.frag_container, fragment, ParkMapFragment.tag).commit();
+        loadMap();
     }
 
     @Override
@@ -198,12 +243,26 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
             if (resultCode == RESULT_OK) {
                 mUser = FirebaseAuth.getInstance().getCurrentUser();
                 invalidateOptionsMenu();
             }
+        } else if (requestCode == RC_GOOGLE_SEARCH) {
+            if (resultCode == RESULT_OK) {
+                isSearching = true;
+                invalidateOptionsMenu();
+
+                // Get place object and call api
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                mLatitude = place.getLatLng().latitude;
+                mLongitude = place.getLatLng().longitude;
+                callApiPullTask(mLatitude, mLongitude);
+            }
         }
+    }
+
+    private void loadMap() {
+        ParkMapFragment fragment = ParkMapFragment.newInstance(mLatitude, mLongitude, mVenuesCurrent);
+        getFragmentManager().beginTransaction().replace(R.id.frag_container, fragment, ParkMapFragment.tag).commit();
     }
 }

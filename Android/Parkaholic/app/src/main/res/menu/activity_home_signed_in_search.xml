@@ -2,12 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/sign_in"
+        android:id="@+id/user_account"
         android:title="@string/common_signin_button_text"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_account_circle_white_24dp"/>
     <item
-        android:id="@+id/search_parks"
+        android:id="@+id/cancel_search_parks"
         android:title="@string/search"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/baseline_search_white_24dp" />
+        android:icon="@drawable/baseline_clear_white_24dp" />
 </menu>
