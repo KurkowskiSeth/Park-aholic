@@ -3,4 +3,14 @@
 
     <string name="client_id">ANC3Q4GH3U3RU5F4HBA3MMONZBVEZDWBKTPN10ZD2141NMQZ</string>
     <string name="client_secret">DHF5B1FLMPUGYU3PIOISW1TZTK0NNA3VIGTNX0JAXCU434J3</string>
+
+    <string name="sign_in">Sign In</string>
+
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">1576571435756762</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1576571435756762</string>
+
+    <!-- Twitter consumer key and secret -->
+    <string name="twitter_consumer_key" translatable="false">y5bqKrkiGnGiFSUEYFJ3CFuxm</string>
+    <string name="twitter_consumer_secret" translatable="false">94PaQdVSTOjHIUVOe6qEBigwHOxx1hVliS1Z5Y8ASrQPhYAyGR</string>
 </resources>

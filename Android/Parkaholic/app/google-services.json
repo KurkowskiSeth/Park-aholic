@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "26320005005",
+    "firebase_url": "https://park-a-holic-v2-1525227378286.firebaseio.com",
+    "project_id": "park-a-holic-v2-1525227378286",
+    "storage_bucket": "park-a-holic-v2-1525227378286.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26320005005:android:df9f4287030ab1fd",
+        "android_client_info": {
+          "package_name": "com.sethkurkowski.android.parkaholic_20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26320005005-matelj6bcsulh89bg9gmrdjph3tnoirf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sethkurkowski.android.parkaholic_20",
+            "certificate_hash": "27621b5138440a9542e8d51a6ab0841f3a74de0b"
+          }
+        },
+        {
+          "client_id": "26320005005-kp3hp13d73cu3516ok20ctk2tl0v1trh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuHkDvvc_YP8Zbi_o7esAWutWB2UMBVQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26320005005-kp3hp13d73cu3516ok20ctk2tl0v1trh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

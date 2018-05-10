@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
 
-    public static final String tag = "TAG";
+    public static final String tag = "VenueAsyncTask.TAG";
 
     private final VenueTaskCallback venueTaskCallback;
 
@@ -109,10 +109,16 @@ public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
                 // Get data from location node
                 JSONObject location = venue.getJSONObject("location");
 
+                // Get and save park latitude value
+                Double lat = location.getDouble("lat");
+
+                // get and save park longitude value
+                Double lng = location.getDouble("lng");
+
                 // Get and save city name
                 String city = location.getString("city");
 
-                venueArrayList.add(new Venue(id, name, city, cityUrl));
+                venueArrayList.add(new Venue(id, name, city, cityUrl, lat, lng));
             }
         } catch (Exception e) {
             Log.i(tag, e.getLocalizedMessage());
