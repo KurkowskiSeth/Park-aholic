@@ -17,7 +17,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.maps.model.LatLng;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueAsyncTask;
 
@@ -62,23 +61,27 @@ public class ApiHelper {
             if (mgr != null) {
                 Location lastKnown;
                 if (isConnected(_context)) {
+                    Log.i(HomeActivity.tag, String.valueOf(isConnected(_context)));
                     // User network if user is connected to the internet.
                     lastKnown = mgr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 } else {
                     // User the device's gps because there is no internet connection.
                     lastKnown = mgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 }
-
+                Log.i(HomeActivity.tag, "before null check");
                 if (lastKnown != null) {
+                    Log.i(HomeActivity.tag, "null check");
                     mUserLatitude = lastKnown.getLatitude();
                     mUserLongitude = lastKnown.getLongitude();
                 }
 
                 if (mUserLatitude != null && mUserLongitude != null) {
+                    Log.i(HomeActivity.tag, "another null check");
                     LatLng latLng = new LatLng(mUserLatitude, mUserLongitude);
                     // Take user location and construct an api url.
                     makeCallToApi(latLng, _context, false);
                 }
+                Log.i(HomeActivity.tag, "after null check");
             }
         } else {
             // Alert user that they don't have the ability to access location.
