@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
 
-    public static final String tag = "VenueAsyncTask.TAG";
+    public static final String tag = "Parkaholic.TAG";
 
     private final VenueTaskCallback venueTaskCallback;
 
@@ -42,8 +42,6 @@ public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
         if (strings[0] == null) {
             return null;
         }
-
-        Log.i(tag, strings[0]);
 
         // Download Venues
         URL url;

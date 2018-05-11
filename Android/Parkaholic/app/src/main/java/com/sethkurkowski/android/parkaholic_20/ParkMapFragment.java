@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, GoogleMap.InfoWindowAdapter, GoogleMap.OnInfoWindowClickListener {
 
-    public static final String tag = "ParkMapFragment.TAG";
+    public static final String tag = "Parkaholic.TAG";
     private static String ARGS_LAT = "ARGS_LAT";
     private static String ARGS_LONG = "ARGS_LONG";
     private static String ARGS_VENUES = "ARGS_VENUES";
@@ -45,7 +45,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
     }
 
     public static ParkMapFragment newInstance(Double _lat, Double _long, ArrayList<Venue> _venues) {
-        Log.i(tag, "newInstance");
+        Log.i(HomeActivity.tag, "newInstance");
 
         Bundle args = new Bundle();
 
@@ -60,7 +60,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
 
     @Override
     public void onAttach(Context context) {
-        Log.i(tag, "onAttach");
+        Log.i(HomeActivity.tag, "onAttach");
         super.onAttach(context);
 
         if (context instanceof MapFragCallback) {
@@ -71,7 +71,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
 
     @Override
     public void onActivityCreated(Bundle bundle) {
-        Log.i(tag, "onActivityCreated");
+        Log.i(HomeActivity.tag, "onActivityCreated");
         super.onActivityCreated(bundle);
 
         getMapAsync(this);
@@ -79,7 +79,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Log.i(tag, "onMapReady");
+        Log.i(HomeActivity.tag, "onMapReady");
         mMap = googleMap;
         mMap.setInfoWindowAdapter(this);
         mMap.setOnInfoWindowClickListener(this);
@@ -97,7 +97,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
     }
 
     private void addParkMarkers() {
-        Log.i(tag, "addParkMarkers");
+        Log.i(HomeActivity.tag, "addParkMarkers");
         if (mMap == null) {
             return;
         }
@@ -122,7 +122,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
     }
 
     private void zoomInMap() {
-        Log.i(tag, "zoomInMap");
+        Log.i(HomeActivity.tag, "zoomInMap");
         if (mMap == null) {
             return;
         }
@@ -144,7 +144,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
 
     @Override
     public View getInfoContents(Marker marker) {
-        Log.i(tag, "getInfoContents");
+        Log.i(HomeActivity.tag, "getInfoContents");
         View contents = LayoutInflater.from(mContext).inflate(R.layout.info_window, null);
 
         ((TextView) contents.findViewById(R.id.title)).setText(marker.getTitle());
@@ -155,7 +155,7 @@ public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, 
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Log.i(tag, "onInfoWindowClick");
+        Log.i(HomeActivity.tag, "onInfoWindowClick");
         mapFragCallback.parkSelected((Venue) marker.getTag());
     }
 }

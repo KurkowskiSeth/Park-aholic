@@ -20,9 +20,11 @@ import android.view.MenuItem;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,13 +40,12 @@ import java.util.List;
 // May 8, 2018
 // HomeActivity.java
 
-public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.VenueTaskCallback, ParkMapFragment.MapFragCallback {
+public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.VenueTaskCallback, ParkMapFragment.MapFragCallback, ApiHelper.ApiHelperCallback {
 
-    public static final String tag = "HomeActivity.TAG";
+    public static final String tag = "Parkaholic.TAG";
 
     public static final String EXTRA_PARK = "EXTRA_PARK";
 
-    private static final int REQUEST_LOCATION_PERMISSIONS = 0x01001;
     private static final int RC_SIGN_IN = 123;
     private static final int RC_GOOGLE_SEARCH = 321;
 
@@ -57,13 +58,8 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     private FirebaseUser mUser;
 
-    private LocationManager mLocationManager;
-    private Location mLastKnownLocation;
-
     private Double mLatitude;
     private Double mLongitude;
-    private Double mUserLatitude;
-    private Double mUserLongitude;
 
     private boolean isSearching = false;
 
@@ -77,28 +73,13 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Get user's current location.
-        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (checkLocationPermission()) {
-            mLastKnownLocation = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-            if (mLastKnownLocation != null) {
-                mUserLatitude = mLastKnownLocation.getLatitude();
-                mLatitude = mUserLatitude;
-
-                mUserLongitude = mLastKnownLocation.getLongitude();
-                mLongitude = mUserLongitude;
-            }
-        }
-
-        // Use last known location and get parks based off that.
-        if (mLatitude != null && mLongitude != null) {
-            callApiPullTask(mLatitude, mLongitude);
-        }
+        // Check permissions and pull location
+        ApiHelper.checkLocationPermissions(this, this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.i(HomeActivity.tag, "onCreateOptionsMenu");
         if (mUser != null) {
             if (isSearching) {
                 getMenuInflater().inflate(R.menu.activity_home_signed_in_search, menu);
@@ -117,6 +98,7 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i(HomeActivity.tag, "onOptionsItemSelected");
         if (item.getItemId() == R.id.sign_in) {
             // Start activity to sign user in.
             startActivityForResult(
@@ -153,69 +135,34 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
             }
         } else if (item.getItemId() == R.id.cancel_search_parks) {
             mVenuesCurrent = mVenuesLocal;
-            mLatitude = mUserLatitude;
-            mLongitude = mUserLongitude;
-            loadMap();
-
             isSearching = false;
+
             invalidateOptionsMenu();
+            loadMap();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private Boolean checkLocationPermission() {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.i(HomeActivity.tag, "onRequestPermissionsResult");
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        // Check if user has granted location permissions
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            // Request for user to give app location permissions.
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSIONS);
-
-            // Check one more time to see if user has granted permission if not then return false so the user isn't spammed with request.
-            return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-        }
-    }
-
-    private Boolean isConnected() {
-        ConnectivityManager mgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if (mgr != null) {
-            NetworkInfo info = mgr.getActiveNetworkInfo();
-            if (info != null) {
-                return info.isConnected();
-            }
-        }
-        return false;
-    }
-
-    private void callApiPullTask(Double _lat, Double _long) {
-        Log.i(tag, "callApiPullTask");
-        VenueAsyncTask asyncTask = new VenueAsyncTask(this);
-
-        String clientId = getString(R.string.client_id);
-        String clientSecret = getString(R.string.client_secret);
-        String apiUrl = "https://api.foursquare.com/v2/venues/search/?"
-                + "ll=" + Double.toString(_lat)
-                + "," + Double.toString(_long)
-                + "&categoryId=4bf58dd8d48988d163941735"
-                + "&client_id=" + clientId
-                + "&client_secret=" + clientSecret
-                + "&v=20180111";
-
-        if (isConnected()) {
-            asyncTask.execute(apiUrl);
+        if (!isSearching) {
+            ApiHelper.getUserLocation(this);
         }
     }
 
     // VenueTaskCallbacks
     @Override
     public void taskStart() {
+        Log.i(HomeActivity.tag, "taskStart");
     }
 
     @Override
     public void taskFinish(ArrayList<Venue> venues) {
+        Log.i(HomeActivity.tag, "taskFinish");
         if (isSearching) {
             mVenuesSearch = venues;
         } else {
@@ -223,16 +170,13 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
         }
         mVenuesCurrent = venues;
 
-        for (Venue v : venues) {
-            Log.i(tag, v.toString());
-        }
-
         //Load map fragment
         loadMap();
     }
 
     @Override
     public void parkSelected(Venue venue) {
+        Log.i(HomeActivity.tag, "parkSelected");
         Intent intent = new Intent(this, VenueActivity.class);
         intent.putExtra(EXTRA_PARK, venue);
         startActivity(intent);
@@ -240,6 +184,7 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i(HomeActivity.tag, "onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -254,15 +199,27 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
                 // Get place object and call api
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                mLatitude = place.getLatLng().latitude;
-                mLongitude = place.getLatLng().longitude;
-                callApiPullTask(mLatitude, mLongitude);
+                ApiHelper.makeCallToApi(place.getLatLng(), this, true);
             }
         }
     }
 
     private void loadMap() {
+        Log.i(HomeActivity.tag, "loadMap");
+
+        if (!isSearching) {
+            mLatitude = ApiHelper.mUserLatitude;
+            mLongitude = ApiHelper.mUserLongitude;
+        }
+
         ParkMapFragment fragment = ParkMapFragment.newInstance(mLatitude, mLongitude, mVenuesCurrent);
         getFragmentManager().beginTransaction().replace(R.id.frag_container, fragment, ParkMapFragment.tag).commit();
+    }
+
+    @Override
+    public void setCurrentLocation(LatLng latLng) {
+        Log.i(tag, "setCurrentLocation");
+        mLatitude = latLng.latitude;
+        mLongitude = latLng.longitude;
     }
 }
