@@ -1,11 +1,10 @@
-package com.sethkurkowski.android.parkaholic_20;
+package com.sethkurkowski.android.parkaholic_20.fragments;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +18,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sethkurkowski.android.parkaholic_20.HomeActivity;
+import com.sethkurkowski.android.parkaholic_20.R;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 // Seth Kurkowski

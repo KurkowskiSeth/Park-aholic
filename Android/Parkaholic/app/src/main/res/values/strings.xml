@@ -14,4 +14,13 @@
     <string name="twitter_consumer_key" translatable="false">y5bqKrkiGnGiFSUEYFJ3CFuxm</string>
     <string name="twitter_consumer_secret" translatable="false">94PaQdVSTOjHIUVOe6qEBigwHOxx1hVliS1Z5Y8ASrQPhYAyGR</string>
     <string name="search">search</string>
+    <string name="add_review">Add Review</string>
+    <string name="please_sign_in">Please Sign In</string>
+    <string name="cancel">Cancel</string>
+    <string name="park_quality_question">How would to rate the parks over all quality?</string>
+    <string name="park_equipment_question">How would you rate the parks equipment?</string>
+    <string name="park_neighhorhood_question">How would you rate the park\'s surrounding neighborhood?</string>
+    <string name="park_enjoyment_question">Did you enjoy the park you went to?</string>
+    <string name="park_return_question">Would you return to this park?</string>
+    <string name="leave_comment_please">Leave a comment if you wish.</string>
 </resources>

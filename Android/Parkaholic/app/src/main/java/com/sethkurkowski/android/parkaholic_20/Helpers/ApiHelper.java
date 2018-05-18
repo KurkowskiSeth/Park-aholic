@@ -1,4 +1,4 @@
-package com.sethkurkowski.android.parkaholic_20;
+package com.sethkurkowski.android.parkaholic_20.Helpers;
 
 // Seth Kurkowski
 // May 10, 2018
@@ -18,17 +18,19 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.sethkurkowski.android.parkaholic_20.HomeActivity;
+import com.sethkurkowski.android.parkaholic_20.R;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueAsyncTask;
 
 public class ApiHelper {
 
     private static final int REQUEST_LOCATION_PERMISSIONS = 0x01001;
 
-    static Double mUserLatitude;
-    static Double mUserLongitude;
+    public static Double mUserLatitude;
+    public static Double mUserLongitude;
 
     private static ApiHelperCallback apiHelperCallback;
-    interface ApiHelperCallback {
+    public interface ApiHelperCallback {
         void setCurrentLocation(LatLng latLng);
     }
 
