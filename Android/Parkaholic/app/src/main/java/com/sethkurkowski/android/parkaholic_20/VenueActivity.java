@@ -28,17 +28,6 @@ public class VenueActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
-    private int likelinessToReturnRatings;
-    private int likelinessToReturnReviews;
-    private int neighborhoodRatings;
-    private int neighborhoodReviews;
-    private int overallEnjoymentRatings;
-    private int overallEnjoymentReviews;
-    private int parkEquipmentRatings;
-    private int parkEquipmentReviews;
-    private int parkQualityRatings;
-    private int parkQualityReviews;
-
     boolean isThere = false;
 
     Venue mVenue;
@@ -59,7 +48,6 @@ public class VenueActivity extends AppCompatActivity {
                     getSupportActionBar().setTitle(mVenue.getmName());
                     reference = database.getReference("parks").child((mVenue.getmID()));
                     pullDataFromDatabase();
-                    updateParkInDatabase();
                 }
             }
         }
@@ -166,9 +154,6 @@ public class VenueActivity extends AppCompatActivity {
                     Object data = dataSnapshot.getValue();
                     if (data == null) {
                         addNewParkToDatabase();
-                    } else {
-                        likelinessToReturnRatings = dataSnapshot.child("averages").child("likelinessToReturn").child("totalRatings").getValue(Integer.class);
-                        Log.i(HomeActivity.tag, "Test: " + likelinessToReturnRatings);
                     }
                 }
             }
@@ -177,11 +162,6 @@ public class VenueActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-    }
-
-    private void updateParkInDatabase() {
-        likelinessToReturnRatings += 3;
-        reference.child("averages").child("likelinessToReturn").child("totalRatings").setValue(likelinessToReturnRatings);
     }
 
     private void addNewParkToDatabase() {

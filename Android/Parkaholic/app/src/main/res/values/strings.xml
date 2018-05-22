@@ -23,4 +23,5 @@
     <string name="park_enjoyment_question">Did you enjoy the park you went to?</string>
     <string name="park_return_question">Would you return to this park?</string>
     <string name="leave_comment_please">Leave a comment if you wish.</string>
+    <string name="next">Next</string>
 </resources>
