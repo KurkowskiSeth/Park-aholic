@@ -14,16 +14,19 @@ public class Venue implements Serializable {
     private String mUrl;
     private Double mLat;
     private Double mLong;
-//    private String[] mImages;
+    private String phoneNumber;
+    private String address;
 
 
-    public Venue(String mID, String mName, String mCity, String mUrl, Double mLat, Double mLong) {
+    public Venue(String mID, String mName, String mCity, String mUrl, Double mLat, Double mLong, String phoneNumber, String address) {
         this.mID = mID;
         this.mName = mName;
         this.mCity = mCity;
         this.mUrl = mUrl;
         this.mLat = mLat;
         this.mLong = mLong;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public String getmID() {
@@ -48,6 +51,14 @@ public class Venue implements Serializable {
 
     public Double getmLong() {
         return mLong;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     @Override

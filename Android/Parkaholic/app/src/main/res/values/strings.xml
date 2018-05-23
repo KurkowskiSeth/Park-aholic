@@ -24,4 +24,9 @@
     <string name="park_return_question">Would you return to this park?</string>
     <string name="leave_comment_please">Leave a comment if you wish.</string>
     <string name="next">Next</string>
+    <string name="likeliness_to_return">Likeliness To Return</string>
+    <string name="overall_enjoyment">Overall Enjoyment</string>
+    <string name="neighborhood">Neighborhood</string>
+    <string name="equipment">Equipment</string>
+    <string name="quality">Quality</string>
 </resources>

@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueAsyncTask;
+import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
 
 public class ApiHelper {
 
@@ -117,6 +118,27 @@ public class ApiHelper {
 
             if (isConnected(_context)) {
                 asyncTask.execute(apiUrl);
+            }
+        }
+    }
+
+    public static void pullParkImages(Context context, String id) {
+        Log.i(HomeActivity.tag, "pullParkImages");
+
+        if (context instanceof VenueImageAsyncTask.VenueImageTaskCallback) {
+            VenueImageAsyncTask asyncTask = new VenueImageAsyncTask((VenueImageAsyncTask.VenueImageTaskCallback) context, context);
+
+            // Construct api url
+            String clientId = context.getString(R.string.client_id);
+            String clientSecret = context.getString(R.string.client_secret);
+            String imageApiUrl = "https://api.foursquare.com/v2/venues/"
+                    + id
+                    + "/photos?&client_id=" + clientId
+                    + "&client_secret=" + clientSecret
+                    +"&v=20180111";
+
+            if (isConnected(context)) {
+                asyncTask.execute(imageApiUrl);
             }
         }
     }

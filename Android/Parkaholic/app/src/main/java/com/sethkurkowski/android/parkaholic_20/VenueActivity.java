@@ -15,20 +15,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sethkurkowski.android.parkaholic_20.Helpers.ApiHelper;
 import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseAuthHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
+import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
+import com.sethkurkowski.android.parkaholic_20.fragments.ImageFlipperFragment;
+import com.sethkurkowski.android.parkaholic_20.fragments.ParkRatingsFragment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class VenueActivity extends AppCompatActivity {
+public class VenueActivity extends AppCompatActivity implements VenueImageAsyncTask.VenueImageTaskCallback {
 
     public static final String EXTRA_PARK = "EXTRA_PARK";
 
     private FirebaseAuthHelper firebaseAuthHelper;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
-
-    boolean isThere = false;
 
     Venue mVenue;
 
@@ -44,6 +47,8 @@ public class VenueActivity extends AppCompatActivity {
             mVenue = (Venue) getIntent().getExtras().get(HomeActivity.EXTRA_PARK);
 
             if (mVenue != null) {
+                ApiHelper.pullParkImages(this, mVenue.getmID());
+
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle(mVenue.getmName());
                     reference = database.getReference("parks").child((mVenue.getmID()));
@@ -62,48 +67,45 @@ public class VenueActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                TextView q = findViewById(R.id.pqTV);
-                TextView e = findViewById(R.id.peTV);
-                TextView n = findViewById(R.id.nTV);
-                TextView ej = findViewById(R.id.oeTV);
-                TextView r = findViewById(R.id.lrTV);
-
                 Integer qRa = dataSnapshot.child("parkQuality").child("totalRatings").getValue(Integer.class);
                 Integer qRe = dataSnapshot.child("parkQuality").child("totalReviews").getValue(Integer.class);
                 if (qRa != null && qRe != null && qRe != 0) {
-                    q.setText(String.valueOf(qRa / qRe));
+                    Log.i(HomeActivity.tag, String.valueOf(qRa) + " : " + String.valueOf(qRe));
                 }
 
                 Integer eRa = dataSnapshot.child("parkEquipment").child("totalRatings").getValue(Integer.class);
                 Integer eRe = dataSnapshot.child("parkEquipment").child("totalReviews").getValue(Integer.class);
                 if (eRa != null && eRe != null && eRe != 0) {
-                    e.setText(String.valueOf(eRa / eRe));
+                    Log.i(HomeActivity.tag, String.valueOf(eRa) + " : " + String.valueOf(eRe));
                 }
 
                 Integer nRa = dataSnapshot.child("neighborhood").child("totalRatings").getValue(Integer.class);
                 Integer nRe = dataSnapshot.child("neighborhood").child("totalReviews").getValue(Integer.class);
                 if (nRa != null && nRe != null && nRe != 0) {
-                    n.setText(String.valueOf(nRa / nRe));
+                    Log.i(HomeActivity.tag, String.valueOf(nRa) + " : " + String.valueOf(nRe));
                 }
 
                 Integer ejRa = dataSnapshot.child("overallEnjoyment").child("totalRatings").getValue(Integer.class);
                 Integer ejRe = dataSnapshot.child("overallEnjoyment").child("totalReviews").getValue(Integer.class);
                 if (ejRa != null && ejRe != null && ejRe != 0) {
-                    ej.setText(String.valueOf(ejRa / ejRe));
+                    Log.i(HomeActivity.tag, String.valueOf(ejRa) + " : " + String.valueOf(ejRe));
                 }
 
                 Integer rRa = dataSnapshot.child("likelinessToReturn").child("totalRatings").getValue(Integer.class);
                 Integer rRe = dataSnapshot.child("likelinessToReturn").child("totalReviews").getValue(Integer.class);
                 if (rRa != null && rRe != null && rRe != 0) {
-                    r.setText(String.valueOf(rRa / rRe));
+                    Log.i(HomeActivity.tag, String.valueOf(rRa) + " : " + String.valueOf(rRe));
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i(HomeActivity.tag, "WAT");
             }
         });
+
+        // MARK: Load Ratings Fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.park_ratings_frag_container, ParkRatingsFragment.newInstance(mVenue.getmID())).commit();
     }
 
     @Override
@@ -157,7 +159,6 @@ public class VenueActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -183,5 +184,18 @@ public class VenueActivity extends AppCompatActivity {
         newPark.put("averages", newAverages);
 
         reference.setValue(newPark);
+    }
+
+    @Override
+    public void taskStart() {
+        Log.i(HomeActivity.tag, "imageTaskStart");
+    }
+
+    @Override
+    public void taskFinish(ArrayList<String> imageUris) {
+        Log.i(HomeActivity.tag, "imageTaskFinish");
+
+        // MARK: Load Park Images Fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.park_image_frag_container, ImageFlipperFragment.newInstance(imageUris)).commit();
     }
 }

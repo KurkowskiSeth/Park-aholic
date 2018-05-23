@@ -98,6 +98,13 @@ public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
                 // Get and save park name
                 String name = venue.getString("name");
 
+                // Get Phone number from contact object
+                JSONObject contact = venue.getJSONObject("contact");
+                String phone = null;
+                if (contact.has("formattedPhone")) {
+                    phone = contact.getString("formattedPhone");
+                }
+
                 // Get and save city url
                 String cityUrl = "";
                 if (venue.has("url")) {
@@ -116,7 +123,19 @@ public class VenueAsyncTask extends AsyncTask<String, Void, ArrayList<Venue>> {
                 // Get and save city name
                 String city = location.getString("city");
 
-                venueArrayList.add(new Venue(id, name, city, cityUrl, lat, lng));
+                // Get formatted address
+                String address = null;
+                if (location.has("formattedAddress")) {
+                    JSONArray formattedAddress = location.getJSONArray("formattedAddress");
+                    StringBuilder addressBuilder = new StringBuilder();
+                    for (int j = 0; j < formattedAddress.length(); j++) {
+                        String s = formattedAddress.getString(j);
+                        addressBuilder.append(s).append("\n");
+                    }
+                    address = addressBuilder.toString();
+                }
+
+                venueArrayList.add(new Venue(id, name, city, cityUrl, lat, lng, phone, address));
             }
         } catch (Exception e) {
             Log.i(tag, e.getLocalizedMessage());
