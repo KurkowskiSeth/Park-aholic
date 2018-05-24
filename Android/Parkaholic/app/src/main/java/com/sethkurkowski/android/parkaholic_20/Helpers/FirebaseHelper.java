@@ -4,31 +4,37 @@ package com.sethkurkowski.android.parkaholic_20.Helpers;
 // May 19, 2018
 // FirebaseDatabaseHelper.java
 
-import android.content.Context;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
 
-public class FirebaseDatabaseHelper {
+import java.util.ArrayList;
+import java.util.List;
 
-    private static FirebaseDatabaseHelper firebaseDatabaseHelper = null;
+public class FirebaseHelper {
+
+    private static FirebaseHelper firebaseHelper = null;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference reference;
 
     private FirebaseDataCallback callback;
     public interface FirebaseDataCallback {
         void onReceivedRatings(VenueRatings ratings);
+        void onReceivedComments(ArrayList<String> comments);
     }
 
-    public static FirebaseDatabaseHelper getInstance() {
-        if (firebaseDatabaseHelper == null) {
-            firebaseDatabaseHelper = new FirebaseDatabaseHelper();
+    public static FirebaseHelper getInstance() {
+        if (firebaseHelper == null) {
+            firebaseHelper = new FirebaseHelper();
         }
-        return firebaseDatabaseHelper;
+        return firebaseHelper;
     }
 
     public void setDataCallback(FirebaseDataCallback dataCallback) {
@@ -93,6 +99,29 @@ public class FirebaseDatabaseHelper {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    public void getVenueComments(String parkId) {
+        reference = database.getReference().child("parks").child(parkId).child("comments");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {};
+                List<String> commentsList = dataSnapshot.getValue(genericTypeIndicator);
+                ArrayList<String> commentsArrayList = (ArrayList<String>) commentsList;
+                callback.onReceivedComments(commentsArrayList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void setVenueComments(ArrayList<String> comments, String parkId) {
+        reference = database.getReference().child("parks").child(parkId).child("comments");
+        reference.setValue(comments);
     }
 
 }

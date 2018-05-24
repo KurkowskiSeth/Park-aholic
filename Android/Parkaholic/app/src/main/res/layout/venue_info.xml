@@ -5,6 +5,11 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/address_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/park_address"/>
+    <TextView
         android:id="@+id/address_city_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +18,11 @@
         android:layout_marginStart="8dp"/>
 
     <TextView
+        android:id="@+id/phone_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/park_phone_number"/>
+    <TextView
         android:id="@+id/phone_number_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +30,11 @@
         android:textSize="18sp"
         android:layout_marginStart="8dp"/>
 
+    <TextView
+        android:id="@+id/url_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/park_website"/>
     <TextView
         android:id="@+id/park_url_tv"
         android:layout_width="match_parent"

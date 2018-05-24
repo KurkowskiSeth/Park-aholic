@@ -5,19 +5,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
+import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
 import com.sethkurkowski.android.parkaholic_20.fragments.UserCommentFragment;
 import com.sethkurkowski.android.parkaholic_20.fragments.UserRatingsFragment;
 
-public class ReviewActivity extends AppCompatActivity implements UserRatingsFragment.UserRatingCallback, UserCommentFragment.UserCommentCallback {
+import java.util.ArrayList;
+
+public class ReviewActivity extends AppCompatActivity implements UserRatingsFragment.UserRatingCallback, UserCommentFragment.UserCommentCallback, FirebaseHelper.FirebaseDataCallback {
 
     String parkQualityFrag = "PARK_QUALITY_FRAG";
     String parkEquipmentFrag = "PARK_EQUIPMENT_FRAG";
@@ -25,8 +27,8 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
     String parkEnjoymentFrag = "PARK_ENJOYMENT_FRAG";
     String parkReturnFrag = "PARK_RETURN_FRAG";
     String userCommentFrag = "USER_COMMENT_FRAG";
-
     String currentFrag;
+    String mComment;
 
     Double qualityRating;
     Double equipmentRating;
@@ -50,10 +52,14 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
+    FirebaseHelper firebaseHelper = FirebaseHelper.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        firebaseHelper.setDataCallback(this);
 
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(VenueActivity.EXTRA_PARK)) {
 
@@ -242,17 +248,27 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
                 updateReference.setValue(totalReturnReviews);
 
                 if (comment.trim().length() > 0) {
-                    updateReference = database.getReference("parks").child(mVenue.getmID()).child("comments").child("default user");
-                    updateReference.setValue(comment);
+                    mComment = comment;
+                    firebaseHelper.getVenueComments(mVenue.getmID());
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
         finish();
+    }
+
+    @Override
+    public void onReceivedRatings(VenueRatings ratings) {
+    }
+
+    @Override
+    public void onReceivedComments(ArrayList<String> comments) {
+        comments.add("default user 2 ~ " + mComment);
+        Log.i(HomeActivity.tag, comments.toString());
+        firebaseHelper.setVenueComments(comments, mVenue.getmID());
     }
 }
