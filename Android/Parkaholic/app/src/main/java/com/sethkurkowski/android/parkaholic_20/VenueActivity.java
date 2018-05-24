@@ -20,6 +20,7 @@ import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseAuthHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
 import com.sethkurkowski.android.parkaholic_20.fragments.ImageFlipperFragment;
+import com.sethkurkowski.android.parkaholic_20.fragments.ParkInfoFragment;
 import com.sethkurkowski.android.parkaholic_20.fragments.ParkRatingsFragment;
 
 import java.util.ArrayList;
@@ -61,49 +62,8 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     @Override
     protected void onResume() {
         super.onResume();
-
-        DatabaseReference databaseReference = database.getReference().child("parks").child(mVenue.getmID()).child("averages");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Integer qRa = dataSnapshot.child("parkQuality").child("totalRatings").getValue(Integer.class);
-                Integer qRe = dataSnapshot.child("parkQuality").child("totalReviews").getValue(Integer.class);
-                if (qRa != null && qRe != null && qRe != 0) {
-                    Log.i(HomeActivity.tag, String.valueOf(qRa) + " : " + String.valueOf(qRe));
-                }
-
-                Integer eRa = dataSnapshot.child("parkEquipment").child("totalRatings").getValue(Integer.class);
-                Integer eRe = dataSnapshot.child("parkEquipment").child("totalReviews").getValue(Integer.class);
-                if (eRa != null && eRe != null && eRe != 0) {
-                    Log.i(HomeActivity.tag, String.valueOf(eRa) + " : " + String.valueOf(eRe));
-                }
-
-                Integer nRa = dataSnapshot.child("neighborhood").child("totalRatings").getValue(Integer.class);
-                Integer nRe = dataSnapshot.child("neighborhood").child("totalReviews").getValue(Integer.class);
-                if (nRa != null && nRe != null && nRe != 0) {
-                    Log.i(HomeActivity.tag, String.valueOf(nRa) + " : " + String.valueOf(nRe));
-                }
-
-                Integer ejRa = dataSnapshot.child("overallEnjoyment").child("totalRatings").getValue(Integer.class);
-                Integer ejRe = dataSnapshot.child("overallEnjoyment").child("totalReviews").getValue(Integer.class);
-                if (ejRa != null && ejRe != null && ejRe != 0) {
-                    Log.i(HomeActivity.tag, String.valueOf(ejRa) + " : " + String.valueOf(ejRe));
-                }
-
-                Integer rRa = dataSnapshot.child("likelinessToReturn").child("totalRatings").getValue(Integer.class);
-                Integer rRe = dataSnapshot.child("likelinessToReturn").child("totalReviews").getValue(Integer.class);
-                if (rRa != null && rRe != null && rRe != 0) {
-                    Log.i(HomeActivity.tag, String.valueOf(rRa) + " : " + String.valueOf(rRe));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i(HomeActivity.tag, "WAT");
-            }
-        });
-
+        // MARK: Load Info Fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.park_info_frag_container, ParkInfoFragment.newInstance(mVenue.getmCity(), mVenue.getAddress(), mVenue.getPhoneNumber(), mVenue.getmUrl())).commit();
         // MARK: Load Ratings Fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.park_ratings_frag_container, ParkRatingsFragment.newInstance(mVenue.getmID())).commit();
     }
