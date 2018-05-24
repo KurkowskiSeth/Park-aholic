@@ -7,8 +7,8 @@
         app:showAsAction="always"
         android:icon="@drawable/baseline_account_circle_white_24dp"/>
     <item
-        android:id="@+id/add_review"
-        android:title="@string/add_review"
+        android:id="@+id/unfavor"
+        android:title="@string/un_favor"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/baseline_rate_review_white_24dp" />
+        android:icon="@drawable/baseline_favorite_white_24dp" />
 </menu>

@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/venue_root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/off_white_background">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            >
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+                android:layout_marginBottom="1dp"
+            android:text="@string/park_images_heading"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="24sp" />
+
+        </FrameLayout>
+
+        <StackView
+            android:id="@+id/image_stack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:loopViews="true" />
+
+        <View
+            android:id="@+id/screen_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
 
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:visibility="visible" />
 
         <TextView
@@ -31,10 +66,11 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/baseline_rate_review_white_24dp"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:src="@drawable/baseline_rate_review_white_24dp"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="right|bottom" />
 
 </android.support.design.widget.CoordinatorLayout>

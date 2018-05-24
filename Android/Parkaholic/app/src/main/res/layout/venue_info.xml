@@ -8,38 +8,50 @@
         android:id="@+id/address_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/park_address"/>
+        android:text="@string/park_address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"/>
+
     <TextView
         android:id="@+id/address_city_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="18sp"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/phone_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/park_phone_number"/>
+        android:text="@string/park_phone_number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"/>
+
     <TextView
         android:id="@+id/phone_number_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="18sp"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/url_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/park_website"/>
+        android:text="@string/park_website"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"/>
+
     <TextView
         android:id="@+id/park_url_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="18sp"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp" />
 </LinearLayout>

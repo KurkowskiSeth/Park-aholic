@@ -107,7 +107,7 @@ public class VenueImageAsyncTask extends AsyncTask<String, Void, ArrayList<Strin
 
                     String suffix = photo.getString("suffix");
 
-                    String photoUrl = prefix + "300x300" + suffix;
+                    String photoUrl = prefix + "500x500" + suffix;
                     Log.i(tag, "photoUrl: " + photoUrl);
                     imageUrls.add(photoUrl);
                 }

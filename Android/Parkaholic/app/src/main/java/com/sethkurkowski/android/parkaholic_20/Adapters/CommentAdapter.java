@@ -61,8 +61,7 @@ public class CommentAdapter extends BaseAdapter {
         }
 
         String comment = getItem(position);
-        Log.i(HomeActivity.tag, String.valueOf(getCount()));
-        Log.i(HomeActivity.tag, String.valueOf(position) + " : " + comment);
+        Log.i(HomeActivity.tag, String.valueOf(getCount()) + " : " + String.valueOf(position) + " : " + comment);
 
         String[] usernameAndComment = comment.split("~");
 

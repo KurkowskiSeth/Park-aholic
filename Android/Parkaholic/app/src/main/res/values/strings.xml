@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parkaholic_2.0</string>
+    <string name="app_name">Park-aholic</string>
 
     <string name="client_id">ANC3Q4GH3U3RU5F4HBA3MMONZBVEZDWBKTPN10ZD2141NMQZ</string>
     <string name="client_secret">DHF5B1FLMPUGYU3PIOISW1TZTK0NNA3VIGTNX0JAXCU434J3</string>
@@ -35,4 +35,10 @@
     <string name="park_city">City</string>
     <string name="park_phone_number">Phone Number</string>
     <string name="park_website">Park Website</string>
+    <string name="add_favorite">Add Favorite</string>
+    <string name="un_favor">unfavor</string>
+    <string name="park_info_heading">Info</string>
+    <string name="park_ratings_heading">Ratings</string>
+    <string name="park_comments_heading">Comments</string>
+    <string name="park_images_heading">Images</string>
 </resources>

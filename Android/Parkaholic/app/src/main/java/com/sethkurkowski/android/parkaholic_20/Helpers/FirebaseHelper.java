@@ -106,10 +106,18 @@ public class FirebaseHelper {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {};
+                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {
+                };
                 List<String> commentsList = dataSnapshot.getValue(genericTypeIndicator);
                 ArrayList<String> commentsArrayList = (ArrayList<String>) commentsList;
-                callback.onReceivedComments(commentsArrayList);
+                if (commentsArrayList != null) {
+                    for (String s : commentsArrayList) {
+                        if (s == null) {
+                            commentsArrayList.remove(commentsArrayList.indexOf(s));
+                        }
+                    }
+                    callback.onReceivedComments(commentsArrayList);
+                }
             }
 
             @Override

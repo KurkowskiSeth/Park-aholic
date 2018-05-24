@@ -6,8 +6,8 @@
         android:title="@string/common_signin_button_text"
         app:showAsAction="always" />
     <item
-        android:id="@+id/add_review"
-        android:title="@string/add_review"
+        android:id="@+id/add_favorite"
+        android:title="@string/add_favorite"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/baseline_rate_review_white_24dp" />
+        android:icon="@drawable/baseline_favorite_border_white_24dp" />
 </menu>

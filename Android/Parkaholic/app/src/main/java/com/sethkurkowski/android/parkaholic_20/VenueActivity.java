@@ -47,6 +47,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     ListView list;
     ArrayList<String> mComments;
     LayoutInflater inflater;
+    boolean isFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +90,17 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (firebaseAuthHelper.mIsSignedIn) {
-            getMenuInflater().inflate(R.menu.activity_venue_signed_in, menu);
+            if (isFavorite) {
+                getMenuInflater().inflate(R.menu.activity_venue_signed_in_favorited, menu);
+            } else {
+                getMenuInflater().inflate(R.menu.activity_venue_signed_in_unfavorited, menu);
+            }
         } else {
-            getMenuInflater().inflate(R.menu.activity_venue_signed_out, menu);
+            if (isFavorite) {
+                getMenuInflater().inflate(R.menu.activity_venue_signed_out_favorited, menu);
+            } else {
+                getMenuInflater().inflate(R.menu.activity_venue_signed_out_unfavorited, menu);
+            }
         }
         return super.onCreateOptionsMenu(menu);
     }
@@ -102,6 +111,12 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             firebaseAuthHelper.signIn();
         } else if (item.getItemId() == R.id.user_account) {
             firebaseAuthHelper.signOut();
+        } else if (item.getItemId() == R.id.add_favorite) {
+            isFavorite = true;
+            invalidateOptionsMenu();
+        } else if (item.getItemId() == R.id.unfavor) {
+            isFavorite = false;
+            invalidateOptionsMenu();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -179,17 +194,20 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         Log.i(HomeActivity.tag, "imageTaskFinish");
         inflater = LayoutInflater.from(this);
 
-        // Load stackView Layout and add as first header.
-        View stackViewLayout = inflater.inflate(R.layout.venue_images_stack_view, null);
-        list.addHeaderView(stackViewLayout);
-        StackView stackView = stackViewLayout.findViewById(R.id.image_stack);
+        // Load stackView.
+        StackView stackView = findViewById(R.id.image_stack);
         for (String s : imageUrls) {
             ImageView imageView = new ImageView(this);
             Picasso.with(this).load(s).into(imageView);
             stackView.setAdapter(new StackViewAdapter(this, 0, 0, imageUrls));
         }
 
-        // Load Info Layout and add as second header
+        // Header for park info
+        View infoHeader = inflater.inflate(R.layout.list_header, null);
+        ((TextView)infoHeader.findViewById(R.id.header_tv)).setText(R.string.park_info_heading);
+        list.addHeaderView(infoHeader);
+
+        // Load Info Layout and add it as a header
         View infoViewLayout = inflater.inflate(R.layout.venue_info, null);
         list.addHeaderView(infoViewLayout);
 
@@ -200,6 +218,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             addressCityTV.setText(mVenue.getmCity());
         } else {
             addressCityTV.setText(mVenue.getAddress());
+            Log.i(HomeActivity.tag, "Address: " + mVenue.getAddress());
         }
 
         TextView phoneTitleTV = infoViewLayout.findViewById(R.id.phone_title_tv);
@@ -209,15 +228,17 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             phoneNumberTV.setVisibility(View.GONE);
         } else {
             phoneNumberTV.setText(mVenue.getPhoneNumber());
+            Log.i(HomeActivity.tag, "Phone Number: " + mVenue.getPhoneNumber());
         }
 
         TextView urlTitleTV = infoViewLayout.findViewById(R.id.url_title_tv);
         TextView parkUrlTV = infoViewLayout.findViewById(R.id.park_url_tv);
-        if (mVenue.getmUrl() == null) {
+        if (mVenue.getmUrl() == null || mVenue.getmUrl().trim().length() == 0) {
             urlTitleTV.setVisibility(View.GONE);
             parkUrlTV.setVisibility(View.GONE);
         } else {
             parkUrlTV.setText(mVenue.getmUrl());
+            Log.i(HomeActivity.tag, "URL: " + mVenue.getmUrl());
         }
 
         // Load Park Ratings Layout and add as third header
@@ -227,10 +248,22 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     @Override
     public void onReceivedRatings(VenueRatings ratings) {
         if (ratings != null) {
+
+            // Create header for park ratings
+            View ratingsHeader = inflater.inflate(R.layout.list_header, null);
+            ((TextView) ratingsHeader.findViewById(R.id.header_tv)).setText(R.string.park_ratings_heading);
+            list.addHeaderView(ratingsHeader);
+
+            // Load ratings layout and add to list as a header
             View parkRatingsLayout = inflater.inflate(R.layout.venue_ratings, null);
             list.addHeaderView(parkRatingsLayout);
             updateVenueStars(ratings, parkRatingsLayout);
         }
+
+        // Create header for user comments
+        View commentsHeader = inflater.inflate(R.layout.list_header, null);
+        ((TextView) commentsHeader.findViewById(R.id.header_tv)).setText(R.string.park_comments_heading);
+        list.addHeaderView(commentsHeader);
 
         // Load Comments and set up adapter for list
         firebaseHelper.getVenueComments(mVenue.getmID());
@@ -238,7 +271,9 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
 
     @Override
     public void onReceivedComments(ArrayList<String> comments) {
+        // Load comments into adapter
         mComments = comments;
+        list.clearChoices();
         list.setAdapter(new CommentAdapter(this, comments));
     }
 

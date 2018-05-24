@@ -248,6 +248,7 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
                 updateReference.setValue(totalReturnReviews);
 
                 if (comment.trim().length() > 0) {
+                    Log.i(HomeActivity.tag, "waaaaaaat");
                     mComment = comment;
                     firebaseHelper.getVenueComments(mVenue.getmID());
                 }
