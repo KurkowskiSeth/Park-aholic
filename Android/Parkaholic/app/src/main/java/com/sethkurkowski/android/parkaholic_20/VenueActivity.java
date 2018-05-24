@@ -1,6 +1,7 @@
 package com.sethkurkowski.android.parkaholic_20;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,16 +27,14 @@ import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
-import com.sethkurkowski.android.parkaholic_20.fragments.CommentAdapter;
-import com.sethkurkowski.android.parkaholic_20.fragments.StackViewAdapter;
+import com.sethkurkowski.android.parkaholic_20.Adapters.CommentAdapter;
+import com.sethkurkowski.android.parkaholic_20.Adapters.StackViewAdapter;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class VenueActivity extends AppCompatActivity implements VenueImageAsyncTask.VenueImageTaskCallback, FirebaseHelper.FirebaseDataCallback {
+public class VenueActivity extends AppCompatActivity implements VenueImageAsyncTask.VenueImageTaskCallback, FirebaseHelper.FirebaseDataCallback, View.OnClickListener {
 
     public static final String EXTRA_PARK = "EXTRA_PARK";
 
@@ -66,6 +65,9 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             if (mVenue != null) {
                 list = findViewById(android.R.id.list);
                 ApiHelper.pullParkImages(this, mVenue.getmID());
+
+                FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
+                floatingActionButton.setOnClickListener(this);
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle(mVenue.getmName());
                     reference = database.getReference("parks").child((mVenue.getmID()));
@@ -100,7 +102,13 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             firebaseAuthHelper.signIn();
         } else if (item.getItemId() == R.id.user_account) {
             firebaseAuthHelper.signOut();
-        } else if (item.getItemId() == R.id.add_review) {
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.floatingActionButton) {
             if (firebaseAuthHelper.mIsSignedIn) {
                 Intent reviewIntent = new Intent(this, ReviewActivity.class);
                 reviewIntent.putExtra(EXTRA_PARK, mVenue);
@@ -109,7 +117,6 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
                 Toast.makeText(this, R.string.please_sign_in, Toast.LENGTH_SHORT).show();
             }
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

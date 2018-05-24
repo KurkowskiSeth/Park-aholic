@@ -1,6 +1,5 @@
 package com.sethkurkowski.android.parkaholic_20.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
@@ -8,9 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
+import com.sethkurkowski.android.parkaholic_20.Adapters.CommentAdapter;
 import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseHelper;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;

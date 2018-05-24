@@ -1,4 +1,4 @@
-package com.sethkurkowski.android.parkaholic_20.fragments;
+package com.sethkurkowski.android.parkaholic_20.Adapters;
 
 import android.content.Context;
 import android.util.Log;
