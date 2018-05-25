@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.io.IOUtils;
@@ -52,7 +53,6 @@ public class VenueImageAsyncTask extends AsyncTask<String, Void, ArrayList<Strin
 
     @Override
     protected ArrayList<String> doInBackground(String... strings) {
-        Log.i(tag, "image doInBackground");
         if (strings[0] == null) {
             return null;
         }
@@ -108,7 +108,6 @@ public class VenueImageAsyncTask extends AsyncTask<String, Void, ArrayList<Strin
                     String suffix = photo.getString("suffix");
 
                     String photoUrl = prefix + "500x500" + suffix;
-                    Log.i(tag, "photoUrl: " + photoUrl);
                     imageUrls.add(photoUrl);
                 }
 

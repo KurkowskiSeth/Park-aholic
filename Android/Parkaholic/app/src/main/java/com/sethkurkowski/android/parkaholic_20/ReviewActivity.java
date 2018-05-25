@@ -179,8 +179,6 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
 
     @Override
     public void commentSubmit(final String comment) {
-        Log.i(HomeActivity.tag, comment);
-
         reference = database.getReference("parks").child((mVenue.getmID()));
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -248,7 +246,7 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
                 updateReference.setValue(totalReturnReviews);
 
                 if (comment.trim().length() > 0) {
-                    Log.i(HomeActivity.tag, "waaaaaaat");
+                    Log.i(VenueActivity.tag, "comments counts");
                     mComment = comment;
                     firebaseHelper.getVenueComments(mVenue.getmID());
                 }
@@ -268,8 +266,10 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
 
     @Override
     public void onReceivedComments(ArrayList<String> comments) {
-        comments.add("default user 2 ~ " + mComment);
-        Log.i(HomeActivity.tag, comments.toString());
-        firebaseHelper.setVenueComments(comments, mVenue.getmID());
+        if (mComment != null) {
+            Log.i(VenueActivity.tag, "comment saved");
+            comments.add("default user 2 ~ " + mComment);
+            firebaseHelper.setVenueComments(comments, mVenue.getmID());
+        }
     }
 }

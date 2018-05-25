@@ -36,6 +36,7 @@ import java.util.HashMap;
 
 public class VenueActivity extends AppCompatActivity implements VenueImageAsyncTask.VenueImageTaskCallback, FirebaseHelper.FirebaseDataCallback, View.OnClickListener {
 
+    public static final String tag = "Parkaholic.CallStack";
     public static final String EXTRA_PARK = "EXTRA_PARK";
 
     private FirebaseAuthHelper firebaseAuthHelper;
@@ -64,6 +65,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             mVenue = (Venue) getIntent().getExtras().get(HomeActivity.EXTRA_PARK);
 
             if (mVenue != null) {
+
                 list = findViewById(android.R.id.list);
                 ApiHelper.pullParkImages(this, mVenue.getmID());
 
@@ -83,6 +85,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         super.onResume();
 
         if (list != null && mComments != null) {
+            Log.i(tag, "VenueActivity.resume");
             firebaseHelper.getVenueComments(mVenue.getmID());
         }
     }
@@ -186,12 +189,12 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
 
     @Override
     public void taskStart() {
-        Log.i(HomeActivity.tag, "imageTaskStart");
+        Log.i(HomeActivity.tag, "VenueActivity.taskStart");
+
     }
 
     @Override
     public void taskFinish(ArrayList<String> imageUrls) {
-        Log.i(HomeActivity.tag, "imageTaskFinish");
         inflater = LayoutInflater.from(this);
 
         // Load stackView.
@@ -218,7 +221,6 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             addressCityTV.setText(mVenue.getmCity());
         } else {
             addressCityTV.setText(mVenue.getAddress());
-            Log.i(HomeActivity.tag, "Address: " + mVenue.getAddress());
         }
 
         TextView phoneTitleTV = infoViewLayout.findViewById(R.id.phone_title_tv);
@@ -228,7 +230,6 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             phoneNumberTV.setVisibility(View.GONE);
         } else {
             phoneNumberTV.setText(mVenue.getPhoneNumber());
-            Log.i(HomeActivity.tag, "Phone Number: " + mVenue.getPhoneNumber());
         }
 
         TextView urlTitleTV = infoViewLayout.findViewById(R.id.url_title_tv);
@@ -238,7 +239,6 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             parkUrlTV.setVisibility(View.GONE);
         } else {
             parkUrlTV.setText(mVenue.getmUrl());
-            Log.i(HomeActivity.tag, "URL: " + mVenue.getmUrl());
         }
 
         // Load Park Ratings Layout and add as third header
@@ -272,6 +272,13 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     @Override
     public void onReceivedComments(ArrayList<String> comments) {
         // Load comments into adapter
+
+        for (int i = 0; i < comments.size(); i++) {
+            if (comments.get(i).equals("No Comments Yet ~ No Comments Yet") && comments.size() > 1) {
+                comments.remove(i);
+            }
+        }
+
         mComments = comments;
         list.clearChoices();
         list.setAdapter(new CommentAdapter(this, comments));

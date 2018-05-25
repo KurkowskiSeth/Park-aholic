@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueAsyncTask;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
 
@@ -36,8 +37,6 @@ public class ApiHelper {
     }
 
     public static void checkLocationPermissions(Context _context, Activity _activity) {
-        Log.i(HomeActivity.tag, "checkLocationPermissions");
-
         if (_context instanceof ApiHelperCallback) {
             apiHelperCallback = (ApiHelperCallback) _context;
 
@@ -56,7 +55,6 @@ public class ApiHelper {
     }
 
     public static void getUserLocation(Context _context) {
-        Log.i(HomeActivity.tag, "getUserLocation");
         // Check for permission to use location.
         if (ContextCompat.checkSelfPermission(_context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             // Pull user's location
@@ -71,20 +69,16 @@ public class ApiHelper {
                     // User the device's gps because there is no internet connection.
                     lastKnown = mgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 }
-                Log.i(HomeActivity.tag, "before null check");
                 if (lastKnown != null) {
-                    Log.i(HomeActivity.tag, "null check");
                     mUserLatitude = lastKnown.getLatitude();
                     mUserLongitude = lastKnown.getLongitude();
                 }
 
                 if (mUserLatitude != null && mUserLongitude != null) {
-                    Log.i(HomeActivity.tag, "another null check");
                     LatLng latLng = new LatLng(mUserLatitude, mUserLongitude);
                     // Take user location and construct an api url.
                     makeCallToApi(latLng, _context, false);
                 }
-                Log.i(HomeActivity.tag, "after null check");
             }
         } else {
             // Alert user that they don't have the ability to access location.
@@ -93,7 +87,6 @@ public class ApiHelper {
     }
 
     public static void makeCallToApi(LatLng _latLng, Context _context, boolean _isSearching) {
-        Log.i(HomeActivity.tag, "makeCallToApi");
         // Set current location of screen to home screen.
         if (_isSearching) {
             Log.i(HomeActivity.tag, _latLng.toString());
@@ -123,8 +116,6 @@ public class ApiHelper {
     }
 
     public static void pullParkImages(Context context, String id) {
-        Log.i(HomeActivity.tag, "pullParkImages");
-
         if (context instanceof VenueImageAsyncTask.VenueImageTaskCallback) {
             VenueImageAsyncTask asyncTask = new VenueImageAsyncTask((VenueImageAsyncTask.VenueImageTaskCallback) context, context);
 
@@ -144,7 +135,6 @@ public class ApiHelper {
     }
 
     public static boolean isConnected(Context _context) {
-        Log.i(HomeActivity.tag, "isConnected");
         // Get access to connectivity services
         ConnectivityManager mgr = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (mgr != null) {

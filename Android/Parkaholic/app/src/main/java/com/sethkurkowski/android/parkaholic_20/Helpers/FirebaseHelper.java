@@ -13,6 +13,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
+import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
 
 import java.util.ArrayList;
@@ -106,16 +108,42 @@ public class FirebaseHelper {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {
-                };
+                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {};
                 List<String> commentsList = dataSnapshot.getValue(genericTypeIndicator);
                 ArrayList<String> commentsArrayList = (ArrayList<String>) commentsList;
                 if (commentsArrayList != null) {
-                    for (String s : commentsArrayList) {
-                        if (s == null) {
-                            commentsArrayList.remove(commentsArrayList.indexOf(s));
-                        }
-                    }
+                    callback.onReceivedComments(commentsArrayList);
+                } else {
+                    commentsArrayList = new ArrayList<>();
+                    commentsArrayList.add("No Comments Yet ~ No Comments Yet");
+                    callback.onReceivedComments(commentsArrayList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public void setVenueComments(ArrayList<String> comments, String parkId) {
+        reference = database.getReference().child("parks").child(parkId).child("comments");
+        reference.setValue(comments);
+    }
+
+    public void setVenueCommentsListener(String parkId) {
+        reference = database.getReference().child("parks").child(parkId).child("comments");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {};
+                List<String> commentsList = dataSnapshot.getValue(genericTypeIndicator);
+                ArrayList<String> commentsArrayList = (ArrayList<String>) commentsList;
+                if (commentsArrayList != null) {
+                    callback.onReceivedComments(commentsArrayList);
+                } else {
+                    commentsArrayList = new ArrayList<>();
+                    commentsArrayList.add("No Comments Yet ~ No Comments Yet");
                     callback.onReceivedComments(commentsArrayList);
                 }
             }
@@ -125,11 +153,6 @@ public class FirebaseHelper {
 
             }
         });
-    }
-
-    public void setVenueComments(ArrayList<String> comments, String parkId) {
-        reference = database.getReference().child("parks").child(parkId).child("comments");
-        reference.setValue(comments);
     }
 
 }

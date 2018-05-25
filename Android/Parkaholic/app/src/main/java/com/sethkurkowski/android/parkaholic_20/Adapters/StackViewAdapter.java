@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

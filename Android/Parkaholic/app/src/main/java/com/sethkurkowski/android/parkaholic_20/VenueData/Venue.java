@@ -4,6 +4,10 @@ package com.sethkurkowski.android.parkaholic_20.VenueData;
 // May 8, 2018
 // Venue.java
 
+import android.util.Log;
+
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
+
 import java.io.Serializable;
 
 public class Venue implements Serializable {
@@ -69,7 +73,9 @@ public class Venue implements Serializable {
                 + "City: " + mCity + "\n"
                 + "Url: " + mUrl + "\n"
                 + "Lat: " + mLat + "\n"
-                + "Lng: " + mLong + "\n";
+                + "Lng: " + mLong + "\n"
+                + "Phone: " + phoneNumber + "\n"
+                + "Address: " + address + "\n";
 
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sethkurkowski.android.parkaholic_20.R;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 // Seth Kurkowski
 // May 17, 2017
@@ -34,7 +36,6 @@ public class UserRatingsFragment extends Fragment implements View.OnClickListene
     }
 
     public static UserRatingsFragment newInstance(String _question) {
-
         Bundle args = new Bundle();
 
         question = _question;

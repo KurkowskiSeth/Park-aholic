@@ -6,11 +6,13 @@ package com.sethkurkowski.android.parkaholic_20.Helpers;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 import java.util.Arrays;
 import java.util.List;

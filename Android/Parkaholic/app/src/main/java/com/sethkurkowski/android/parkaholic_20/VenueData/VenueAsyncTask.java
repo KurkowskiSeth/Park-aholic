@@ -3,6 +3,8 @@ package com.sethkurkowski.android.parkaholic_20.VenueData;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
+
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;

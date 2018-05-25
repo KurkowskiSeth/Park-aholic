@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 import java.util.ArrayList;
 
@@ -61,12 +62,13 @@ public class CommentAdapter extends BaseAdapter {
         }
 
         String comment = getItem(position);
-        Log.i(HomeActivity.tag, String.valueOf(getCount()) + " : " + String.valueOf(position) + " : " + comment);
 
-        String[] usernameAndComment = comment.split("~");
+        if (comment != null) {
+            String[] usernameAndComment = comment.split("~");
 
-        vh.username.setText(usernameAndComment[0]);
-        vh.userComment.setText(usernameAndComment[1]);
+            vh.username.setText(usernameAndComment[0]);
+            vh.userComment.setText(usernameAndComment[1]);
+        }
 
         return convertView;
     }

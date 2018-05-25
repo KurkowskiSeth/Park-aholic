@@ -7,6 +7,7 @@ package com.sethkurkowski.android.parkaholic_20.VenueData;
 import android.util.Log;
 
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
+import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 public class VenueRatings {
 
@@ -25,31 +26,26 @@ public class VenueRatings {
             quality = 0;
         } else {
             quality = totalQualityRatings / totalQualityReviews;
-            Log.i(HomeActivity.tag, "Quality: " + quality);
         }
         if (totalEquipmentReviews == 0) {
             equipment = 0;
         } else {
             equipment = totalEquipmentRatings / totalEquipmentReviews;
-            Log.i(HomeActivity.tag, "Equipment: " + equipment);
         }
         if (totalNeighborhoodReviews == 0) {
             neighborhood = 0;
         } else {
             neighborhood = totalNeighborhoodRatings / totalNeighborhoodReviews;
-            Log.i(HomeActivity.tag, "Neighborhood: " + neighborhood);
         }
         if (totalEnjoymentReviews == 0) {
             enjoyment = 0;
         } else {
             enjoyment = totalEnjoymentRatings / totalEnjoymentReviews;
-            Log.i(HomeActivity.tag, "Enjoyment: " + enjoyment);
         }
         if (totalReturnReviews == 0) {
             likelinessToReturn = 0;
         } else {
             likelinessToReturn = totalReturnRatings / totalReturnReviews;
-            Log.i(HomeActivity.tag, "Return: " + likelinessToReturn);
         }
     }
 

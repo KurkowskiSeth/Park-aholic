@@ -48,7 +48,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(tag, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -66,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.i(HomeActivity.tag, "onCreateOptionsMenu");
         if (firebaseAuthHelper.mIsSignedIn) {
             if (isSearching) {
                 getMenuInflater().inflate(R.menu.activity_home_signed_in_search, menu);
@@ -85,7 +83,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i(HomeActivity.tag, "onOptionsItemSelected");
         if (item.getItemId() == R.id.sign_in) {
             // Start activity to sign user in.
             firebaseAuthHelper.signIn();
@@ -119,7 +116,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.i(HomeActivity.tag, "onRequestPermissionsResult");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (!isSearching) {
@@ -130,12 +126,11 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     // VenueTaskCallbacks
     @Override
     public void taskStart() {
-        Log.i(HomeActivity.tag, "taskStart");
+        Log.i(tag, "HomeActivity.taskStart");
     }
 
     @Override
     public void taskFinish(ArrayList<Venue> venues) {
-        Log.i(HomeActivity.tag, "taskFinish");
         if (isSearching) {
             mVenuesSearch = venues;
         } else {
@@ -149,7 +144,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public void parkSelected(Venue venue) {
-        Log.i(HomeActivity.tag, "parkSelected");
         Intent intent = new Intent(this, VenueActivity.class);
         intent.putExtra(EXTRA_PARK, venue);
         startActivity(intent);
@@ -157,7 +151,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.i(HomeActivity.tag, "onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == FirebaseAuthHelper.RC_SIGN_IN) {
@@ -178,8 +171,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     }
 
     private void loadMap() {
-        Log.i(HomeActivity.tag, "loadMap");
-
         if (!isSearching) {
             mLatitude = ApiHelper.mUserLatitude;
             mLongitude = ApiHelper.mUserLongitude;
@@ -191,7 +182,6 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     @Override
     public void setCurrentLocation(LatLng latLng) {
-        Log.i(tag, "setCurrentLocation");
         mLatitude = latLng.latitude;
         mLongitude = latLng.longitude;
     }
