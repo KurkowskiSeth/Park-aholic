@@ -130,29 +130,4 @@ public class FirebaseHelper {
         reference = database.getReference().child("parks").child(parkId).child("comments");
         reference.setValue(comments);
     }
-
-    public void setVenueCommentsListener(String parkId) {
-        reference = database.getReference().child("parks").child(parkId).child("comments");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<String>> genericTypeIndicator = new GenericTypeIndicator<List<String>>() {};
-                List<String> commentsList = dataSnapshot.getValue(genericTypeIndicator);
-                ArrayList<String> commentsArrayList = (ArrayList<String>) commentsList;
-                if (commentsArrayList != null) {
-                    callback.onReceivedComments(commentsArrayList);
-                } else {
-                    commentsArrayList = new ArrayList<>();
-                    commentsArrayList.add("No Comments Yet ~ No Comments Yet");
-                    callback.onReceivedComments(commentsArrayList);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
 }

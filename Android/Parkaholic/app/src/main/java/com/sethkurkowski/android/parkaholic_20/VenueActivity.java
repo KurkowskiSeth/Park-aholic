@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sethkurkowski.android.parkaholic_20.Helpers.ApiHelper;
+import com.sethkurkowski.android.parkaholic_20.Helpers.DatabaseHelper;
 import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseAuthHelper;
 import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
@@ -43,8 +44,10 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     private FirebaseHelper firebaseHelper;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
+    DatabaseHelper databaseHelper;
 
     Venue mVenue;
+    VenueRatings mRatings;
     ListView list;
     ArrayList<String> mComments;
     LayoutInflater inflater;
@@ -60,6 +63,8 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
 
         firebaseHelper = FirebaseHelper.getInstance();
         firebaseHelper.setDataCallback(this);
+
+        databaseHelper = DatabaseHelper.getmInstance(this);
 
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(HomeActivity.EXTRA_PARK)) {
             mVenue = (Venue) getIntent().getExtras().get(HomeActivity.EXTRA_PARK);
@@ -115,9 +120,15 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         } else if (item.getItemId() == R.id.user_account) {
             firebaseAuthHelper.signOut();
         } else if (item.getItemId() == R.id.add_favorite) {
+            // Save to database
+            databaseHelper.insertPark(mVenue.getmID(), mVenue.getmName(), mVenue.getmCity(), mVenue.getmUrl(), String.valueOf(mVenue.getmLat()), String.valueOf(mVenue.getmLong()), mVenue.getPhoneNumber(), mVenue.getAddress(), mRatings.getQuality(), mRatings.getEquipment(), mRatings.getNeighborhood(), mRatings.getEnjoyment(), mRatings.getLikelinessToReturn());
+            Toast.makeText(this, "Park Ratings Added To Favorites", Toast.LENGTH_SHORT).show();
             isFavorite = true;
             invalidateOptionsMenu();
         } else if (item.getItemId() == R.id.unfavor) {
+            // Delete from database
+            databaseHelper.deletePark(DatabaseHelper.PARK_ID + "=?", new String[]{mVenue.getmID()});
+            Toast.makeText(this, "Park Ratings Deleted From Favorites", Toast.LENGTH_SHORT).show();
             isFavorite = false;
             invalidateOptionsMenu();
         }
@@ -285,6 +296,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     }
 
     private void updateVenueStars(VenueRatings ratings, View view) {
+        mRatings = ratings;
         updateQualityStars(ratings.getQuality(), view);
         updateEquipmentStars(ratings.getEquipment(), view);
         updateNeighborhoodStars(ratings.getNeighborhood(), view);
