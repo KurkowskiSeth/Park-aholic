@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.StackView;
@@ -52,11 +53,14 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     ArrayList<String> mComments;
     LayoutInflater inflater;
     boolean isFavorite = false;
+    boolean isConnected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venue);
+
+        isConnected = ApiHelper.isConnected(this);
 
         firebaseAuthHelper = FirebaseAuthHelper.getInstance(this);
         firebaseAuthHelper.setmActivity(this);
@@ -72,14 +76,26 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             if (mVenue != null) {
 
                 list = findViewById(android.R.id.list);
-                ApiHelper.pullParkImages(this, mVenue.getmID());
 
                 FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
                 floatingActionButton.setOnClickListener(this);
+
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setTitle(mVenue.getmName());
-                    reference = database.getReference("parks").child((mVenue.getmID()));
-                    pullDataFromDatabase();
+
+                    if (isConnected) {
+                        ApiHelper.pullParkImages(this, mVenue.getmID());
+                        reference = database.getReference("parks").child((mVenue.getmID()));
+                        pullDataFromDatabase();
+                    } else {
+                        isFavorite = true;
+                        invalidateOptionsMenu();
+
+                        findViewById(R.id.image_header).setVisibility(View.GONE);
+                        findViewById(R.id.image_stack).setVisibility(View.GONE);
+
+                        createHeaders();
+                    }
                 }
             }
         }
@@ -138,12 +154,16 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.floatingActionButton) {
-            if (firebaseAuthHelper.mIsSignedIn) {
-                Intent reviewIntent = new Intent(this, ReviewActivity.class);
-                reviewIntent.putExtra(EXTRA_PARK, mVenue);
-                startActivity(reviewIntent);
+            if (isConnected) {
+                if (firebaseAuthHelper.mIsSignedIn) {
+                    Intent reviewIntent = new Intent(this, ReviewActivity.class);
+                    reviewIntent.putExtra(EXTRA_PARK, mVenue);
+                    startActivity(reviewIntent);
+                } else {
+                    Toast.makeText(this, R.string.please_sign_in, Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(this, R.string.please_sign_in, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.offline_review_toast, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -216,6 +236,14 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
             stackView.setAdapter(new StackViewAdapter(this, 0, 0, imageUrls));
         }
 
+        createHeaders();
+    }
+
+    public void createHeaders() {
+        if (inflater == null) {
+            inflater = LayoutInflater.from(this);
+        }
+
         // Header for park info
         View infoHeader = inflater.inflate(R.layout.list_header, null);
         ((TextView)infoHeader.findViewById(R.id.header_tv)).setText(R.string.park_info_heading);
@@ -253,12 +281,18 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         }
 
         // Load Park Ratings Layout and add as third header
-        firebaseHelper.getVenueRatings(mVenue.getmID());
+        if (isConnected) {
+            firebaseHelper.getVenueRatings(mVenue.getmID());
+        } else {
+            Log.i(tag, "Getting offline ratings");
+            onReceivedRatings(mVenue.getRatings());
+        }
     }
 
     @Override
     public void onReceivedRatings(VenueRatings ratings) {
         if (ratings != null) {
+            mRatings = ratings;
 
             // Create header for park ratings
             View ratingsHeader = inflater.inflate(R.layout.list_header, null);
@@ -277,13 +311,18 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         list.addHeaderView(commentsHeader);
 
         // Load Comments and set up adapter for list
-        firebaseHelper.getVenueComments(mVenue.getmID());
+        if (isConnected) {
+            firebaseHelper.getVenueComments(mVenue.getmID());
+        } else {
+            ArrayList<String> comments = new ArrayList<>();
+            comments.add("Sorry ~ Couldn't Save Comments");
+            onReceivedComments(comments);
+        }
     }
 
     @Override
     public void onReceivedComments(ArrayList<String> comments) {
         // Load comments into adapter
-
         for (int i = 0; i < comments.size(); i++) {
             if (comments.get(i).equals("No Comments Yet ~ No Comments Yet") && comments.size() > 1) {
                 comments.remove(i);
@@ -296,12 +335,20 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
     }
 
     private void updateVenueStars(VenueRatings ratings, View view) {
-        mRatings = ratings;
-        updateQualityStars(ratings.getQuality(), view);
-        updateEquipmentStars(ratings.getEquipment(), view);
-        updateNeighborhoodStars(ratings.getNeighborhood(), view);
-        updateEnjoymentStars(ratings.getEnjoyment(), view);
-        updateReturnStars(ratings.getLikelinessToReturn(), view);
+        if (isConnected) {
+            updateQualityStars(ratings.getQuality(), view);
+            updateEquipmentStars(ratings.getEquipment(), view);
+            updateNeighborhoodStars(ratings.getNeighborhood(), view);
+            updateEnjoymentStars(ratings.getEnjoyment(), view);
+            updateReturnStars(ratings.getLikelinessToReturn(), view);
+        } else {
+            Log.i(tag, "Setting offline values");
+            updateQualityStars(ratings.getQualityInt(), view);
+            updateEquipmentStars(ratings.getEquipmentInt(), view);
+            updateNeighborhoodStars(ratings.getNeighborhoodInt(), view);
+            updateEnjoymentStars(ratings.getEnjoymentInt(), view);
+            updateReturnStars(ratings.getReturnInt(), view);
+        }
     }
 
     private void updateQualityStars(int rating, View view) {

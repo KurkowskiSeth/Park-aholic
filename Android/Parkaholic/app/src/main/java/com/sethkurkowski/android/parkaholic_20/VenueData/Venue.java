@@ -20,6 +20,7 @@ public class Venue implements Serializable {
     private Double mLong;
     private String phoneNumber;
     private String address;
+    private VenueRatings ratings = null;
 
 
     public Venue(String mID, String mName, String mCity, String mUrl, Double mLat, Double mLong, String phoneNumber, String address) {
@@ -31,6 +32,18 @@ public class Venue implements Serializable {
         this.mLong = mLong;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+
+    public Venue(String mID, String mName, String mCity, String mUrl, Double mLat, Double mLong, String phoneNumber, String address, VenueRatings ratings) {
+        this.mID = mID;
+        this.mName = mName;
+        this.mCity = mCity;
+        this.mUrl = mUrl;
+        this.mLat = mLat;
+        this.mLong = mLong;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.ratings = ratings;
     }
 
     public String getmID() {
@@ -63,6 +76,10 @@ public class Venue implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    public VenueRatings getRatings() {
+        return ratings;
     }
 
     @Override

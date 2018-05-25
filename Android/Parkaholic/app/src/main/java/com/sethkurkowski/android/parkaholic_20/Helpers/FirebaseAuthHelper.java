@@ -76,4 +76,8 @@ public class FirebaseAuthHelper {
         firebaseAuthHelper.mUser = firebaseUser;
         firebaseAuthHelper.mIsSignedIn = true;
     }
+
+    public FirebaseUser getmUser() {
+        return mUser;
+    }
 }

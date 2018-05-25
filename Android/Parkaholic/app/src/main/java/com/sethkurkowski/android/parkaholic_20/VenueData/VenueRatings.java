@@ -9,13 +9,21 @@ import android.util.Log;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
-public class VenueRatings {
+import java.io.Serializable;
+
+public class VenueRatings implements Serializable {
 
     private double quality;
     private double equipment;
     private double neighborhood;
     private double enjoyment;
     private double likelinessToReturn;
+
+    private int qualityInt = 0;
+    private int equipmentInt = 0;
+    private int neighborhoodInt = 0;
+    private int enjoymentInt = 0;
+    private int returnInt = 0;
 
     public VenueRatings(int totalQualityRatings, int totalQualityReviews,
                         int totalEquipmentRatings, int totalEquipmentReviews,
@@ -47,6 +55,34 @@ public class VenueRatings {
         } else {
             likelinessToReturn = totalReturnRatings / totalReturnReviews;
         }
+    }
+
+    public VenueRatings(int qualityInt, int equipmentInt, int neighborhoodInt, int enjoymentInt, int returnInt) {
+        this.qualityInt = qualityInt;
+        this.equipmentInt = equipmentInt;
+        this.neighborhoodInt = neighborhoodInt;
+        this.enjoymentInt = enjoymentInt;
+        this.returnInt = returnInt;
+    }
+
+    public int getQualityInt() {
+        return qualityInt;
+    }
+
+    public int getEquipmentInt() {
+        return equipmentInt;
+    }
+
+    public int getNeighborhoodInt() {
+        return neighborhoodInt;
+    }
+
+    public int getEnjoymentInt() {
+        return enjoymentInt;
+    }
+
+    public int getReturnInt() {
+        return returnInt;
     }
 
     public int getQuality() {

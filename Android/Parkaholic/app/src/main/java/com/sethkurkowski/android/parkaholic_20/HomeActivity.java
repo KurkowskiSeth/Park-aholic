@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -50,6 +52,10 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (!ApiHelper.isConnected(this)) {
+            Toast.makeText(this, R.string.offline_notice_toast, Toast.LENGTH_LONG).show();
+        }
 
         // Check permissions and pull location
         ApiHelper.checkLocationPermissions(this, this);
@@ -184,5 +190,9 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
     public void setCurrentLocation(LatLng latLng) {
         mLatitude = latLng.latitude;
         mLongitude = latLng.longitude;
+        if (!ApiHelper.isConnected(this)) {
+            mVenuesCurrent = ApiHelper.getFavoriteVenues(this);
+            loadMap();
+        }
     }
 }

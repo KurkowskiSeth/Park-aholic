@@ -8,6 +8,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -21,8 +22,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sethkurkowski.android.parkaholic_20.HomeActivity;
 import com.sethkurkowski.android.parkaholic_20.R;
 import com.sethkurkowski.android.parkaholic_20.VenueActivity;
+import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueAsyncTask;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueImageAsyncTask;
+import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
+
+import java.util.ArrayList;
 
 public class ApiHelper {
 
@@ -62,14 +67,16 @@ public class ApiHelper {
             if (mgr != null) {
                 Location lastKnown;
                 if (isConnected(_context)) {
-                    Log.i(HomeActivity.tag, String.valueOf(isConnected(_context)));
+                    Log.i(VenueActivity.tag, "Connected: " + String.valueOf(isConnected(_context)));
                     // User network if user is connected to the internet.
                     lastKnown = mgr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 } else {
+                    Log.i(VenueActivity.tag, "Connected: " + String.valueOf(isConnected(_context)));
                     // User the device's gps because there is no internet connection.
                     lastKnown = mgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 }
                 if (lastKnown != null) {
+                    Log.i(VenueActivity.tag, "Lat: " + lastKnown.getLatitude() + "\nLong: " + lastKnown.getLongitude());
                     mUserLatitude = lastKnown.getLatitude();
                     mUserLongitude = lastKnown.getLongitude();
                 }
@@ -77,7 +84,12 @@ public class ApiHelper {
                 if (mUserLatitude != null && mUserLongitude != null) {
                     LatLng latLng = new LatLng(mUserLatitude, mUserLongitude);
                     // Take user location and construct an api url.
-                    makeCallToApi(latLng, _context, false);
+                    if (isConnected(_context)) {
+                        makeCallToApi(latLng, _context, false);
+                    } else {
+                        Log.i(VenueActivity.tag, "Setting user location");
+                        apiHelperCallback.setCurrentLocation(new LatLng(mUserLatitude, mUserLongitude));
+                    }
                 }
             }
         } else {
@@ -89,10 +101,8 @@ public class ApiHelper {
     public static void makeCallToApi(LatLng _latLng, Context _context, boolean _isSearching) {
         // Set current location of screen to home screen.
         if (_isSearching) {
-            Log.i(HomeActivity.tag, _latLng.toString());
             apiHelperCallback.setCurrentLocation(_latLng);
         } else {
-            Log.i(HomeActivity.tag, _latLng.toString());
             apiHelperCallback.setCurrentLocation(new LatLng(mUserLatitude, mUserLongitude));
         }
 
@@ -132,6 +142,39 @@ public class ApiHelper {
                 asyncTask.execute(imageApiUrl);
             }
         }
+    }
+
+    public static ArrayList<Venue> getFavoriteVenues(Context context) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getmInstance(context);
+        Cursor cursor = databaseHelper.getAllData();
+        Log.i(VenueActivity.tag, "Getting Favorites");
+
+        cursor.moveToFirst();
+        ArrayList<Venue> venues = new ArrayList<>();
+        while (!cursor.isAfterLast()) {
+            Log.i(VenueActivity.tag, "Cursor Position: " + cursor.getPosition());
+            String id = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_ID));
+            String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_NAME));
+            String city = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_CITY));
+            String url = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_URL));
+            String lat = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_LAT));
+            String lng = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_LONG));
+            String phone = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_PHONE));
+            String address = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PARK_ADDRESS));
+
+            int quality = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.QUALITY_RATING));
+            int equipment = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.EQUIPMENT_RATING));
+            int neighborhood = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.NEIGHBORHOOD_RATING));
+            int enjoyment = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.ENJOYMENT_RATING));
+            int likelinessToReturn = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.RETURN_RATING));
+
+            VenueRatings ratings = new VenueRatings(quality, equipment, neighborhood, enjoyment, likelinessToReturn);
+            Venue venue = new Venue(id, name, city, url, Double.parseDouble(lat), Double.parseDouble(lng), phone, address, ratings);
+            venues.add(venue);
+
+            cursor.moveToNext();
+        }
+        return venues;
     }
 
     public static boolean isConnected(Context _context) {

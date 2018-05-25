@@ -41,4 +41,6 @@
     <string name="park_ratings_heading">Ratings</string>
     <string name="park_comments_heading">Comments</string>
     <string name="park_images_heading">Images</string>
+    <string name="offline_review_toast">Can\'t create review while offline. Sorry</string>
+    <string name="offline_notice_toast">Unable to connect, showing favorites.</string>
 </resources>

@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseAuthHelper;
 import com.sethkurkowski.android.parkaholic_20.Helpers.FirebaseHelper;
 import com.sethkurkowski.android.parkaholic_20.VenueData.Venue;
 import com.sethkurkowski.android.parkaholic_20.VenueData.VenueRatings;
@@ -267,8 +268,15 @@ public class ReviewActivity extends AppCompatActivity implements UserRatingsFrag
     @Override
     public void onReceivedComments(ArrayList<String> comments) {
         if (mComment != null) {
-            Log.i(VenueActivity.tag, "comment saved");
-            comments.add("default user 2 ~ " + mComment);
+            FirebaseAuthHelper firebaseAuthHelper = FirebaseAuthHelper.getInstance(this);
+            String userName = firebaseAuthHelper.getmUser().getDisplayName();
+            String[] displayName;
+            if (userName != null) {
+                displayName = userName.split(" ");
+            } else {
+                displayName = new String[]{"User"};
+            }
+            comments.add(displayName[0] + " ~ " + mComment);
             firebaseHelper.setVenueComments(comments, mVenue.getmID());
         }
     }

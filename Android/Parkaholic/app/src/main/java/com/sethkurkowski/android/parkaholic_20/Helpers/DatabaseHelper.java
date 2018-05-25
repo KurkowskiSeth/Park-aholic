@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
             TABLE_NAME + " (" +
-            PARK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            PARK_ID + " TEXT PRIMARY KEY, " +
             PARK_NAME + " TEXT, " +
             PARK_CITY + " TEXT, " +
             PARK_URL + " TEXT, " +
@@ -90,8 +90,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
-    public Cursor getAllData(String orderBy) {
-        return mDatabase.query(TABLE_NAME, null, null, null, null, null, orderBy);
+    public Cursor getAllData() {
+        return mDatabase.query(TABLE_NAME, null, null, null, null, null, null);
     }
 
     public void deletePark(String whereClause, String[] whereArgs) {
