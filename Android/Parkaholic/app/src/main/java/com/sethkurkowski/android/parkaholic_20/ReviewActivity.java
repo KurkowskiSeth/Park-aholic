@@ -22,38 +22,38 @@ import java.util.ArrayList;
 
 public class ReviewActivity extends AppCompatActivity implements UserRatingsFragment.UserRatingCallback, UserCommentFragment.UserCommentCallback, FirebaseHelper.FirebaseDataCallback {
 
-    String parkQualityFrag = "PARK_QUALITY_FRAG";
-    String parkEquipmentFrag = "PARK_EQUIPMENT_FRAG";
-    String parkNeighborhoodFrag = "PARK_NEIGHBORHOOD_FRAG";
-    String parkEnjoymentFrag = "PARK_ENJOYMENT_FRAG";
-    String parkReturnFrag = "PARK_RETURN_FRAG";
-    String userCommentFrag = "USER_COMMENT_FRAG";
-    String currentFrag;
-    String mComment;
+    private final String parkQualityFrag = "PARK_QUALITY_FRAG";
+    private final String parkEquipmentFrag = "PARK_EQUIPMENT_FRAG";
+    private final String parkNeighborhoodFrag = "PARK_NEIGHBORHOOD_FRAG";
+    private final String parkEnjoymentFrag = "PARK_ENJOYMENT_FRAG";
+    private final String parkReturnFrag = "PARK_RETURN_FRAG";
+    private final String userCommentFrag = "USER_COMMENT_FRAG";
+    private String currentFrag;
+    private String mComment;
 
-    Double qualityRating;
-    Double equipmentRating;
-    Double neighborhoodRating;
-    Double enjoymentRating;
-    Double returnRating;
+    private Double qualityRating;
+    private Double equipmentRating;
+    private Double neighborhoodRating;
+    private Double enjoymentRating;
+    private Double returnRating;
 
-    Double totalQualityRatings;
-    Double totalEquipmentRatings;
-    Double totalNeighborhoodRating;
-    Double totalEnjoymentRating;
-    Double totalReturnRating;
-    Integer totalQualityReviews;
-    Integer totalEquipmentReviews;
-    Integer totalNeighborhoodReviews;
-    Integer totalEnjoymentReviews;
-    Integer totalReturnReviews;
+    private Double totalQualityRatings;
+    private Double totalEquipmentRatings;
+    private Double totalNeighborhoodRating;
+    private Double totalEnjoymentRating;
+    private Double totalReturnRating;
+    private Integer totalQualityReviews;
+    private Integer totalEquipmentReviews;
+    private Integer totalNeighborhoodReviews;
+    private Integer totalEnjoymentReviews;
+    private Integer totalReturnReviews;
 
-    Venue mVenue;
+    private Venue mVenue;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference reference;
 
-    FirebaseHelper firebaseHelper = FirebaseHelper.getInstance();
+    private final FirebaseHelper firebaseHelper = FirebaseHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

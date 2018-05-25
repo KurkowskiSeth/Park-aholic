@@ -32,9 +32,9 @@ import java.util.ArrayList;
 public class ParkMapFragment extends MapFragment implements OnMapReadyCallback, GoogleMap.InfoWindowAdapter, GoogleMap.OnInfoWindowClickListener {
 
     public static final String tag = "Parkaholic.TAG";
-    private static String ARGS_LAT = "ARGS_LAT";
-    private static String ARGS_LONG = "ARGS_LONG";
-    private static String ARGS_VENUES = "ARGS_VENUES";
+    private static final String ARGS_LAT = "ARGS_LAT";
+    private static final String ARGS_LONG = "ARGS_LONG";
+    private static final String ARGS_VENUES = "ARGS_VENUES";
 
     private GoogleMap mMap;
     private Context mContext;

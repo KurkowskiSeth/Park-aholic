@@ -44,9 +44,9 @@ public class HomeActivity extends AppCompatActivity implements VenueAsyncTask.Ve
 
     private boolean isSearching = false;
 
-    ArrayList<Venue> mVenuesLocal;
-    ArrayList<Venue> mVenuesSearch;
-    ArrayList<Venue> mVenuesCurrent;
+    private ArrayList<Venue> mVenuesLocal;
+    private ArrayList<Venue> mVenuesSearch;
+    private ArrayList<Venue> mVenuesCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

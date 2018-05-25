@@ -33,7 +33,7 @@
             android:value="AIzaSyA-PXK8tay5Zr_YoSkUhy_5Y4GtZEw2TAk" />
 
         <activity android:name=".VenueActivity" />
-        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".ReviewActivity" />za
     </application>
 
 </manifest>

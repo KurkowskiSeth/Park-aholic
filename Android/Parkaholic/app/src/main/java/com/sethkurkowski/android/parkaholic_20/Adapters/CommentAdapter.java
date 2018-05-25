@@ -20,9 +20,8 @@ import java.util.ArrayList;
 
 public class CommentAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<String> comments;
-    private static int BASE_ID = 0x01000;
+    private final Context context;
+    private final ArrayList<String> comments;
 
     public CommentAdapter(Context context, ArrayList<String> comments) {
         this.context = context;
@@ -47,6 +46,7 @@ public class CommentAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
+        int BASE_ID = 0x01000;
         return BASE_ID + position;
     }
 
@@ -74,10 +74,10 @@ public class CommentAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView username;
-        TextView userComment;
+        final TextView username;
+        final TextView userComment;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             username = view.findViewById(R.id.username_tv);
             userComment = view.findViewById(R.id.user_comment_tv);
         }

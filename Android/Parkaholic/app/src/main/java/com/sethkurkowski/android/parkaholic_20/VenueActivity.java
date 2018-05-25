@@ -43,17 +43,17 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
 
     private FirebaseAuthHelper firebaseAuthHelper;
     private FirebaseHelper firebaseHelper;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
-    DatabaseHelper databaseHelper;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference reference;
+    private DatabaseHelper databaseHelper;
 
-    Venue mVenue;
-    VenueRatings mRatings;
-    ListView list;
-    ArrayList<String> mComments;
-    LayoutInflater inflater;
-    boolean isFavorite = false;
-    boolean isConnected;
+    private Venue mVenue;
+    private VenueRatings mRatings;
+    private ListView list;
+    private ArrayList<String> mComments;
+    private LayoutInflater inflater;
+    private boolean isFavorite = false;
+    private boolean isConnected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,7 +239,7 @@ public class VenueActivity extends AppCompatActivity implements VenueImageAsyncT
         createHeaders();
     }
 
-    public void createHeaders() {
+    private void createHeaders() {
         if (inflater == null) {
             inflater = LayoutInflater.from(this);
         }

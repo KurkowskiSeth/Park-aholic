@@ -23,7 +23,7 @@ import java.util.List;
 public class FirebaseHelper {
 
     private static FirebaseHelper firebaseHelper = null;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference reference;
 
     private FirebaseDataCallback callback;

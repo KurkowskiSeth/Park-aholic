@@ -22,15 +22,15 @@ import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 public class UserRatingsFragment extends Fragment implements View.OnClickListener {
 
-    static final String ARG_QUESTION = "ARG_QUESTION";
-    static String question;
+    private static final String ARG_QUESTION = "ARG_QUESTION";
+    private static String question;
 
-    TextView userPromptTV;
-    Button thumbsUp;
-    Button thumbsInBetween;
-    Button thumbsDown;
+    private TextView userPromptTV;
+    private Button thumbsUp;
+    private Button thumbsInBetween;
+    private Button thumbsDown;
 
-    UserRatingCallback userRatingCallback;
+    private UserRatingCallback userRatingCallback;
     public interface UserRatingCallback {
         void onRatingSubmit(String category, Double value);
     }

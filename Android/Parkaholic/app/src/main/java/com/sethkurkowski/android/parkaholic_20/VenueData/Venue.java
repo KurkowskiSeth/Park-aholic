@@ -12,14 +12,14 @@ import java.io.Serializable;
 
 public class Venue implements Serializable {
 
-    private String mID;
-    private String mName;
-    private String mCity;
-    private String mUrl;
-    private Double mLat;
-    private Double mLong;
-    private String phoneNumber;
-    private String address;
+    private final String mID;
+    private final String mName;
+    private final String mCity;
+    private final String mUrl;
+    private final Double mLat;
+    private final Double mLong;
+    private final String phoneNumber;
+    private final String address;
     private VenueRatings ratings = null;
 
 

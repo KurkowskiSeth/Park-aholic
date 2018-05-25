@@ -23,13 +23,12 @@ import java.util.List;
 
 public class StackViewAdapter extends ArrayAdapter<String> {
 
-    private List<String> urls;
-    private Context context;
+    private final Context context;
 
     public StackViewAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull List<String> objects) {
         super(context, resource, textViewResourceId, objects);
         this.context = context;
-        this.urls = objects;
+        List<String> urls = objects;
     }
 
     @NonNull
@@ -62,9 +61,9 @@ public class StackViewAdapter extends ArrayAdapter<String> {
     }
 
     static class ViewHolder {
-        ImageView imageView;
+        final ImageView imageView;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             imageView = view.findViewById(R.id.imageView);
         }
     }

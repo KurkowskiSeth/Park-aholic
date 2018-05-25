@@ -48,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RETURN_RATING + " INTEGER" +
             ") ";
 
-    private SQLiteDatabase mDatabase;
+    private final SQLiteDatabase mDatabase;
     private static DatabaseHelper mInstance = null;
 
     @Override

@@ -29,11 +29,11 @@ import java.util.ArrayList;
 
 public class VenueImageAsyncTask extends AsyncTask<String, Void, ArrayList<String>> {
 
-    public static final String tag = "Parkaholic.TAG";
+    private static final String tag = "Parkaholic.TAG";
 
-    Context mContext;
+    private final Context mContext;
 
-    public final VenueImageTaskCallback venueImageTaskCallback;
+    private final VenueImageTaskCallback venueImageTaskCallback;
     public interface VenueImageTaskCallback {
         void taskStart();
         void taskFinish(ArrayList<String> imageUris);

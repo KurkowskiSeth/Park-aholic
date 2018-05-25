@@ -21,10 +21,10 @@ import com.sethkurkowski.android.parkaholic_20.VenueActivity;
 
 public class UserCommentFragment extends Fragment implements View.OnClickListener {
 
-    EditText userCommentET;
-    Button submitBtn;
+    private EditText userCommentET;
+    private Button submitBtn;
 
-    UserCommentCallback userCommentCallback;
+    private UserCommentCallback userCommentCallback;
     public interface UserCommentCallback {
         void commentSubmit(String comment);
     }
