@@ -76,7 +76,6 @@ extension ViewController {
                                         let likelinessToReturnTotalRatings = likelinessToReturn["totalRatings"] as? Int,
                                         let likelinessToReturnTotalReviews = likelinessToReturn["totalReviews"] as? Int
                                             else {print("Error in findParks database pull guard statement"); return}
-                                        
                                         if let comments = value["comments"] as? NSArray {
                                             var commentsArray = [[String: String]]()
                                             for comment in comments {

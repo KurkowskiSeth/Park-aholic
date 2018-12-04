@@ -48,7 +48,7 @@ class ParkDetail_ViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func saveToCoreData(_ sender: UIButton) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
             else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentfontainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Favorites", in: managedContext)!
         let favPark = NSManagedObject(entity: entity, insertInto: managedContext)
         favPark.setValue(parkData?.name, forKey: "name")

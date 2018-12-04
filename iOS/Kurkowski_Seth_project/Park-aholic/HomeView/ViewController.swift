@@ -89,7 +89,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             //Load data from favorites
             pullFromCD()
             online = false
-            
         }
     }
     
